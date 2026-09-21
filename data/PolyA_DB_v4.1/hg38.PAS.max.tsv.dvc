@@ -1,0 +1,5 @@
+outs:
+- md5: 4960199e2722fea5dc1ef2c80aef1f67
+  size: 81127762
+  hash: md5
+  path: hg38.PAS.max.tsv

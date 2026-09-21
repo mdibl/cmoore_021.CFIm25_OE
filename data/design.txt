@@ -1,0 +1,13 @@
+samples	filename	condition	plasmid	replicate
+control_control_rep_1	22166R-09-01	control	control	1
+control_control_rep_2	22166R-09-02	control	control	2
+control_control_rep_3	22166R-09-03	control	control	3
+CFIm25_control_rep_4	22166R-09-04	control	CFIm25	4
+CFIm25_control_rep_5	22166R-09-05	control	CFIm25	5
+CFIm25_control_rep_6	22166R-09-06	control	CFIm25	6
+control_TGFB_rep_1	22166R-09-07	TGFB	control	1
+control_TGFB_rep_2	22166R-09-08	TGFB	control	2
+control_TGFB_rep_3	22166R-09-09	TGFB	control	3
+CFIm25_TGFB_rep_4	22166R-09-10	TGFB	CFIm25	4
+CFIm25_TGFB_rep_5	22166R-09-11	TGFB	CFIm25	5
+CFIm25_TGFB_rep_6	22166R-09-12	TGFB	CFIm25	6

@@ -1,0 +1,19 @@
+### /home/cnobrega/miniforge3/envs/reap-env/bin/STAR-sse4.1   --runMode genomeGenerate      --runThreadN 12   --genomeDir /compbio/scratch/cnobrega/3_REAP/ref/star_index_hg38   --genomeFastaFiles /compbio/scratch/cnobrega/3_REAP/ref/hg38.fa      --sjdbGTFfile /compbio/scratch/cnobrega/3_REAP/ref/hg38.refGene.gtf   --sjdbOverhang 100
+### GstrandBit 32
+versionGenome	2.7.4a
+genomeType	Full
+genomeFastaFiles	/compbio/scratch/cnobrega/3_REAP/ref/hg38.fa 
+genomeSAindexNbases	14
+genomeChrBinNbits	18
+genomeSAsparseD	1
+genomeTransformType	None
+genomeTransformVCF	-
+sjdbOverhang	100
+sjdbFileChrStartEnd	- 
+sjdbGTFfile	/compbio/scratch/cnobrega/3_REAP/ref/hg38.refGene.gtf
+sjdbGTFchrPrefix	-
+sjdbGTFfeatureExon	exon
+sjdbGTFtagExonParentTranscript	transcript_id
+sjdbGTFtagExonParentGene	gene_id
+sjdbInsertSave	Basic
+genomeFileSizes	3334612301 25605606769

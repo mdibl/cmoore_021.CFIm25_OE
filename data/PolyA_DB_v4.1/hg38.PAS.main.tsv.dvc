@@ -1,0 +1,5 @@
+outs:
+- md5: eb034604f0a7c287e7be6c705ff25e22
+  size: 121144780
+  hash: md5
+  path: hg38.PAS.main.tsv
