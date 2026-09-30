@@ -9,8 +9,8 @@
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 # Paths to raw FASTQ files and pipeline outputs
-fastq_path=/compbio/data/ClaireMoore/cmoore_019.admera/raw/       # directory containing raw FASTQ files
-work_path=/compbio/data/ClaireMoore/cmoore_019.admera/processed/     # all pipeline outputs go here
+fastq_path=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/raw/       # directory containing raw FASTQ files
+work_path=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP    # all pipeline outputs go here
 
 # Sample manifest: tab-separated, one sample per line
 #   <sample_name>  <R1_absolute_path>  <R2_absolute_path>

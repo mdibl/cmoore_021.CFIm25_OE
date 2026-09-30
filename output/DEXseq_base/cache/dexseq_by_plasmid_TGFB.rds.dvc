@@ -1,0 +1,5 @@
+outs:
+- md5: cd7b5fbbc4f0da96b194d662abc20733
+  size: 68976984
+  hash: md5
+  path: dexseq_by_plasmid_TGFB.rds

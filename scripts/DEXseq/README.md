@@ -90,7 +90,7 @@ If you have a timepoint or batch column, include it here. Set `GROUPING_VAR <- "
 ### 3. Run
 
 ```r
-Rscript scripts/DEXseq.R
+Rscript DEXseq.R  2>&1 | tee pipeline_run_$(date +%Y%m%d_%H%M).log
 ```
 
 Or open in RStudio and run interactively. The script prints progress messages for each step.

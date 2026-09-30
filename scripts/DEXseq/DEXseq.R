@@ -3,10 +3,12 @@
 # Generic script — configure the USER CONFIGURATION section only.
 #
 # Usage:
-#   Set BASE_DIR, input file paths, condition labels, and
-#   GROUPING_VAR (NULL for a simple two-condition design; set to
-#   a colData column name to run one analysis per level of that
-#   variable, e.g., GROUPING_VAR <- "timepoint").
+#   Set BASE_DIR, input file paths, and AXES. Each entry in AXES runs one
+#   DEXSeq comparison (comparison_var: ref_label vs alt_label) independently
+#   within every level of stratify_var -- e.g. by_condition compares condition
+#   (control vs TGFB) within each plasmid, while by_plasmid compares plasmid
+#   (control vs CFIm25) within each condition.
+#   Add/remove entries in AXES to add more cross-sections.
 #
 # Input:
 #   - PAS count matrix (rows = PAS IDs, columns = samples)
@@ -34,7 +36,7 @@ library(stringr)
 #  USER CONFIGURATION — EDIT THESE
 # ============================================================
 
-BASE_DIR <- "/compbio/analysis/ClaireMoore/cmoore_020.bicli_pcf11/"   # project root
+BASE_DIR <- "/compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE"   # project root
 
 # Input files (relative to BASE_DIR)
 COUNTS_CSV  <- "data/cluster.all.reads.csv"
@@ -50,15 +52,37 @@ ANNO_GTF <- "data/ref/hg38.refGene.gtf"
 # Output base directory
 OUT_BASE <- file.path(BASE_DIR, "output/DEXseq/")
 
-# Experimental design
-CTRL_LABEL  <- "Control"      # reference condition (fold-change denominator)
-TRTMT_LABEL <- "Treatment"    # treatment/experimental condition
-
-# Grouping variable:
-#   NULL  — run a single analysis on all samples (simple two-condition design)
-#   "timepoint" — run one analysis per level of colData$timepoint
-GROUPING_VAR    <- "timepoint"
-GROUPING_LEVELS <- c("3day", "5day")       # NULL = auto-detect from colData (alphabetical order)
+# Comparison axes -- each axis runs one DEXSeq comparison (comparison_var: ref_label
+# vs alt_label) independently within every level of stratify_var (or once overall if
+# stratify_var's level is left unspecified). Add/remove axes here to add more
+# cross-sections without touching any code below.
+#   comparison_var/stratify_var — colData column names
+#   ref_label/alt_label         — the two comparison_var levels to test (ref = fold-
+#                                  change denominator)
+#   comparison_label            — display label for plot legends/titles
+#   stratify_levels              — NULL = auto-detect from colData (alphabetical order)
+#   stratify_dir                 — output subdirectory name per stratify level;
+#                                  NULL = use the level name as-is
+AXES <- list(
+  by_condition = list(                     
+    comparison_var   = "condition",
+    ref_label         = "control",
+    alt_label         = "TGFB",
+    comparison_label  = "condition",
+    stratify_var      = "plasmid",
+    stratify_levels   = c("control", "CFIm25"),
+    stratify_dir      = NULL
+  ),
+  by_plasmid = list(                     
+    comparison_var    = "plasmid",
+    ref_label         = "control",
+    alt_label         = "CFIm25",
+    comparison_label  = "plasmid",
+    stratify_var      = "condition",
+    stratify_levels   = c("control", "TGFB"),
+    stratify_dir      = NULL
+  )
+)
 
 # PAS type filter — keep rows whose PAS_type matches this regex
 PAS_TYPE_REGEX <- "^3'UTR"
@@ -111,8 +135,12 @@ GENES_OF_INTEREST <- c("PCF11", "TAB2", "ICAM1", "MCAM", "RCOR3", "OTUD7B", "PCN
 #   then added to the DEXSeq design to correct for batch effects on relative PAS usage.
 #   RUV_K: number of factors to estimate (1 is almost always sufficient; raise to 2
 #   only if the first factor does not account for the outlier clustering).
-USE_RUV <- FALSE
-#RUV_K   <- 2
+#   RUV_BATCH_VAR: colData column standing in for batch/processing-day structure --
+#   used only by the covariate report below (checks whether each W factor is
+#   explaining this batch proxy rather than real biology).
+USE_RUV       <- TRUE
+RUV_K         <- 1
+RUV_BATCH_VAR <- "replicate"
 
 # Cache the DEXSeq/DESeq2 model fits (the slow part of this script) to disk,
 # keyed on input-file mtimes + the modeling config above. Re-running the
@@ -159,21 +187,9 @@ for (d in c(dir_results, dir_plots, dir_qc, dir_apa_genome, dir_apa_zoom, dir_ca
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-CONDITION_LEVELS <- c(CTRL_LABEL, TRTMT_LABEL)
-FC_COL           <- paste0("log2fold_", TRTMT_LABEL, "_", CTRL_LABEL)
-FC_EXPORT        <- paste0("log2fold_", TRTMT_LABEL, "_v_", CTRL_LABEL)
-USAGE_CTRL_COL   <- paste0("meanUsage_", CTRL_LABEL)
-USAGE_TRTMT_COL  <- paste0("meanUsage_", TRTMT_LABEL)
-SE_CTRL_COL      <- paste0("seUsage_", CTRL_LABEL)
-SE_TRTMT_COL     <- paste0("seUsage_", TRTMT_LABEL)
-RED_CTRL_COL     <- paste0("RED_", CTRL_LABEL)
-RED_TRTMT_COL    <- paste0("RED_", TRTMT_LABEL)
-WUTR_CTRL_COL       <- paste0("wUTR_", CTRL_LABEL)
-WUTR_TRTMT_COL      <- paste0("wUTR_", TRTMT_LABEL)
-DOM_USAGE_CTRL_COL  <- paste0("dominant_meanUsage_", CTRL_LABEL)
-DOM_USAGE_TRTMT_COL <- paste0("dominant_meanUsage_", TRTMT_LABEL)
-NORMCOUNT_CTRL_COL  <- paste0("normCount_", CTRL_LABEL)
-NORMCOUNT_TRTMT_COL <- paste0("normCount_", TRTMT_LABEL)
+# Per-axis derived column names (fold-change, usage, RED, wUTR, etc.) are computed
+# inline from each axis's ref_label/alt_label wherever needed (see run_axis()),
+# rather than as fixed globals -- there are now two axes with different labels.
 
 # ============================================================
 #  BUILD COUNT MATRIX
@@ -307,12 +323,44 @@ if (!is.null(path_gtf)) {
 # ============================================================
 
 colData <- read.delim(path_design, row.names = 1, check.names = FALSE)
-if (!"condition" %in% names(colData)) stop("Design file must have a 'condition' column.")
-colData$condition <- factor(colData$condition, levels = CONDITION_LEVELS)
-if (!is.null(GROUPING_VAR) && GROUPING_VAR %in% names(colData)) {
-  colData[[GROUPING_VAR]] <- factor(colData[[GROUPING_VAR]])
-}
 stopifnot(all(colnames(count_mat) == rownames(colData)))
+
+# Validates every AXES entry's comparison_var/stratify_var exist in colData, levels
+# comparison_var as c(ref_label, alt_label) (the reference level fold-changes are
+# measured against), and auto-detects+backfills stratify_levels (alphabetical) when
+# an axis leaves it NULL. A colData column referenced by two axes (e.g. "condition"
+# is by_condition's comparison_var AND by_plasmid's stratify_var) gets leveled once
+# per axis that references it -- harmless as long as every axis agrees on that
+# column's level order, which AXES above does.
+prepare_colData_axes <- function(colData, axes) {
+  for (nm in names(axes)) {
+    ax <- axes[[nm]]
+    for (v in c(ax$comparison_var, ax$stratify_var)) {
+      if (!v %in% names(colData))
+        stop(sprintf("AXES$%s references colData column '%s', which is not in the design file.", nm, v))
+    }
+    colData[[ax$comparison_var]] <- factor(colData[[ax$comparison_var]],
+                                            levels = c(ax$ref_label, ax$alt_label))
+    strat_levels <- ax$stratify_levels
+    if (is.null(strat_levels)) strat_levels <- sort(unique(as.character(colData[[ax$stratify_var]])))
+    axes[[nm]]$stratify_levels <- strat_levels
+    colData[[ax$stratify_var]] <- factor(colData[[ax$stratify_var]], levels = strat_levels)
+  }
+  list(colData = colData, axes = axes)
+}
+prepared <- prepare_colData_axes(colData, AXES)
+colData  <- prepared$colData
+AXES     <- prepared$axes
+rm(prepared)
+
+# Second design factor to show as point shape on the global pre-analysis PCA
+# (which colors by "condition"). Derived from AXES rather than hardcoded to a
+# specific column name -- picks the stratify_var of whichever axis uses
+# "condition" as its comparison_var, so a project whose second factor isn't
+# called "timepoint" (e.g. "plasmid") still gets that contrast shown, instead
+# of the shape aesthetic silently matching nothing.
+condition_axis <- Find(function(ax) ax$comparison_var == "condition", AXES)
+PCA_SHAPE_VAR  <- if (!is.null(condition_axis)) condition_axis$stratify_var else NULL
 
 # ============================================================
 #  RUVseq BATCH CORRECTION (optional — set USE_RUV <- TRUE)
@@ -327,8 +375,11 @@ if (USE_RUV) {
 
   # scIdx: each row is a set of within-condition replicates — any variation among
   # them is treated as unwanted.  Pad uneven groups with -1.
-  ctrl_idx <- which(colData$condition == CTRL_LABEL)
-  trt_idx  <- which(colData$condition == TRTMT_LABEL)
+  # (Depends on some axis in AXES using "condition" as its comparison_var --
+  # prepare_colData_axes() above is what levels colData$condition ref-label-first.)
+  condition_levels <- levels(colData$condition)
+  ctrl_idx <- which(colData$condition == condition_levels[1])
+  trt_idx  <- which(colData$condition == condition_levels[2])
   nc       <- max(length(ctrl_idx), length(trt_idx))
   # scIdx must be a numeric (double) matrix; -1 marks empty padding slots
   scIdx         <- matrix(-1, nrow = 2, ncol = nc)
@@ -351,32 +402,49 @@ if (USE_RUV) {
     colData[[wc]] <- pData(ruv_fit)[rownames(colData), wc]
   }
   message("  W factors attached to colData: ", paste(w_cols, collapse = ", "))
-  message("  W_1 per sample:")
-  for (s in rownames(colData))
-    message(sprintf("    %-25s  %+.4f  [%s]", s, colData[s, "W_1"], colData[s, "condition"]))
-}
 
-# ============================================================
-#  GROUPING SETUP
-# ============================================================
+  # ---- Covariate reporting: is W absorbing real biology, or real batch? ----
+  # For each W_k: a low p-value against any axis's biological comparison_var
+  # (condition, plasmid, ...) is a red flag -- W is eating a real treatment
+  # effect, not unwanted variation. A high R^2 against RUV_BATCH_VAR is the
+  # reassuring case -- W is explaining known batch/processing structure.
+  stopifnot("RUV_BATCH_VAR column not found in design file" = RUV_BATCH_VAR %in% names(colData))
 
-if (is.null(GROUPING_VAR)) {
-  group_list   <- list("all" = rownames(colData))
-  group_suffix <- c("all" = "")
-} else {
-  if (is.null(GROUPING_LEVELS)) {
-    GROUPING_LEVELS <- sort(unique(as.character(colData[[GROUPING_VAR]])))
+  # One-way lm() of a W factor against a grouping column -- reused for both checks
+  # below (a biological comparison_var, or the batch proxy). Works for 2-level and
+  # multi-level factors alike (anova() F-test generalizes; a 2-level factor's F-test
+  # p-value is equivalent to the usual two-sample t-test p-value).
+  covariate_assoc <- function(w, grp) {
+    grp <- factor(grp)
+    if (nlevels(grp) < 2 || any(table(grp) < 2)) return(c(pvalue = NA_real_, r_squared = NA_real_))
+    fit <- lm(w ~ grp)
+    c(pvalue = anova(fit)[["Pr(>F)"]][1], r_squared = summary(fit)$r.squared)
   }
-  group_list <- setNames(
-    lapply(GROUPING_LEVELS, function(lv) {
-      rownames(colData)[as.character(colData[[GROUPING_VAR]]) == lv]
-    }),
-    GROUPING_LEVELS
-  )
-  group_suffix <- setNames(
-    vapply(GROUPING_LEVELS, function(lv) paste0(".", sub("day$", "d", lv)), character(1)),
-    GROUPING_LEVELS
-  )
+
+  # Every distinct biological comparison_var across AXES (e.g. "condition", "plasmid")
+  # -- W ~ these should come back NS; W ~ RUV_BATCH_VAR should come back high-R^2.
+  biological_vars <- unique(vapply(AXES, function(ax) ax$comparison_var, character(1)))
+
+  covariate_report <- do.call(rbind, lapply(w_cols, function(wc) {
+    w   <- colData[[wc]]
+    row <- list(W = wc)
+    for (bv in biological_vars) {
+      row[[paste0(bv, "_pvalue")]] <- covariate_assoc(w, colData[[bv]])[["pvalue"]]
+    }
+    row[[paste0(RUV_BATCH_VAR, "_R2")]] <- covariate_assoc(w, colData[[RUV_BATCH_VAR]])[["r_squared"]]
+    as.data.frame(row, stringsAsFactors = FALSE)
+  }))
+
+  message("  Covariate report (NS pvalue = W isn't absorbing biology; high R2 = W is correcting batch):")
+  for (i in seq_len(nrow(covariate_report))) {
+    message(sprintf("    %s", paste(names(covariate_report), unlist(covariate_report[i, ]),
+                                     sep = "=", collapse = "  ")))
+  }
+  write.csv(covariate_report, file.path(dir_qc, "RUV_covariate_report.csv"), row.names = FALSE, quote = FALSE)
+
+  # Raw W factors (samples x k), for anyone who wants to inspect/reuse them directly
+  w_export <- tibble::rownames_to_column(as.data.frame(colData[, w_cols, drop = FALSE]), "sample")
+  write.csv(w_export, file.path(dir_qc, "RUV_W_factors.csv"), row.names = FALSE, quote = FALSE)
 }
 
 # ============================================================
@@ -385,7 +453,7 @@ if (is.null(GROUPING_VAR)) {
 
 make_pca_global <- function(count_mat, col_data,
                              color_col      = "condition",
-                             shape_col      = GROUPING_VAR,
+                             shape_col      = NULL,
                              label_col      = PCA_LABEL_COL,
                              ntop           = NTOP_PCA,
                              batch_covars   = NULL,
@@ -458,6 +526,8 @@ make_pca_global <- function(count_mat, col_data,
 #  FUNCTION: library size bar chart
 # ============================================================
 
+# Intentionally hardcoded to "condition" rather than axis-parameterized -- this is a
+# single global pre-analysis QC plot (raw library depth), not specific to any axis.
 make_library_sizes <- function(count_mat_raw, col_data, outfile = NULL) {
   df <- data.frame(
     sample    = colnames(count_mat_raw),
@@ -544,7 +614,7 @@ make_pca_dxd <- function(dxd, grp_label = "",
 #  FUNCTION: size factor bar chart
 # ============================================================
 
-make_size_factors <- function(dxd, grp_label = "", outfile = NULL) {
+make_size_factors <- function(dxd, grp_label = "", comparison_var = "condition", outfile = NULL) {
   cd_full  <- as.data.frame(SummarizedExperiment::colData(dxd))
   this_idx <- which(cd_full$exon == "this")
   cd       <- cd_full[this_idx, , drop = FALSE]
@@ -553,7 +623,7 @@ make_size_factors <- function(dxd, grp_label = "", outfile = NULL) {
   df <- data.frame(
     sample      = as.character(cd$sample),
     size_factor = as.numeric(sf),
-    condition   = as.character(cd$condition),
+    condition   = as.character(cd[[comparison_var]]),
     stringsAsFactors = FALSE
   )
   df <- df[order(df$condition, df$sample), ]
@@ -624,7 +694,7 @@ make_pvalue_hist <- function(res_df, grp_label = "", outfile = NULL) {
 
 make_ma_plot <- function(res_df, grp_label = "",
                           padj_cut = PADJ_CUT, lfc_cut = LFC_CUT,
-                          fc_col = FC_COL, outfile = NULL) {
+                          fc_col, outfile = NULL) {
   if (!all(c("exonBaseMean", fc_col, "padj") %in% names(res_df))) {
     warning("MA plot skipped — required columns missing.")
     return(invisible(NULL))
@@ -671,7 +741,7 @@ make_ma_plot <- function(res_df, grp_label = "",
 
 make_volcano_plot <- function(res_df, grp_label = "",
                                padj_cut = PADJ_CUT, lfc_cut = LFC_CUT,
-                               fc_col = FC_COL, n_label = 10, outfile = NULL) {
+                               fc_col, n_label = 10, outfile = NULL) {
   if (!all(c(fc_col, "padj", "gene") %in% names(res_df))) {
     warning("Volcano plot skipped — required columns missing.")
     return(invisible(NULL))
@@ -729,6 +799,7 @@ make_volcano_plot <- function(res_df, grp_label = "",
 
 run_dexseq_group <- function(grp_label, sub_samples, count_mat, colData,
                               featureID, groupID,
+                              comparison_var, ref_label, alt_label,
                               gr = NULL, pas_anno = NULL,
                               min_total = 10, min_per_condition = 0,
                               use_ruv = FALSE, ruv_k = 1) {
@@ -738,22 +809,22 @@ run_dexseq_group <- function(grp_label, sub_samples, count_mat, colData,
   sub_cnt <- count_mat[, sub_samples, drop = FALSE]
   stopifnot(all(colnames(sub_cnt) == rownames(sub_cd)))
 
-  sub_cd$sample    <- factor(rownames(sub_cd))
-  sub_cd$condition <- droplevels(factor(sub_cd$condition, levels = CONDITION_LEVELS))
+  sub_cd$sample <- factor(rownames(sub_cd))
+  sub_cd[[comparison_var]] <- droplevels(factor(sub_cd[[comparison_var]], levels = c(ref_label, alt_label)))
   char_cols <- vapply(sub_cd, is.character, logical(1))
   sub_cd[char_cols] <- lapply(sub_cd[char_cols], factor)
 
-  if (length(levels(sub_cd$condition)) < 2 || any(table(sub_cd$condition) == 0)) {
-    stop(sprintf("Group '%s' is missing one or both conditions.", grp_label))
+  if (length(levels(sub_cd[[comparison_var]])) < 2 || any(table(sub_cd[[comparison_var]]) == 0)) {
+    stop(sprintf("Group '%s' is missing one or both %s levels.", grp_label, comparison_var))
   }
 
   # W_k:exon corrects for batch effects on *relative* PAS usage (PSI); it is not
   # collinear with the `sample` term, which only absorbs gene-level expression totals.
   dex_design <- if (use_ruv && ruv_k >= 1) {
     w_terms <- paste(paste0("W_", seq_len(ruv_k)), "exon", sep = ":")
-    as.formula(paste("~ sample + exon +", paste(c(w_terms, "condition:exon"), collapse = " + ")))
+    as.formula(paste("~ sample + exon +", paste(c(w_terms, paste0(comparison_var, ":exon")), collapse = " + ")))
   } else {
-    ~ sample + exon + condition:exon
+    as.formula(paste0("~ sample + exon + ", comparison_var, ":exon"))
   }
   message(sprintf("[%s] Creating DEXSeqDataSet (design: %s)...",
                   grp_label, deparse(dex_design)))
@@ -775,9 +846,9 @@ run_dexseq_group <- function(grp_label, sub_samples, count_mat, colData,
   if (min_per_condition > 0) {
     this_idx  <- which(colData(dxd)$exon == "this")
     mat_this  <- counts(dxd)[, this_idx, drop = FALSE]
-    cond_this <- colData(dxd)$condition[this_idx]
-    keep2 <- rowSums(mat_this[, cond_this == CTRL_LABEL,  drop = FALSE] > 0) >= min_per_condition &
-              rowSums(mat_this[, cond_this == TRTMT_LABEL, drop = FALSE] > 0) >= min_per_condition
+    cond_this <- colData(dxd)[[comparison_var]][this_idx]
+    keep2 <- rowSums(mat_this[, cond_this == ref_label, drop = FALSE] > 0) >= min_per_condition &
+              rowSums(mat_this[, cond_this == alt_label, drop = FALSE] > 0) >= min_per_condition
     dxd <- dxd[keep2, , drop = FALSE]
   }
 
@@ -791,8 +862,8 @@ run_dexseq_group <- function(grp_label, sub_samples, count_mat, colData,
   dxd <- estimateDispersions(dxd)
   dxd <- testForDEU(dxd)
   dxr <- DEXSeqResults(dxd)
-  dxd <- estimateExonFoldChanges(dxd, fitExpToVar = "condition",
-                                  denominator = CTRL_LABEL)
+  dxd <- estimateExonFoldChanges(dxd, fitExpToVar = comparison_var,
+                                  denominator = ref_label)
 
   message(sprintf("[%s] Building results table...", grp_label))
   res     <- S4Vectors::as.data.frame(dxr)
@@ -910,8 +981,14 @@ run_dexseq_group <- function(grp_label, sub_samples, count_mat, colData,
 
   fc_out_cols <- grep("^log2fold_", colnames(res_tp), value = TRUE)
   count_cols  <- grep("^countData\\.", colnames(res_tp), value = TRUE)
-  ctrl_cols   <- grep(paste0("^countData\\.", CTRL_LABEL),  count_cols, value = TRUE)
-  treat_cols  <- grep(paste0("^countData\\.", TRTMT_LABEL), count_cols, value = TRUE)
+  # Group countData.<sample> columns by actual colData membership, not by matching
+  # ref_label/alt_label as a substring of the sample name -- sample names aren't
+  # guaranteed to be prefixed with the comparison label (e.g. the by_treatment axis's
+  # ref_label "3day" is not a prefix of any sample name in a Control_3day_repN scheme).
+  sample_of_col <- sub("^countData\\.", "", count_cols)
+  grp_of_col    <- as.character(sub_cd[sample_of_col, comparison_var])
+  ctrl_cols     <- count_cols[grp_of_col == ref_label]
+  treat_cols    <- count_cols[grp_of_col == alt_label]
 
   # Interleave each raw count column with its normalized counterpart so the two
   # sit next to each other per sample, rather than in two separate blocks.
@@ -939,7 +1016,7 @@ run_dexseq_group <- function(grp_label, sub_samples, count_mat, colData,
 
 collapse_gene <- function(res_df, gene_q = NULL,
                            padj_cut = PADJ_CUT, lfc_cut = LFC_CUT,
-                           fc_col = FC_COL) {
+                           fc_col) {
   safe_min  <- function(x) { x <- x[is.finite(x)]; if (length(x)) min(x)  else NA_real_ }
   safe_max  <- function(x) { x <- x[is.finite(x)]; if (length(x)) max(x)  else NA_real_ }
   safe_mean <- function(x) { x <- x[is.finite(x)]; if (length(x)) mean(x) else NA_real_ }
@@ -979,7 +1056,12 @@ collapse_gene <- function(res_df, gene_q = NULL,
 #  FUNCTION: per-condition mean PSI + SEM + RED
 # ============================================================
 
-usage_by_condition <- function(res_df, sub_cd, thin_cut = THIN_COUNTS_CUT) {
+usage_by_condition <- function(res_df, sub_cd,
+                                comparison_var, ref_label, alt_label,
+                                usage_ctrl_col, usage_trtmt_col,
+                                se_ctrl_col, se_trtmt_col,
+                                red_ctrl_col, red_trtmt_col,
+                                thin_cut = THIN_COUNTS_CUT) {
   cnt_cols <- grep("^countData\\.", names(res_df), value = TRUE)
   counts   <- as.matrix(res_df[, cnt_cols, drop = FALSE])
   colnames(counts) <- sub("^countData\\.", "", colnames(counts))
@@ -993,9 +1075,9 @@ usage_by_condition <- function(res_df, sub_cd, thin_cut = THIN_COUNTS_CUT) {
   usage <- counts / totals_row
   usage[totals_row == 0] <- NA_real_
 
-  cond     <- sub_cd[colnames(counts), "condition", drop = TRUE]
-  ctrl_idx <- which(cond == CTRL_LABEL)
-  trt_idx  <- which(cond == TRTMT_LABEL)
+  cond     <- sub_cd[colnames(counts), comparison_var, drop = TRUE]
+  ctrl_idx <- which(cond == ref_label)
+  trt_idx  <- which(cond == alt_label)
 
   se_fn <- function(x) {
     x <- x[!is.na(x)]
@@ -1004,10 +1086,10 @@ usage_by_condition <- function(res_df, sub_cd, thin_cut = THIN_COUNTS_CUT) {
 
   out <- res_df
   out[["meanUsage_All"]] <- rowMeans(usage, na.rm = TRUE)
-  out[[USAGE_CTRL_COL]]  <- if (length(ctrl_idx)) rowMeans(usage[, ctrl_idx, drop = FALSE], na.rm = TRUE) else NA_real_
-  out[[USAGE_TRTMT_COL]] <- if (length(trt_idx))  rowMeans(usage[, trt_idx,  drop = FALSE], na.rm = TRUE) else NA_real_
-  out[[SE_CTRL_COL]]     <- if (length(ctrl_idx) > 1) apply(usage[, ctrl_idx, drop = FALSE], 1, se_fn) else rep(NA_real_, nrow(usage))
-  out[[SE_TRTMT_COL]]    <- if (length(trt_idx)  > 1) apply(usage[, trt_idx,  drop = FALSE], 1, se_fn) else rep(NA_real_, nrow(usage))
+  out[[usage_ctrl_col]]  <- if (length(ctrl_idx)) rowMeans(usage[, ctrl_idx, drop = FALSE], na.rm = TRUE) else NA_real_
+  out[[usage_trtmt_col]] <- if (length(trt_idx))  rowMeans(usage[, trt_idx,  drop = FALSE], na.rm = TRUE) else NA_real_
+  out[[se_ctrl_col]]     <- if (length(ctrl_idx) > 1) apply(usage[, ctrl_idx, drop = FALSE], 1, se_fn) else rep(NA_real_, nrow(usage))
+  out[[se_trtmt_col]]    <- if (length(trt_idx)  > 1) apply(usage[, trt_idx,  drop = FALSE], 1, se_fn) else rep(NA_real_, nrow(usage))
 
   # RED (Relative Expression Difference), our N-site-generalized version of the
   # MAAPER RED metric -- see build_gene_apa_summary()'s max_abs_delta_RED for the
@@ -1032,9 +1114,9 @@ usage_by_condition <- function(res_df, sub_cd, thin_cut = THIN_COUNTS_CUT) {
   n_pas_per_gene <- as.integer(table(res_df$groupID)[res_df$groupID])
 
   red_fn <- function(n, m, N) log2(N * (n + RED_PSEUDOCOUNT) / (m + RED_PSEUDOCOUNT))
-  out[[RED_CTRL_COL]]  <- red_fn(n_ctrl, m_ctrl, n_pas_per_gene)
-  out[[RED_TRTMT_COL]] <- red_fn(n_trt,  m_trt,  n_pas_per_gene)
-  out[["delta_RED"]]   <- out[[RED_TRTMT_COL]] - out[[RED_CTRL_COL]]
+  out[[red_ctrl_col]]  <- red_fn(n_ctrl, m_ctrl, n_pas_per_gene)
+  out[[red_trtmt_col]] <- red_fn(n_trt,  m_trt,  n_pas_per_gene)
+  out[["delta_RED"]]   <- out[[red_trtmt_col]] - out[[red_ctrl_col]]
 
   # thin_counts is a soft warning, not a filter: MIN_TOTAL_READS already excludes
   # PAS below its (gene-total) bar before DEXSeq ever sees them, so this flags
@@ -1061,7 +1143,7 @@ usage_by_condition <- function(res_df, sub_cd, thin_cut = THIN_COUNTS_CUT) {
 # dxd rather than rebuilding gene totals from scratch, so this stays exactly
 # consistent with what's tested elsewhere for the same group.
 
-build_gene_dge <- function(dxd, ctrl_label = CTRL_LABEL, trt_label = TRTMT_LABEL) {
+build_gene_dge <- function(dxd, comparison_var, ctrl_label, trt_label) {
   cd_full  <- as.data.frame(SummarizedExperiment::colData(dxd))
   this_idx <- which(cd_full$exon == "this")
   cd       <- cd_full[this_idx, , drop = FALSE]
@@ -1074,20 +1156,20 @@ build_gene_dge <- function(dxd, ctrl_label = CTRL_LABEL, trt_label = TRTMT_LABEL
 
   w_cols <- grep("^W_", names(cd), value = TRUE)
   design <- if (length(w_cols) > 0) {
-    as.formula(paste("~", paste(c(w_cols, "condition"), collapse = " + ")))
+    as.formula(paste("~", paste(c(w_cols, comparison_var), collapse = " + ")))
   } else {
-    ~ condition
+    as.formula(paste0("~ ", comparison_var))
   }
 
   dds <- DESeq2::DESeqDataSetFromMatrix(countData = gene_counts, colData = cd, design = design)
   dds <- DESeq2::DESeq(dds, quiet = TRUE)
-  res <- DESeq2::results(dds, contrast = c("condition", trt_label, ctrl_label))
+  res <- DESeq2::results(dds, contrast = c(comparison_var, trt_label, ctrl_label))
 
   # Mean size-factor-normalized gene-level count per condition, reusing this same
   # DESeqDataSet (no extra model fit) -- feeds the gene-count bar panel in
   # plot_gene_apa_zoom(), placed next to the log2FC bar it's derived from.
   norm_counts    <- DESeq2::counts(dds, normalized = TRUE)
-  cond           <- as.character(cd$condition)
+  cond           <- as.character(cd[[comparison_var]])
   ctrl_idx       <- which(cond == ctrl_label)
   trt_idx        <- which(cond == trt_label)
   norm_ctrl_mean <- if (length(ctrl_idx)) rowMeans(norm_counts[, ctrl_idx, drop = FALSE]) else rep(NA_real_, nrow(norm_counts))
@@ -1099,10 +1181,13 @@ build_gene_dge <- function(dxd, ctrl_label = CTRL_LABEL, trt_label = TRTMT_LABEL
   names(norm_counts_df) <- paste0("normCount.", names(norm_counts_df))
   norm_counts_df$groupID <- rownames(norm_counts_df)
 
+  normcount_ctrl_col <- paste0("normCount_", ctrl_label)
+  normcount_trtmt_col <- paste0("normCount_", trt_label)
+
   out <- as.data.frame(res)
   out$groupID <- rownames(out)
-  out[[NORMCOUNT_CTRL_COL]]  <- norm_ctrl_mean[out$groupID]
-  out[[NORMCOUNT_TRTMT_COL]] <- norm_trt_mean[out$groupID]
+  out[[normcount_ctrl_col]]  <- norm_ctrl_mean[out$groupID]
+  out[[normcount_trtmt_col]] <- norm_trt_mean[out$groupID]
   out <- merge(out, norm_counts_df, by = "groupID", all.x = TRUE, sort = FALSE)
   rownames(out) <- NULL
   out
@@ -1145,14 +1230,21 @@ build_gene_dge <- function(dxd, ctrl_label = CTRL_LABEL, trt_label = TRTMT_LABEL
 # by RED the way they used to be under MAAPER, but correctly accounting for
 # every tested PAS instead of just a proximal/distal pair.
 
-build_gene_apa_summary <- function(res_u,
-                                    ctrl_col   = USAGE_CTRL_COL,
-                                    trt_col    = USAGE_TRTMT_COL,
+build_gene_apa_summary <- function(res_u, group_of_sample,
+                                    ctrl_col, trt_col,
+                                    ref_label, alt_label,
+                                    wutr_ctrl_col, wutr_trtmt_col,
+                                    dom_usage_ctrl_col, dom_usage_trtmt_col,
                                     dominant_stable_cut = DOMINANT_STABLE_CUT,
                                     dominant_usage_cut  = DOMINANT_USAGE_CUT) {
   cnt_cols <- grep("^countData\\.", names(res_u), value = TRUE)
-  ctrl_cnt <- grep(paste0("^countData\\.", CTRL_LABEL),  cnt_cols, value = TRUE)
-  trt_cnt  <- grep(paste0("^countData\\.", TRTMT_LABEL), cnt_cols, value = TRUE)
+  # Group countData.<sample> columns by actual colData membership (group_of_sample),
+  # not by matching ref_label/alt_label as a substring of the sample name -- see the
+  # identical fix in run_dexseq_group() for why sample-name matching isn't safe here.
+  sample_of_col <- sub("^countData\\.", "", cnt_cols)
+  grp_of_col    <- unname(group_of_sample[sample_of_col])
+  ctrl_cnt      <- cnt_cols[grp_of_col == ref_label]
+  trt_cnt       <- cnt_cols[grp_of_col == alt_label]
 
   df <- res_u
   df$pos        <- dplyr::coalesce(df$genomicData.start, NA_integer_)
@@ -1229,10 +1321,10 @@ build_gene_apa_summary <- function(res_u,
 
   out$chisq_padj <- p.adjust(out$chisq_pvalue, method = "BH")
 
-  names(out)[names(out) == "wUTR_Control_ph"]   <- WUTR_CTRL_COL
-  names(out)[names(out) == "wUTR_Treatment_ph"] <- WUTR_TRTMT_COL
-  names(out)[names(out) == "dom_usage_ctrl_ph"] <- DOM_USAGE_CTRL_COL
-  names(out)[names(out) == "dom_usage_trt_ph"]  <- DOM_USAGE_TRTMT_COL
+  names(out)[names(out) == "wUTR_Control_ph"]   <- wutr_ctrl_col
+  names(out)[names(out) == "wUTR_Treatment_ph"] <- wutr_trtmt_col
+  names(out)[names(out) == "dom_usage_ctrl_ph"] <- dom_usage_ctrl_col
+  names(out)[names(out) == "dom_usage_trt_ph"]  <- dom_usage_trtmt_col
   out
 }
 
@@ -1263,7 +1355,7 @@ build_gene_apa_summary <- function(res_u,
 # candidate list, not a full annotated universe like gene_summary.csv).
 
 build_candidate_genes <- function(res_u, gene_summary,
-                                   ctrl_col = USAGE_CTRL_COL, trt_col = USAGE_TRTMT_COL,
+                                   ctrl_col, trt_col,
                                    usage_change_cut = USAGE_CHANGE_CUT,
                                    padj_cut          = PADJ_CUT,
                                    wutr_change_cut   = WUTR_CHANGE_CUT,
@@ -1449,8 +1541,8 @@ plot_gene_apa_genome <- function(res_u, gene_symbol, gtf_exons, title_suffix = N
 # PAS -- exon "extended into intron" by the detected site.
 
 plot_gene_apa_zoom <- function(res_u, gene_symbol, gtf_exons, sub_cd, gene_dge, title_suffix = NULL,
-                                ctrl_col = USAGE_CTRL_COL, trt_col = USAGE_TRTMT_COL,
-                                se_ctrl_col = SE_CTRL_COL, se_trt_col = SE_TRTMT_COL,
+                                ctrl_col, trt_col, se_ctrl_col, se_trt_col,
+                                comparison_var, ref_label, alt_label, comparison_label,
                                 near_bp = 5000, pad_frac = 0.15) {
   tx_exons <- gtf_exons[gtf_exons$gene_name == gene_symbol, ]
   if (nrow(tx_exons) == 0) stop(sprintf("Gene '%s' not found in GTF.", gene_symbol))
@@ -1503,7 +1595,7 @@ plot_gene_apa_zoom <- function(res_u, gene_symbol, gtf_exons, sub_cd, gene_dge, 
   ctx_exons <- tx_exons %>%
     dplyr::filter(transcript_id %in% keep_tx)
 
-  cond_colors <- c(setNames(CAT_CTRL, CTRL_LABEL), setNames(CAT_TRT, TRTMT_LABEL))
+  cond_colors <- c(setNames(CAT_CTRL, ref_label), setNames(CAT_TRT, alt_label))
   vlines <- ggplot2::geom_vline(xintercept = pas_df$pos, linetype = "dotted", color = "grey30", linewidth = 0.75)
 
   # --- panel 1: gene-level DGE summary ---
@@ -1549,8 +1641,8 @@ plot_gene_apa_zoom <- function(res_u, gene_symbol, gtf_exons, sub_cd, gene_dge, 
   } else {
     data.frame(sample = character(0), count = numeric(0))
   }
-  count_rep$condition <- factor(sub_cd[count_rep$sample, "condition"], levels = c(CTRL_LABEL, TRTMT_LABEL))
-  count_summary <- data.frame(condition = factor(c(CTRL_LABEL, TRTMT_LABEL), levels = c(CTRL_LABEL, TRTMT_LABEL))) %>%
+  count_rep$condition <- factor(sub_cd[count_rep$sample, comparison_var], levels = c(ref_label, alt_label))
+  count_summary <- data.frame(condition = factor(c(ref_label, alt_label), levels = c(ref_label, alt_label))) %>%
     dplyr::left_join(
       count_rep %>% dplyr::group_by(condition) %>%
         dplyr::summarise(mean = mean(count, na.rm = TRUE), se = se_fn2(count), .groups = "drop"),
@@ -1572,8 +1664,8 @@ plot_gene_apa_zoom <- function(res_u, gene_symbol, gtf_exons, sub_cd, gene_dge, 
 
   # --- panel 2: PAS usage -- replicate jitter + mean line + SEM error bars ---
   usage_long <- dplyr::bind_rows(
-    dplyr::transmute(pas_df, pos, condition = CTRL_LABEL,  val = .data[[ctrl_col]], se = .data[[se_ctrl_col]]),
-    dplyr::transmute(pas_df, pos, condition = TRTMT_LABEL, val = .data[[trt_col]],  se = .data[[se_trt_col]])
+    dplyr::transmute(pas_df, pos, condition = ref_label, val = .data[[ctrl_col]], se = .data[[se_ctrl_col]]),
+    dplyr::transmute(pas_df, pos, condition = alt_label, val = .data[[trt_col]],  se = .data[[se_trt_col]])
   ) %>% dplyr::mutate(val = ifelse(is.na(val), 0, val))
 
   cnt_cols   <- grep("^countData\\.", names(pas_df), value = TRUE)
@@ -1585,7 +1677,7 @@ plot_gene_apa_zoom <- function(res_u, gene_symbol, gtf_exons, sub_cd, gene_dge, 
   rep_long <- as.data.frame(usage_mat) %>%
     dplyr::mutate(pos = pas_df$pos) %>%
     tidyr::pivot_longer(-pos, names_to = "sample", values_to = "usage") %>%
-    dplyr::mutate(condition = sub_cd[sample, "condition"]) %>%
+    dplyr::mutate(condition = sub_cd[sample, comparison_var]) %>%
     dplyr::filter(!is.na(usage))
 
   jitter_w <- diff(xr) * 0.004
@@ -1639,7 +1731,7 @@ plot_gene_apa_zoom <- function(res_u, gene_symbol, gtf_exons, sub_cd, gene_dge, 
                          vjust = 0.1, size = 3, fontface = "bold", color = "red", fill = "white",
                          linewidth = 0.3, label.padding = ggplot2::unit(0.12, "lines"),
                          label.r = ggplot2::unit(0.08, "lines")) +
-    ggplot2::scale_color_manual(values = cond_colors, name = "Condition") +
+    ggplot2::scale_color_manual(values = cond_colors, name = comparison_label) +
     ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0, 1)) +
     x_scale_usage +
     ggplot2::labs(y = "PAS usage", x = NULL) +
@@ -1746,15 +1838,15 @@ if (USE_RUV) {
                   height = 3 * RUV_K + 1, dpi = 300)
 
   # Uncorrected PCA — shows the raw batch structure you are correcting for
-  make_pca_global(count_mat, colData,
+  make_pca_global(count_mat, colData, shape_col = PCA_SHAPE_VAR,
                   outfile        = file.path(dir_qc, "PCA_global_uncorrected.png"),
                   matrix_outfile = file.path(dir_qc, "vst_global.csv"))
   # RUV-corrected PCA — W factors regressed from VST matrix for visualization only
-  make_pca_global(count_mat, colData,
+  make_pca_global(count_mat, colData, shape_col = PCA_SHAPE_VAR,
                   batch_covars = w_cols,
                   outfile = file.path(dir_qc, "PCA_global_RUV_corrected.png"))
 } else {
-  make_pca_global(count_mat, colData,
+  make_pca_global(count_mat, colData, shape_col = PCA_SHAPE_VAR,
                   outfile        = file.path(dir_qc, "PCA_global.png"),
                   matrix_outfile = file.path(dir_qc, "vst_global.csv"))
 }
@@ -1799,7 +1891,7 @@ with_cache <- function(cache_key, manifest, compute_fn,
 # Manifest shared by both cached steps below -- build_gene_dge() operates
 # entirely on the dxd that run_dexseq_group() produces, so anything that
 # would invalidate one fit invalidates the other identically.
-group_cache_manifest <- function(grp) {
+group_cache_manifest <- function(axis_name, axis_cfg, grp, group_list) {
   list(
     inputs = list(
       counts  = file_mtime_safe(path_counts),
@@ -1807,9 +1899,11 @@ group_cache_manifest <- function(grp) {
       design  = file_mtime_safe(path_design),
       samples = file_mtime_safe(path_samples)
     ),
+    axis_name    = axis_name,
     samples_used = sort(group_list[[grp]]),
     config = list(
-      CTRL_LABEL = CTRL_LABEL, TRTMT_LABEL = TRTMT_LABEL,
+      comparison_var = axis_cfg$comparison_var,
+      ref_label = axis_cfg$ref_label, alt_label = axis_cfg$alt_label,
       PAS_TYPE_REGEX = PAS_TYPE_REGEX, MIN_TOTAL_READS = MIN_TOTAL_READS,
       MIN_PER_CONDITION = MIN_PER_CONDITION, USE_RUV = USE_RUV, RUV_K = RUV_K
     )
@@ -1817,189 +1911,246 @@ group_cache_manifest <- function(grp) {
 }
 
 # ============================================================
-#  MAIN LOOP
+#  FUNCTION: run one comparison axis end-to-end -- grouping, cached DEXSeq
+#  fits, gene-level DGE, QC plots, results export, and APA figures -- all
+#  written into a nested <axis_name>/<stratify level>/ output tree.
 # ============================================================
 
-message("--- Running DEXSeq analyses ---")
+run_axis <- function(axis_name, axis_cfg) {
+  message(sprintf("=== Axis '%s' (%s: %s vs %s, stratified by %s) ===",
+                  axis_name, axis_cfg$comparison_var, axis_cfg$alt_label,
+                  axis_cfg$ref_label, axis_cfg$stratify_var))
 
-runs <- lapply(names(group_list), function(grp) {
-  with_cache(
-    cache_key = paste0("dexseq_", grp),
-    manifest  = group_cache_manifest(grp),
-    compute_fn = function() {
-      run_dexseq_group(
-        grp_label         = grp,
-        sub_samples       = group_list[[grp]],
-        count_mat         = count_mat,
-        colData           = colData,
-        featureID         = featureID,
-        groupID           = groupID,
-        gr                = gr,
-        pas_anno          = pas_anno,
-        min_total         = MIN_TOTAL_READS,
-        min_per_condition = MIN_PER_CONDITION,
-        use_ruv           = USE_RUV,
-        ruv_k             = RUV_K
-      )
+  fc_col    <- paste0("log2fold_", axis_cfg$alt_label, "_", axis_cfg$ref_label)
+  fc_export <- paste0("log2fold_", axis_cfg$alt_label, "_v_", axis_cfg$ref_label)
+  # Plot-title comparison label: alt_label first, ref_label second, matching the
+  # fold-change sign convention used everywhere in this script (estimateExonFoldChanges'
+  # denominator = ref_label, and build_gene_dge()'s contrast = c(var, alt_label,
+  # ref_label)) -- a positive log2FC/log2FoldChange always means "up in alt_label",
+  # so naming it "<alt> v <ref>" keeps title order and sign meaning consistent.
+  comparison_title <- paste0(axis_cfg$alt_label, " v ", axis_cfg$ref_label)
+  usage_ctrl_col     <- paste0("meanUsage_", axis_cfg$ref_label)
+  usage_trtmt_col    <- paste0("meanUsage_", axis_cfg$alt_label)
+  se_ctrl_col        <- paste0("seUsage_", axis_cfg$ref_label)
+  se_trtmt_col       <- paste0("seUsage_", axis_cfg$alt_label)
+  red_ctrl_col       <- paste0("RED_", axis_cfg$ref_label)
+  red_trtmt_col      <- paste0("RED_", axis_cfg$alt_label)
+  wutr_ctrl_col      <- paste0("wUTR_", axis_cfg$ref_label)
+  wutr_trtmt_col     <- paste0("wUTR_", axis_cfg$alt_label)
+  dom_usage_ctrl_col <- paste0("dominant_meanUsage_", axis_cfg$ref_label)
+  dom_usage_trtmt_col<- paste0("dominant_meanUsage_", axis_cfg$alt_label)
+
+  # --- grouping setup (stratify samples by axis_cfg$stratify_var) ---
+  stratify_levels <- axis_cfg$stratify_levels
+  group_list <- setNames(
+    lapply(stratify_levels, function(lv) {
+      rownames(colData)[as.character(colData[[axis_cfg$stratify_var]]) == lv]
+    }),
+    stratify_levels
+  )
+  level_dir <- setNames(vapply(stratify_levels, function(lv) {
+    d <- axis_cfg$stratify_dir[lv]
+    if (is.null(axis_cfg$stratify_dir) || is.na(d)) lv else unname(d)
+  }, character(1)), stratify_levels)
+
+  for (lv in stratify_levels) {
+    for (base in c(dir_results, dir_qc, dir_apa_genome, dir_apa_zoom)) {
+      dir.create(file.path(base, axis_name, level_dir[[lv]]), recursive = TRUE, showWarnings = FALSE)
     }
-  )
-})
-names(runs) <- names(group_list)
+  }
 
-# ============================================================
-#  GENE-LEVEL DIFFERENTIAL EXPRESSION (separate from DEXSeq's
-#  per-PAS exon-usage test -- see build_gene_dge())
-# ============================================================
+  # ---- cached DEXSeq fits ----
+  message(sprintf("[%s] Running DEXSeq analyses...", axis_name))
+  runs <- lapply(names(group_list), function(grp) {
+    with_cache(
+      cache_key = paste0("dexseq_", axis_name, "_", grp),
+      manifest  = group_cache_manifest(axis_name, axis_cfg, grp, group_list),
+      compute_fn = function() {
+        run_dexseq_group(
+          grp_label         = paste(axis_name, grp, sep = "/"),
+          sub_samples       = group_list[[grp]],
+          count_mat         = count_mat,
+          colData           = colData,
+          featureID         = featureID,
+          groupID           = groupID,
+          comparison_var    = axis_cfg$comparison_var,
+          ref_label         = axis_cfg$ref_label,
+          alt_label         = axis_cfg$alt_label,
+          gr                = gr,
+          pas_anno          = pas_anno,
+          min_total         = MIN_TOTAL_READS,
+          min_per_condition = MIN_PER_CONDITION,
+          use_ruv           = USE_RUV,
+          ruv_k             = RUV_K
+        )
+      }
+    )
+  })
+  names(runs) <- names(group_list)
 
-message("--- Running gene-level DGE ---")
+  # ---- gene-level DGE (separate from DEXSeq's per-PAS exon-usage test) ----
+  message(sprintf("[%s] Running gene-level DGE...", axis_name))
+  gene_dge_results <- lapply(names(runs), function(grp) {
+    with_cache(
+      cache_key  = paste0("genedge_", axis_name, "_", grp),
+      manifest   = group_cache_manifest(axis_name, axis_cfg, grp, group_list),
+      compute_fn = function() build_gene_dge(runs[[grp]]$dxd,
+                     comparison_var = axis_cfg$comparison_var,
+                     ctrl_label = axis_cfg$ref_label, trt_label = axis_cfg$alt_label)
+    )
+  })
+  names(gene_dge_results) <- names(runs)
 
-gene_dge_results <- lapply(names(runs), function(grp) {
-  with_cache(
-    cache_key  = paste0("genedge_", grp),
-    manifest   = group_cache_manifest(grp),
-    compute_fn = function() build_gene_dge(runs[[grp]]$dxd)
-  )
-})
-names(gene_dge_results) <- names(runs)
+  for (grp in names(gene_dge_results)) {
+    write.csv(gene_dge_results[[grp]],
+              file.path(dir_results, axis_name, level_dir[[grp]], "gene_dge.csv"),
+              row.names = FALSE, quote = FALSE)
+  }
 
-for (grp in names(gene_dge_results)) {
-  sfx <- group_suffix[grp]
-  write.csv(gene_dge_results[[grp]],
-            file.path(dir_results, sprintf("gene_dge%s.csv", sfx)),
-            row.names = FALSE, quote = FALSE)
-}
+  # ---- post-analysis QC plots (per stratify level) ----
+  message(sprintf("[%s] Post-analysis QC plots...", axis_name))
+  for (grp in names(runs)) {
+    qdir <- file.path(dir_qc, axis_name, level_dir[[grp]])
+    dxd  <- runs[[grp]]$dxd
+    res  <- runs[[grp]]$results
+    grp_label <- paste0(comparison_title, ", ", grp)
 
-# ============================================================
-#  POST-ANALYSIS QC (per group)
-# ============================================================
+    make_pca_dxd(
+      dxd, grp_label = grp_label, color_col = axis_cfg$comparison_var,
+      outfile        = file.path(qdir, "PCA_normalized.png"),
+      matrix_outfile = file.path(qdir, "vst_normalized.csv")
+    )
+    make_size_factors(
+      dxd, grp_label = grp_label, comparison_var = axis_cfg$comparison_var,
+      outfile = file.path(qdir, "size_factors.png")
+    )
+    make_dispersion_plot(
+      dxd, grp_label = grp_label,
+      outfile = file.path(qdir, "dispersion.png")
+    )
+    make_pvalue_hist(
+      res, grp_label = grp_label,
+      outfile = file.path(qdir, "pvalue_hist.png")
+    )
+    make_ma_plot(
+      res, grp_label = grp_label, fc_col = fc_col,
+      outfile = file.path(qdir, "MA.png")
+    )
+    make_volcano_plot(
+      res, grp_label = grp_label, fc_col = fc_col,
+      outfile = file.path(qdir, "volcano.png")
+    )
+  }
 
-message("--- Post-analysis QC plots ---")
+  message(sprintf("[%s] Exporting results...", axis_name))
 
-for (grp in names(runs)) {
-  sfx <- group_suffix[grp]
-  dxd <- runs[[grp]]$dxd
-  res <- runs[[grp]]$results
+  # ---- per-PAS results + usage (DEXSeq results, annotation, raw/normalized
+  #      counts, and mean PSI + SEM per condition) ----
+  usage_results <- lapply(names(group_list), function(grp) {
+    cd_sub <- colData[group_list[[grp]], , drop = FALSE]
+    usage_by_condition(runs[[grp]]$results, cd_sub,
+                        comparison_var = axis_cfg$comparison_var,
+                        ref_label = axis_cfg$ref_label, alt_label = axis_cfg$alt_label,
+                        usage_ctrl_col = usage_ctrl_col, usage_trtmt_col = usage_trtmt_col,
+                        se_ctrl_col = se_ctrl_col, se_trtmt_col = se_trtmt_col,
+                        red_ctrl_col = red_ctrl_col, red_trtmt_col = red_trtmt_col)
+  })
+  names(usage_results) <- names(group_list)
 
-  make_pca_dxd(
-    dxd, grp_label = grp,
-    outfile        = file.path(dir_qc, sprintf("PCA_normalized%s.png", sfx)),
-    matrix_outfile = file.path(dir_qc, sprintf("vst_normalized%s.csv", sfx))
-  )
-  make_size_factors(
-    dxd, grp_label = grp,
-    outfile = file.path(dir_qc, sprintf("size_factors%s.png", sfx))
-  )
-  make_dispersion_plot(
-    dxd, grp_label = grp,
-    outfile = file.path(dir_qc, sprintf("dispersion%s.png", sfx))
-  )
-  make_pvalue_hist(
-    res, grp_label = grp,
-    outfile = file.path(dir_qc, sprintf("pvalue_hist%s.png", sfx))
-  )
-  make_ma_plot(
-    res, grp_label = grp,
-    outfile = file.path(dir_qc, sprintf("MA%s.png", sfx))
-  )
-  make_volcano_plot(
-    res, grp_label = grp,
-    outfile = file.path(dir_qc, sprintf("volcano%s.png", sfx))
-  )
-}
+  for (grp in names(usage_results)) {
+    out <- usage_results[[grp]]
+    names(out) <- sub(fc_col, fc_export, names(out), fixed = TRUE)
+    write.csv(out,
+              file.path(dir_results, axis_name, level_dir[[grp]], "pas_usage.csv"),
+              row.names = FALSE, quote = FALSE)
+  }
 
-message("--- Exporting results ---")
+  # ---- gene-level summary (collapse_gene() significance rollup, joined with
+  #      weighted UTR-length shift, dominant-site tracking, RED rollup, and the
+  #      chi-squared cross-check from build_gene_apa_summary()) + candidate genes ----
+  message(sprintf("[%s] Building gene-level summary and candidate-gene list...", axis_name))
 
-# ============================================================
-#  PER-PAS RESULTS + USAGE (one table: DEXSeq results, annotation,
-#  raw/normalized counts, and mean PSI + SEM per condition)
-# ============================================================
+  for (grp in names(runs)) {
+    gene_q <- perGeneQValue(runs[[grp]]$dxr)
+    group_of_sample <- setNames(as.character(colData[group_list[[grp]], axis_cfg$comparison_var]),
+                                 group_list[[grp]])
 
-usage_results <- lapply(names(group_list), function(grp) {
-  cd_sub <- colData[group_list[[grp]], , drop = FALSE]
-  usage_by_condition(runs[[grp]]$results, cd_sub)
-})
-names(usage_results) <- names(group_list)
+    sig_summary <- collapse_gene(runs[[grp]]$results, gene_q,
+                                  padj_cut = PADJ_CUT, lfc_cut = LFC_CUT, fc_col = fc_col)
+    apa_summary <- build_gene_apa_summary(usage_results[[grp]], group_of_sample,
+                     ctrl_col = usage_ctrl_col, trt_col = usage_trtmt_col,
+                     ref_label = axis_cfg$ref_label, alt_label = axis_cfg$alt_label,
+                     wutr_ctrl_col = wutr_ctrl_col, wutr_trtmt_col = wutr_trtmt_col,
+                     dom_usage_ctrl_col = dom_usage_ctrl_col, dom_usage_trtmt_col = dom_usage_trtmt_col)
+    apa_summary <- apa_summary[, setdiff(names(apa_summary), "n_PAS"), drop = FALSE]  # already in sig_summary
 
-for (grp in names(usage_results)) {
-  sfx <- group_suffix[grp]
-  out <- usage_results[[grp]]
-  names(out) <- sub(FC_COL, FC_EXPORT, names(out), fixed = TRUE)
-  write.csv(out,
-            file.path(dir_results, sprintf("pas_usage%s.csv", sfx)),
-            row.names = FALSE, quote = FALSE)
-}
+    gene_summary <- merge(sig_summary, apa_summary, by = "groupID", all = TRUE, sort = FALSE)
+    write.csv(gene_summary,
+              file.path(dir_results, axis_name, level_dir[[grp]], "gene_summary.csv"),
+              row.names = FALSE, quote = FALSE)
 
-# ============================================================
-#  GENE-LEVEL SUMMARY (significance rollup from collapse_gene(), joined
-#  with weighted UTR-length shift, dominant-site tracking, RED rollup, and
-#  the chi-squared cross-check from build_gene_apa_summary()) -- one file,
-#  one row per gene -- plus the candidate-gene rubric applied on top of it.
-# ============================================================
+    candidate_genes <- build_candidate_genes(usage_results[[grp]], gene_summary,
+                          ctrl_col = usage_ctrl_col, trt_col = usage_trtmt_col,
+                          usage_change_cut = USAGE_CHANGE_CUT, padj_cut = PADJ_CUT,
+                          wutr_change_cut = WUTR_CHANGE_CUT, red_mag_cut = RED_MAG_CUT)
+    write.csv(candidate_genes,
+              file.path(dir_results, axis_name, level_dir[[grp]], "candidate_genes.csv"),
+              row.names = FALSE, quote = FALSE)
+  }
 
-message("--- Building gene-level summary and candidate-gene list ---")
+  # ---- APA genome-map + terminal-exon zoom figures for GENES_OF_INTEREST ----
+  if (length(GENES_OF_INTEREST) > 0) {
+    message(sprintf("[%s] Plotting APA genome-map figures...", axis_name))
 
-for (grp in names(runs)) {
-  sfx    <- group_suffix[grp]
-  gene_q <- perGeneQValue(runs[[grp]]$dxr)
+    for (g in GENES_OF_INTEREST) {
+      for (grp in names(usage_results)) {
+        ttl_sfx <- paste0(comparison_title, ", ", grp)
 
-  sig_summary <- collapse_gene(runs[[grp]]$results, gene_q)
-  apa_summary <- build_gene_apa_summary(usage_results[[grp]])
-  apa_summary <- apa_summary[, setdiff(names(apa_summary), "n_PAS"), drop = FALSE]  # already in sig_summary
+        if (!is.null(gtf_exons) && requireNamespace("ggtranscript", quietly = TRUE)) {
+          n_tx <- length(unique(gtf_exons$transcript_id[gtf_exons$gene_name == g]))
 
-  gene_summary <- merge(sig_summary, apa_summary, by = "groupID", all = TRUE, sort = FALSE)
-  write.csv(gene_summary,
-            file.path(dir_results, sprintf("gene_summary%s.csv", sfx)),
-            row.names = FALSE, quote = FALSE)
+          if (requireNamespace("ggforce", quietly = TRUE)) {
+            genome_outfile <- file.path(dir_apa_genome, axis_name, level_dir[[grp]], sprintf("%s.png", g))
+            tryCatch({
+              p <- plot_gene_apa_genome(usage_results[[grp]], g, gtf_exons, title_suffix = ttl_sfx)
+              ggplot2::ggsave(genome_outfile, p, width = 10, height = 3 + 1.1 * n_tx, dpi = 300)
+            }, error = function(e) {
+              warning(sprintf("[%s/%s] Could not plot APA genome map for '%s': %s", axis_name, grp, g, conditionMessage(e)))
+            })
+          } else {
+            warning("ggforce not installed — APA genome map figure skipped for '", g, "'.")
+          }
 
-  candidate_genes <- build_candidate_genes(usage_results[[grp]], gene_summary)
-  write.csv(candidate_genes,
-            file.path(dir_results, sprintf("candidate_genes%s.csv", sfx)),
-            row.names = FALSE, quote = FALSE)
-}
-
-# ============================================================
-#  APA GENOME-MAP FIGURES (whole-gene + terminal-exon zoom)
-# ============================================================
-
-if (length(GENES_OF_INTEREST) > 0) {
-  message("--- Plotting APA genome-map figures ---")
-
-  for (g in GENES_OF_INTEREST) {
-    for (grp in names(usage_results)) {
-      sfx     <- group_suffix[grp]
-      ttl_sfx <- if (nchar(sfx) > 0) sub("^\\.", "", sfx) else NULL
-
-      if (!is.null(gtf_exons) && requireNamespace("ggtranscript", quietly = TRUE)) {
-        n_tx <- length(unique(gtf_exons$transcript_id[gtf_exons$gene_name == g]))
-
-        if (requireNamespace("ggforce", quietly = TRUE)) {
-          genome_outfile <- file.path(dir_apa_genome, sprintf("%s%s.png", g, sfx))
-          tryCatch({
-            p <- plot_gene_apa_genome(usage_results[[grp]], g, gtf_exons, title_suffix = ttl_sfx)
-            ggplot2::ggsave(genome_outfile, p, width = 10, height = 3 + 1.1 * n_tx, dpi = 300)
-          }, error = function(e) {
-            warning(sprintf("Could not plot APA genome map for '%s' (%s): %s", g, grp, conditionMessage(e)))
-          })
-        } else {
-          warning("ggforce not installed — APA genome map figure skipped for '", g, "'.")
-        }
-
-        if (requireNamespace("patchwork", quietly = TRUE)) {
-          zoom_outfile <- file.path(dir_apa_zoom, sprintf("%s%s.png", g, sfx))
-          tryCatch({
-            cd_sub <- colData[group_list[[grp]], , drop = FALSE]
-            p <- plot_gene_apa_zoom(usage_results[[grp]], g, gtf_exons, cd_sub, gene_dge_results[[grp]],
-                                    title_suffix = ttl_sfx)
-            ggplot2::ggsave(zoom_outfile, p, width = 9, height = 4.5 + 0.3 * n_tx, dpi = 300)
-          }, error = function(e) {
-            warning(sprintf("Could not plot APA terminal-exon zoom for '%s' (%s): %s", g, grp, conditionMessage(e)))
-          })
-        } else {
-          warning("patchwork not installed — APA terminal-exon zoom figure skipped for '", g, "'.")
+          if (requireNamespace("patchwork", quietly = TRUE)) {
+            zoom_outfile <- file.path(dir_apa_zoom, axis_name, level_dir[[grp]], sprintf("%s.png", g))
+            tryCatch({
+              cd_sub <- colData[group_list[[grp]], , drop = FALSE]
+              p <- plot_gene_apa_zoom(usage_results[[grp]], g, gtf_exons, cd_sub, gene_dge_results[[grp]],
+                     title_suffix = ttl_sfx,
+                     ctrl_col = usage_ctrl_col, trt_col = usage_trtmt_col,
+                     se_ctrl_col = se_ctrl_col, se_trt_col = se_trtmt_col,
+                     comparison_var = axis_cfg$comparison_var,
+                     ref_label = axis_cfg$ref_label, alt_label = axis_cfg$alt_label,
+                     comparison_label = axis_cfg$comparison_label)
+              ggplot2::ggsave(zoom_outfile, p, width = 9, height = 4.5 + 0.3 * n_tx, dpi = 300)
+            }, error = function(e) {
+              warning(sprintf("[%s/%s] Could not plot APA terminal-exon zoom for '%s': %s", axis_name, grp, g, conditionMessage(e)))
+            })
+          } else {
+            warning("patchwork not installed — APA terminal-exon zoom figure skipped for '", g, "'.")
+          }
         }
       }
     }
   }
+
+  invisible(list(runs = runs, gene_dge_results = gene_dge_results, usage_results = usage_results))
 }
+
+# ============================================================
+#  MAIN LOOP -- run every configured axis
+# ============================================================
+
+for (axis_name in names(AXES)) run_axis(axis_name, AXES[[axis_name]])
 
 message("Done. Outputs written to: ", OUT_BASE)

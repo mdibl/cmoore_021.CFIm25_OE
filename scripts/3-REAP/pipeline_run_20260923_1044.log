@@ -1,0 +1,2757 @@
+=== 3-REAP pipeline ===
+    Project : /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE
+    Output  : /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP
+    Samples : /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/sample.txt
+    PolyADB : /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/PolyA_DB_v4.1/hg38.PAS.main.tsv
+
+[Step 2] Adapter / polyA trimming...
+  [R1] CFIm25_control_rep_4
+  [R1] CFIm25_control_rep_5
+  [R1] CFIm25_control_rep_6
+  [R1] CFIm25_TGFB_rep_4
+  [R2] CFIm25_TGFB_rep_4
+  [R2] CFIm25_control_rep_5
+  [R2] CFIm25_control_rep_6
+  [R2] CFIm25_control_rep_4
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R2_trimAdapt.fastq.gz...
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R2_trimAdapt.fastq.gz...
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R2_trimAdapt.fastq.gz...
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R2_trimAdapt.fastq.gz...
+Processed 30663826 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] CFIm25_TGFB_rep_5
+  [R2] CFIm25_TGFB_rep_5
+Processed 30882650 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] CFIm25_TGFB_rep_6
+Processed 31936690 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] control_control_rep_1
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R2_trimAdapt.fastq.gz...
+Processed 32051718 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] control_control_rep_2
+  [R2] CFIm25_TGFB_rep_6
+  [R2] control_control_rep_1
+  [R2] control_control_rep_2
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R2_trimAdapt.fastq.gz...
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R2_trimAdapt.fastq.gz...
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R2_trimAdapt.fastq.gz...
+Processed 29906273 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] control_control_rep_3
+Processed 31200993 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] control_TGFB_rep_1
+  [R2] control_control_rep_3
+  [R2] control_TGFB_rep_1
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R2_trimAdapt.fastq.gz...
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R2_trimAdapt.fastq.gz...
+Processed 31714133 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R1] control_TGFB_rep_2
+Processed 31450239 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz
+  [R2] control_TGFB_rep_2
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R2_trimAdapt.fastq.gz...
+Processed 29212307 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz
+Processed 29913647 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz
+Processed 28578585 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz
+[Step 3] Repair pairs + STAR alignment...
+  [align] CFIm25_control_rep_4
+  [align] CFIm25_control_rep_5
+  [align] CFIm25_control_rep_6
+  [align] CFIm25_TGFB_rep_4
+java -ea -Xmx76572m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_unpaired.fastq.gz repair
+java -ea -Xmx76573m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_unpaired.fastq.gz repair
+java -ea -Xmx76572m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_unpaired.fastq.gz repair
+java -ea -Xmx76573m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_4/CFIm25_control_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_unpaired.fastq.gz, repair]
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_5/CFIm25_control_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_unpaired.fastq.gz, repair]
+
+
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_control_rep_6/CFIm25_control_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_unpaired.fastq.gz, repair]
+
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_4/CFIm25_TGFB_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Set INTERLEAVED to false
+Set INTERLEAVED to false
+Set INTERLEAVED to false
+Started output stream.
+Started output stream.
+Started output stream.
+Started output stream.
+
+Input:                  	61407884 reads 		7069638115 bases.
+Result:                 	61407884 reads (100.00%) 	7069638115 bases (100.00%)
+Pairs:                  	61118492 reads (99.53%) 	7040673229 bases (99.59%)
+Singletons:             	289392 reads (0.47%) 	28964886 bases (0.41%)
+
+Time:                         	150.263 seconds.
+Reads Processed:      61407k 	408.67k reads/sec
+Bases Processed:       7069m 	47.05m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/repaired/CFIm25_control_rep_5_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:24:28 ..... started STAR run
+Sep 23 16:24:28 ..... loading genome
+
+Input:                  	61827099 reads 		7199762342 bases.
+Result:                 	61827099 reads (100.00%) 	7199762342 bases (100.00%)
+Pairs:                  	61410096 reads (99.33%) 	7159249859 bases (99.44%)
+Singletons:             	417003 reads (0.67%) 	40512483 bases (0.56%)
+
+Time:                         	152.802 seconds.
+Reads Processed:      61827k 	404.62k reads/sec
+Bases Processed:       7199m 	47.12m bases/sec
+
+Input:                  	64191093 reads 		7414476271 bases.
+Result:                 	64191093 reads (100.00%) 	7414476271 bases (100.00%)
+Pairs:                  	63874646 reads (99.51%) 	7383938607 bases (99.59%)
+Singletons:             	316447 reads (0.49%) 	30537664 bases (0.41%)
+
+Time:                         	153.347 seconds.
+Reads Processed:      64191k 	418.60k reads/sec
+Bases Processed:       7414m 	48.35m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/repaired/CFIm25_control_rep_4_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:24:31 ..... started STAR run
+Sep 23 16:24:31 ..... loading genome
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/repaired/CFIm25_control_rep_6_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:24:31 ..... started STAR run
+Sep 23 16:24:31 ..... loading genome
+
+Input:                  	63879197 reads 		7415092950 bases.
+Result:                 	63879197 reads (100.00%) 	7415092950 bases (100.00%)
+Pairs:                  	63347608 reads (99.17%) 	7364176141 bases (99.31%)
+Singletons:             	531589 reads (0.83%) 	50916809 bases (0.69%)
+
+Time:                         	155.913 seconds.
+Reads Processed:      63879k 	409.71k reads/sec
+Bases Processed:       7415m 	47.56m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/repaired/CFIm25_TGFB_rep_4_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:24:34 ..... started STAR run
+Sep 23 16:24:34 ..... loading genome
+Sep 23 16:27:15 ..... started mapping
+Sep 23 16:27:15 ..... started mapping
+Sep 23 16:27:15 ..... started mapping
+Sep 23 16:27:15 ..... started mapping
+Sep 23 16:46:15 ..... finished mapping
+Sep 23 16:46:21 ..... started sorting BAM
+Sep 23 16:46:48 ..... finished mapping
+Sep 23 16:46:53 ..... finished mapping
+Sep 23 16:46:53 ..... started sorting BAM
+Sep 23 16:46:56 ..... finished successfully
+Sep 23 16:46:56 ..... started sorting BAM
+  [align] CFIm25_TGFB_rep_5
+java -ea -Xmx77832m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_5/CFIm25_TGFB_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+Sep 23 16:47:06 ..... finished mapping
+Sep 23 16:47:12 ..... started sorting BAM
+Sep 23 16:47:29 ..... finished successfully
+Sep 23 16:47:31 ..... finished successfully
+  [align] CFIm25_TGFB_rep_6
+java -ea -Xmx102883m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/CFIm25_TGFB_rep_6/CFIm25_TGFB_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+  [align] control_control_rep_1
+java -ea -Xmx100563m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_1/control_control_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+Sep 23 16:47:48 ..... finished successfully
+  [align] control_control_rep_2
+java -ea -Xmx98581m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_2/control_control_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	62426794 reads 		7289206983 bases.
+Result:                 	62426794 reads (100.00%) 	7289206983 bases (100.00%)
+Pairs:                  	61946712 reads (99.23%) 	7243287266 bases (99.37%)
+Singletons:             	480082 reads (0.77%) 	45919717 bases (0.63%)
+
+Time:                         	149.486 seconds.
+Reads Processed:      62426k 	417.61k reads/sec
+Bases Processed:       7289m 	48.76m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/repaired/CFIm25_TGFB_rep_5_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:49:33 ..... started STAR run
+Sep 23 16:49:33 ..... loading genome
+
+Input:                  	59817099 reads 		6893188022 bases.
+Result:                 	59817099 reads (100.00%) 	6893188022 bases (100.00%)
+Pairs:                  	59405292 reads (99.31%) 	6854601152 bases (99.44%)
+Singletons:             	411807 reads (0.69%) 	38586870 bases (0.56%)
+
+Time:                         	137.583 seconds.
+Reads Processed:      59817k 	434.77k reads/sec
+Bases Processed:       6893m 	50.10m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/repaired/control_control_rep_1_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:49:55 ..... started STAR run
+Sep 23 16:49:55 ..... loading genome
+
+Input:                  	63475241 reads 		7389346432 bases.
+Result:                 	63475241 reads (100.00%) 	7389346432 bases (100.00%)
+Pairs:                  	63112616 reads (99.43%) 	7353652229 bases (99.52%)
+Singletons:             	362625 reads (0.57%) 	35694203 bases (0.48%)
+
+Time:                         	141.533 seconds.
+Reads Processed:      63475k 	448.49k reads/sec
+Bases Processed:       7389m 	52.21m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/repaired/CFIm25_TGFB_rep_6_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:49:58 ..... started STAR run
+Sep 23 16:49:58 ..... loading genome
+Sep 23 16:49:59 ..... started mapping
+
+Input:                  	62930390 reads 		7213336470 bases.
+Result:                 	62930390 reads (100.00%) 	7213336470 bases (100.00%)
+Pairs:                  	62537808 reads (99.38%) 	7176391097 bases (99.49%)
+Singletons:             	392582 reads (0.62%) 	36945373 bases (0.51%)
+
+Time:                         	137.250 seconds.
+Reads Processed:      62930k 	458.51k reads/sec
+Bases Processed:       7213m 	52.56m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/repaired/control_control_rep_2_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 16:50:11 ..... started STAR run
+Sep 23 16:50:11 ..... loading genome
+Sep 23 16:50:19 ..... started mapping
+Sep 23 16:50:22 ..... started mapping
+Sep 23 16:50:36 ..... started mapping
+Sep 23 17:08:01 ..... finished mapping
+Sep 23 17:08:08 ..... started sorting BAM
+Sep 23 17:08:30 ..... finished mapping
+Sep 23 17:08:36 ..... started sorting BAM
+Sep 23 17:08:39 ..... finished successfully
+  [align] control_control_rep_3
+java -ea -Xmx55154m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_control_rep_3/control_control_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+Sep 23 17:09:10 ..... finished successfully
+  [align] control_TGFB_rep_1
+java -ea -Xmx53609m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_1/control_TGFB_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+Sep 23 17:10:25 ..... finished mapping
+Sep 23 17:10:30 ..... started sorting BAM
+Sep 23 17:10:37 ..... finished mapping
+Sep 23 17:10:43 ..... started sorting BAM
+
+Input:                  	59858189 reads 		6957426398 bases.
+Result:                 	59858189 reads (100.00%) 	6957426398 bases (100.00%)
+Pairs:                  	59423992 reads (99.27%) 	6916005983 bases (99.40%)
+Singletons:             	434197 reads (0.73%) 	41420415 bases (0.60%)
+
+Time:                         	137.153 seconds.
+Reads Processed:      59858k 	436.43k reads/sec
+Bases Processed:       6957m 	50.73m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/repaired/control_control_rep_3_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 17:11:02 ..... started STAR run
+Sep 23 17:11:02 ..... loading genome
+Sep 23 17:11:04 ..... finished successfully
+  [align] control_TGFB_rep_2
+java -ea -Xmx77948m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_2/control_TGFB_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+Sep 23 17:11:16 ..... finished successfully
+
+Input:                  	58496266 reads 		6668319235 bases.
+Result:                 	58496266 reads (100.00%) 	6668319235 bases (100.00%)
+Pairs:                  	58229804 reads (99.54%) 	6641361664 bases (99.60%)
+Singletons:             	266462 reads (0.46%) 	26957571 bases (0.40%)
+
+Time:                         	128.013 seconds.
+Reads Processed:      58496k 	456.96k reads/sec
+Bases Processed:       6668m 	52.09m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/repaired/control_TGFB_rep_1_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 17:11:24 ..... started STAR run
+Sep 23 17:11:24 ..... loading genome
+Sep 23 17:11:29 ..... started mapping
+Sep 23 17:11:49 ..... started mapping
+
+Input:                  	57170451 reads 		6359545154 bases.
+Result:                 	57170451 reads (100.00%) 	6359545154 bases (100.00%)
+Pairs:                  	56824868 reads (99.40%) 	6328247379 bases (99.51%)
+Singletons:             	345583 reads (0.60%) 	31297775 bases (0.49%)
+
+Time:                         	101.295 seconds.
+Reads Processed:      57170k 	564.40k reads/sec
+Bases Processed:       6359m 	62.78m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/repaired/control_TGFB_rep_2_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 23 17:12:50 ..... started STAR run
+Sep 23 17:12:50 ..... loading genome
+Sep 23 17:13:13 ..... started mapping
+Sep 23 17:25:47 ..... finished mapping
+Sep 23 17:25:51 ..... started sorting BAM
+Sep 23 17:26:05 ..... finished mapping
+Sep 23 17:26:09 ..... started sorting BAM
+Sep 23 17:26:18 ..... finished successfully
+Sep 23 17:26:35 ..... finished successfully
+Sep 23 17:26:58 ..... finished mapping
+Sep 23 17:27:02 ..... started sorting BAM
+Sep 23 17:27:23 ..... finished successfully
+[Step 3] Compiling alignment statistics...
+[Step 4] Deduplication...
+[Step 5] BAM → BED (R2 reads)...
+  [bed] CFIm25_control_rep_4
+  [bed] CFIm25_control_rep_5
+  [bed] CFIm25_control_rep_6
+  [bed] CFIm25_TGFB_rep_4
+  [bed] CFIm25_TGFB_rep_5
+  [bed] CFIm25_TGFB_rep_6
+  [bed] control_control_rep_1
+  [bed] control_control_rep_2
+  [bed] control_control_rep_3
+  [bed] control_TGFB_rep_1
+  [bed] control_TGFB_rep_2
+  Read counts per sample:
+   21401096 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_control_rep_4.dedup_R2.sorted.bed
+   20853911 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_control_rep_5.dedup_R2.sorted.bed
+   21922257 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_control_rep_6.dedup_R2.sorted.bed
+   22217321 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_TGFB_rep_4.dedup_R2.sorted.bed
+   21821518 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_TGFB_rep_5.dedup_R2.sorted.bed
+   22037869 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_TGFB_rep_6.dedup_R2.sorted.bed
+   20513428 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_control_rep_1.dedup_R2.sorted.bed
+   21149312 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_control_rep_2.dedup_R2.sorted.bed
+   20789594 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_control_rep_3.dedup_R2.sorted.bed
+   19981768 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_TGFB_rep_1.dedup_R2.sorted.bed
+   18744096 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_TGFB_rep_2.dedup_R2.sorted.bed
+  231432170 total
+[Step 6] LAP/PAS analysis (dist=24 nt)...
+  [LAP] CFIm25_control_rep_4
+  [LAP] CFIm25_control_rep_5
+  [LAP] CFIm25_control_rep_6
+  [LAP] CFIm25_TGFB_rep_4
+Loading required package: tidyverse
+Loading required package: tidyverse
+Loading required package: tidyverse
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: plyranges
+Loading required package: plyranges
+Loading required package: plyranges
+Loading required package: BiocGenerics
+Loading required package: BiocGenerics
+Loading required package: BiocGenerics
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: IRanges
+Loading required package: IRanges
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: S4Vectors
+Loading required package: S4Vectors
+Loading required package: S4Vectors
+Loading required package: stats4
+Loading required package: stats4
+Loading required package: stats4
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomicRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomeInfoDb
+Loading required package: GenomeInfoDb
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘plyranges’
+
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: GenomicAlignments
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: MatrixGenerics
+Loading required package: SummarizedExperiment
+Loading required package: matrixStats
+Loading required package: matrixStats
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Loading required package: Biobase
+
+Attaching package: ‘MatrixGenerics’
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+
+Attaching package: ‘Biobase’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: Biostrings
+Loading required package: Biostrings
+Loading required package: Biostrings
+Loading required package: XVector
+Loading required package: XVector
+Loading required package: XVector
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+Loading required package: Rsamtools
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+
+Attaching package: ‘GenomicAlignments’
+
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+Loading required package: patchwork
+[1] "sample name, CFIm25_TGFB_rep_4"
+[1] "sample name, CFIm25_control_rep_4"
+[1] "sample name, CFIm25_control_rep_6"
+[1] "sample name, CFIm25_control_rep_5"
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 21401096 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 20853911 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 21922257 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 22217321 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] 3122903
+[1] "distance mode: 0 and the freq is 8625890"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2738       4 5028923 3122903 
+Warning message:
+Removed 3122903 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 4146691 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] 3206933
+[1] "distance mode: 0 and the freq is 8375980"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2950       4 4017025 3206933 
+Warning message:
+Removed 3206933 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 4242866 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] 3362153
+[1] "distance mode: 0 and the freq is 8623153"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2766       4 5115922 3362153 
+Warning message:
+Removed 3362153 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 4347298 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] 3009753
+[1] "distance mode: 0 and the freq is 9043761"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2557       4 4001554 3009753 
+Warning message:
+Removed 3009753 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 4061590 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] "done!"
+  [LAP] CFIm25_TGFB_rep_5
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, CFIm25_TGFB_rep_5"
+[1] "done!"
+  [LAP] CFIm25_TGFB_rep_6
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, CFIm25_TGFB_rep_6"
+[1] "done!"
+  [LAP] control_control_rep_1
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, control_control_rep_1"
+[1] "done!"
+  [LAP] control_control_rep_2
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, control_control_rep_2"
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 21821518 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 22037869 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 20513428 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 21149312 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+null device 
+          1 
+[1] 2673029
+[1] 2631380
+[1] "distance mode: 0 and the freq is 9000392"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2626       4 4109973 2673029 
+[1] "distance mode: 0 and the freq is 9296637"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2533       4 3818823 2631380 
+Warning message:
+Removed 2673029 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 2631380 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 3781148 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+Warning message:
+Removed 3616062 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] 3132450
+[1] 3087677
+[1] "distance mode: 0 and the freq is 8501242"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2920       4 4828670 3087677 
+[1] "distance mode: 0 and the freq is 8277823"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2657       4 5184043 3132450 
+Warning message:
+Removed 3087677 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 3132450 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 4121868 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+Warning message:
+Removed 4057883 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] "done!"
+  [LAP] control_control_rep_3
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+[1] "done!"
+  [LAP] control_TGFB_rep_1
+Loading required package: tidyverse
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, control_control_rep_3"
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, control_TGFB_rep_1"
+[1] "done!"
+  [LAP] control_TGFB_rep_2
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Loading required package: plyranges
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+[1] "done!"
+
+Attaching package: ‘plyranges’
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, n, n_distinct
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+Loading required package: patchwork
+[1] "sample name, control_TGFB_rep_2"
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 19981768 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 20789594 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+Warning message:
+Expected 2 pieces. Missing pieces filled with `NA` in 18744096 rows [1, 2, 3,
+4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]. 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] "numeric"
+[1] "numeric"
+null device 
+          1 
+[1] 2177376
+[1] "distance mode: 0 and the freq is 8298467"
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+       0        0        0     3024        4 35485526  2177376 
+Warning message:
+Removed 2177376 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 3145362 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] 2891796
+[1] "distance mode: 0 and the freq is 8220351"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0    2706       4 5033027 2891796 
+Warning message:
+Removed 2891796 rows containing non-finite outside the scale range
+(`stat_density()`). 
+[1] 3196587
+Warning message:
+Removed 3842687 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] "distance mode: 0 and the freq is 8359472"
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+       0        0        0     2665        4 30431665  3196587 
+Warning message:
+Removed 3196587 rows containing non-finite outside the scale range
+(`stat_density()`). 
+Warning message:
+Removed 4159109 rows containing non-finite outside the scale range
+(`stat_density()`). 
+null device 
+          1 
+[1] "done!"
+[1] "done!"
+[1] "done!"
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+                                                                                                         csv 
+                      "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant" 
+                                                                                                         out 
+"/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/cluster.all.reads.csv" 
+                                                                                                     pattern 
+                                                                             "_cluster\\.all\\.reads\\.csv$" 
+ [1] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/CFIm25_control_rep_4_cluster.all.reads.csv" 
+ [2] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/CFIm25_control_rep_5_cluster.all.reads.csv" 
+ [3] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/CFIm25_control_rep_6_cluster.all.reads.csv" 
+ [4] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/CFIm25_TGFB_rep_4_cluster.all.reads.csv"    
+ [5] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/CFIm25_TGFB_rep_5_cluster.all.reads.csv"    
+ [6] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/CFIm25_TGFB_rep_6_cluster.all.reads.csv"    
+ [7] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/control_control_rep_1_cluster.all.reads.csv"
+ [8] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/control_control_rep_2_cluster.all.reads.csv"
+ [9] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/control_control_rep_3_cluster.all.reads.csv"
+[10] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/control_TGFB_rep_1_cluster.all.reads.csv"   
+[11] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/control_TGFB_rep_2_cluster.all.reads.csv"   
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+                                                                                                 csv 
+                        "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS" 
+                                                                                                 out 
+"/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/PAS_quant/stats_PAS.csv" 
+                                                                                             pattern 
+                                                                                   ".*_stats\\.csv$" 
+ [1] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/CFIm25_control_rep_4_stats.csv" 
+ [2] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/CFIm25_control_rep_5_stats.csv" 
+ [3] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/CFIm25_control_rep_6_stats.csv" 
+ [4] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/CFIm25_TGFB_rep_4_stats.csv"    
+ [5] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/CFIm25_TGFB_rep_5_stats.csv"    
+ [6] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/CFIm25_TGFB_rep_6_stats.csv"    
+ [7] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_control_rep_1_stats.csv"
+ [8] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_control_rep_2_stats.csv"
+ [9] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_control_rep_3_stats.csv"
+[10] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_1_stats.csv"   
+[11] "/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_2_stats.csv"   
+[Step 7] Generating bigWig tracks...
+  [bw] PASS_bw_LAP24 / CFIm25_control_rep_4
+  [bw] PASS_bw_LAP24 / CFIm25_control_rep_5
+  [bw] PASS_bw_LAP24 / CFIm25_control_rep_6
+  [bw] PASS_bw_LAP24 / CFIm25_TGFB_rep_4
+  [bw] PASS_bw_LAP24 / CFIm25_TGFB_rep_5
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / CFIm25_TGFB_rep_6
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_6.minus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_4.minus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / control_control_rep_1
+  [bw] PASS_bw_LAP24 / control_control_rep_2
+  [bw] PASS_bw_LAP24 / control_control_rep_3
+  [bw] PASS_bw_LAP24 / control_TGFB_rep_1
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / control_TGFB_rep_2
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_2.minus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_control_rep_4
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_1.plus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_control_rep_5
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_1.minus.bedgraph.normalized
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_3.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_control_rep_6
+  [bw] PASS_bw_LAP24_positon / CFIm25_TGFB_rep_4
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_TGFB_rep_5
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_TGFB_rep_6
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_control_rep_1
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_control_rep_2
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_control_rep_3
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_TGFB_rep_1
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_TGFB_rep_2
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_control_rep_4
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_control_rep_5
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_3.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_control_rep_6
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_TGFB_rep_4
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_TGFB_rep_5
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_TGFB_rep_6
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_control_rep_1
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_control_rep_2
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_control_rep_3
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_TGFB_rep_1
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_TGFB_rep_2
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_1.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_control_rep_4
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_2.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_control_rep_5
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_3.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_control_rep_6
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_1.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_TGFB_rep_4
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_2.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_TGFB_rep_5
+#Total mapped reads number = 21401096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 21401096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_TGFB_rep_6
+#Total mapped reads number = 20853911; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 20853911; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] mapped_read / control_control_rep_1
+#Total mapped reads number = 21922257; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 21922257; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_6.minus.bedgraph.normalized
+  [bw] mapped_read / control_control_rep_2
+#Total mapped reads number = 21821518; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 21821518; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+#Total mapped reads number = 22217321; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 22217321; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] mapped_read / control_control_rep_3
+  [bw] mapped_read / control_TGFB_rep_1
+#Total mapped reads number = 22037869; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 22037869; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+#Total mapped reads number = 20513428; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 20513428; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_1.minus.bedgraph.normalized
+  [bw] mapped_read / control_TGFB_rep_2
+#Total mapped reads number = 21149312; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 21149312; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_2.minus.bedgraph.normalized
+#Total mapped reads number = 19981768; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 20789594; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 19981768; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_1.minus.bedgraph.normalized
+#Total mapped reads number = 20789594; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_3.minus.bedgraph.normalized
+#Total mapped reads number = 18744096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 18744096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_2.minus.bedgraph.normalized
+
+=== 3-REAP pipeline complete! ===

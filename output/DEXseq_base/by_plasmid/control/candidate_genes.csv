@@ -1,0 +1,2 @@
+groupID,gene,featureID,meanUsage_change,padj,delta_wUTR,delta_RED,max_abs_delta_RED,max_delta_RED_featureID,perGeneQ,dir_consensus,dominant_featureID
+CERK,CERK,chr22_-_46684411,0.0682951256622422,0.0458786786066486,-176.952670590869,-3.72662502239907,3.72662502239907,chr22_-_46684411,0.052686476954811,Decreased_only,chr22_-_46684411

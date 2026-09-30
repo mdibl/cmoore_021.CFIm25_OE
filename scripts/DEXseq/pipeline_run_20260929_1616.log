@@ -1,0 +1,216 @@
+Loading required package: BiocParallel
+Loading required package: Biobase
+Loading required package: BiocGenerics
+Loading required package: generics
+
+Attaching package: ‘generics’
+
+The following objects are masked from ‘package:base’:
+
+    as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+    setequal, union
+
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
+    unsplit, which.max, which.min
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following objects are masked from ‘package:Biobase’:
+
+    anyMissing, rowMedians
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following object is masked from ‘package:Biobase’:
+
+    rowMedians
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: Seqinfo
+Loading required package: DESeq2
+Loading required package: AnnotationDbi
+Registered S3 method overwritten by 'bit64':
+  method          from 
+  print.bitstring tools
+
+Attaching package: ‘limma’
+
+The following object is masked from ‘package:DEXSeq’:
+
+    plotMA
+
+The following object is masked from ‘package:DESeq2’:
+
+    plotMA
+
+The following object is masked from ‘package:BiocGenerics’:
+
+    plotMA
+
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:AnnotationDbi’:
+
+    select
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:Seqinfo’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    first, intersect, rename, setdiff, setequal, union
+
+The following object is masked from ‘package:matrixStats’:
+
+    count
+
+The following object is masked from ‘package:Biobase’:
+
+    combine
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, setequal, union
+
+The following object is masked from ‘package:generics’:
+
+    explain
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘tidyr’
+
+The following object is masked from ‘package:S4Vectors’:
+
+    expand
+
+Reading count matrix...
+Reading PAS annotation...
+PolyA_DB v4.1 format detected: parsing coordinates from PAS_ID.
+Reading transcript annotation (GTF) for APA genome-map figures...
+Loading required package: EDASeq
+Loading required package: ShortRead
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+Loading required package: GenomicAlignments
+
+Attaching package: ‘GenomicAlignments’
+
+The following object is masked from ‘package:dplyr’:
+
+    last
+
+
+Attaching package: ‘ShortRead’
+
+The following object is masked from ‘package:tibble’:
+
+    view
+
+Loading required package: edgeR
+Estimating unwanted variation with RUVs (k = 2)...
+  W factors attached to colData: W_1, W_2
+  Covariate report (NS pvalue = W isn't absorbing biology; high R2 = W is correcting batch):
+    W=W_1  condition_pvalue=0.629307553571139  plasmid_pvalue=0.204889789158407  replicate_R2=0.45857919619128
+    W=W_2  condition_pvalue=0.806795656275548  plasmid_pvalue=0.495543010718842  replicate_R2=0.449303711387036
+--- Pre-analysis QC ---
+design matrix of interest not specified. Assuming a one-group experiment.
+=== Axis 'by_condition' (condition: TGFB vs control, stratified by plasmid) ===
+[by_condition] Running DEXSeq analyses...
+[cache] No valid cache for 'dexseq_by_condition_control' -- computing.
+[by_condition/control] Subsetting samples...
+[by_condition/control] Creating DEXSeqDataSet (design: ~sample + exon + W_1:exon + W_2:exon + condition:exon)...
+converting counts to integer mode
+[by_condition/control] Filtering low-count PAS...
+[by_condition/control] Normalizing and testing (25444 PAS, 6754 genes)...
+1 rows did not converge in beta, labelled in mcols(object)$fullBetaConv. Use larger maxit argument with nbinomLRT
+[by_condition/control] Building results table...
+[by_condition/control] Assigning usage direction...
+[by_condition/control] Adding normalized counts...
+[cache] No valid cache for 'dexseq_by_condition_CFIm25' -- computing.
+[by_condition/CFIm25] Subsetting samples...
+[by_condition/CFIm25] Creating DEXSeqDataSet (design: ~sample + exon + W_1:exon + W_2:exon + condition:exon)...
+converting counts to integer mode
+[by_condition/CFIm25] Filtering low-count PAS...
+[by_condition/CFIm25] Normalizing and testing (26325 PAS, 6817 genes)...

@@ -1,0 +1,378 @@
+=== 3-REAP pipeline ===
+    Project : /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE
+    Output  : /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP
+    Samples : /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/sample.txt
+    PolyADB : /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/PolyA_DB_v4.1/hg38.PAS.main.tsv
+
+[Step 2] Adapter / polyA trimming...
+  [R1 skip] CFIm25_control_rep_4
+  [R1 skip] CFIm25_control_rep_6
+  [R1 skip] CFIm25_TGFB_rep_4
+  [R1 skip] CFIm25_control_rep_5
+  [R2 skip] CFIm25_control_rep_4
+  [R2 skip] CFIm25_control_rep_6
+  [R2 skip] CFIm25_TGFB_rep_4
+  [R2 skip] CFIm25_control_rep_5
+  [R1 skip] CFIm25_TGFB_rep_5
+  [R2 skip] CFIm25_TGFB_rep_5
+  [R1 skip] CFIm25_TGFB_rep_6
+  [R2 skip] CFIm25_TGFB_rep_6
+  [R1 skip] control_control_rep_2
+  [R1 skip] control_control_rep_1
+  [R2 skip] control_control_rep_2
+  [R2 skip] control_control_rep_1
+  [R1 skip] control_control_rep_3
+  [R2 skip] control_control_rep_3
+  [R1 skip] control_TGFB_rep_1
+  [R2 skip] control_TGFB_rep_1
+  [R1 skip] control_TGFB_rep_2
+  [R2 skip] control_TGFB_rep_2
+  [R1] control_TGFB_rep_3
+  [R2] control_TGFB_rep_3
+Processing /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R2_trimAdapt.fastq.gz...
+Processed 32013674 reads from /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R2_trimAdapt.fastq.gz. Output saved to /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz.
+Processed file saved as: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz
+[Step 3] Repair pairs + STAR alignment...
+  [skip] CFIm25_TGFB_rep_4: already aligned
+  [skip] CFIm25_control_rep_6: already aligned
+  [skip] CFIm25_control_rep_5: already aligned
+  [skip] CFIm25_control_rep_4: already aligned
+  [skip] CFIm25_TGFB_rep_6: already aligned
+  [skip] CFIm25_TGFB_rep_5: already aligned
+  [skip] control_control_rep_1: already aligned
+  [skip] control_control_rep_2: already aligned
+  [skip] control_control_rep_3: already aligned
+  [align] control_TGFB_rep_3
+  [skip] control_TGFB_rep_1: already aligned
+  [skip] control_TGFB_rep_2: already aligned
+java -ea -Xmx197122m -cp /home/cnobrega/miniforge3/envs/reap-env/opt/bbmap-39.28-0/current/ jgi.SplitPairsAndSingles rp overwrite=t in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R1.fastq.gz in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_R1.fastq.gz out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_R2.fastq.gz outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_unpaired.fastq.gz repair
+Executing jgi.SplitPairsAndSingles [rp, overwrite=t, in1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R1.fastq.gz, in2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/01_trim/control_TGFB_rep_3/control_TGFB_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz, out1=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_R1.fastq.gz, out2=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_R2.fastq.gz, outs=/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_unpaired.fastq.gz, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	64070844 reads 		7502402925 bases.
+Result:                 	64070844 reads (100.00%) 	7502402925 bases (100.00%)
+Pairs:                  	63577256 reads (99.23%) 	7454660550 bases (99.36%)
+Singletons:             	493588 reads (0.77%) 	47742375 bases (0.64%)
+
+Time:                         	89.697 seconds.
+Reads Processed:      64070k 	714.30k reads/sec
+Bases Processed:       7502m 	83.64m bases/sec
+	/home/cnobrega/miniforge3/envs/reap-env/bin/STAR-avx2 --runThreadN 8 --readFilesCommand zcat --genomeDir /compbio/analysis/ClaireMoore/cmoore_021.CFIm25_OE/data/ref/star_index_hg38 --readFilesIn /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_R1.fastq.gz /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/repaired/control_TGFB_rep_3_R2.fastq.gz --outReadsUnmapped None --outFilterType BySJout --limitBAMsortRAM 4000000000 --outSAMattributes NH HI NM MD --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/star/ --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.2 --outFilterMatchNminOverLread 0.2
+	STAR version: 2.7.11b   compiled: 2025-04-26T21:36:55+0000 :/opt/conda/conda-bld/star_1745703265435/work/source
+Sep 24 18:06:32 ..... started STAR run
+Sep 24 18:06:32 ..... loading genome
+Sep 24 18:09:58 ..... started mapping
+Sep 24 18:21:36 ..... finished mapping
+Sep 24 18:21:40 ..... started sorting BAM
+Sep 24 18:22:04 ..... finished successfully
+[Step 3] Compiling alignment statistics...
+[Step 4] Deduplication...
+  [skip] CFIm25_control_rep_4: dedup link exists
+  [skip] CFIm25_control_rep_5: dedup link exists
+  [skip] CFIm25_TGFB_rep_4: dedup link exists
+  [skip] CFIm25_TGFB_rep_5: dedup link exists
+  [skip] CFIm25_control_rep_6: dedup link exists
+  [skip] control_control_rep_1: dedup link exists
+  [skip] control_control_rep_2: dedup link exists
+  [skip] CFIm25_TGFB_rep_6: dedup link exists
+  [skip] control_control_rep_3: dedup link exists
+  [skip] control_TGFB_rep_1: dedup link exists
+  [skip] control_TGFB_rep_2: dedup link exists
+[Step 5] BAM → BED (R2 reads)...
+  [skip] CFIm25_control_rep_4: BED exists
+  [skip] CFIm25_control_rep_5: BED exists
+  [skip] CFIm25_control_rep_6: BED exists
+  [skip] CFIm25_TGFB_rep_4: BED exists
+  [skip] CFIm25_TGFB_rep_5: BED exists
+  [skip] CFIm25_TGFB_rep_6: BED exists
+  [skip] control_control_rep_2: BED exists
+  [skip] control_control_rep_3: BED exists
+  [skip] control_control_rep_1: BED exists
+  [skip] control_TGFB_rep_1: BED exists
+  [skip] control_TGFB_rep_2: BED exists
+  [bed] control_TGFB_rep_3
+  Read counts per sample:
+   21401096 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_control_rep_4.dedup_R2.sorted.bed
+   20853911 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_control_rep_5.dedup_R2.sorted.bed
+   21922257 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_control_rep_6.dedup_R2.sorted.bed
+   22217321 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_TGFB_rep_4.dedup_R2.sorted.bed
+   21821518 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_TGFB_rep_5.dedup_R2.sorted.bed
+   22037869 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/CFIm25_TGFB_rep_6.dedup_R2.sorted.bed
+   20513428 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_control_rep_1.dedup_R2.sorted.bed
+   21149312 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_control_rep_2.dedup_R2.sorted.bed
+   20789594 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_control_rep_3.dedup_R2.sorted.bed
+   19981768 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_TGFB_rep_1.dedup_R2.sorted.bed
+   18744096 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_TGFB_rep_2.dedup_R2.sorted.bed
+   22195885 /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/04_bed/control_TGFB_rep_3.dedup_R2.sorted.bed
+  253628055 total
+[Step 6] LAP/PAS analysis (dist=24 nt)...
+  Output already exists, skipping
+[Step 7] Generating bigWig tracks...
+  [bw] PASS_bw_LAP24 / CFIm25_control_rep_4
+  [bw] PASS_bw_LAP24 / CFIm25_control_rep_5
+  [bw] PASS_bw_LAP24 / CFIm25_control_rep_6
+  [bw] PASS_bw_LAP24 / CFIm25_TGFB_rep_4
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / CFIm25_TGFB_rep_5
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_6.minus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / CFIm25_TGFB_rep_6
+  [bw] PASS_bw_LAP24 / control_control_rep_1
+  [bw] PASS_bw_LAP24 / control_control_rep_2
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / control_control_rep_3
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / control_TGFB_rep_1
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / control_TGFB_rep_2
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24 / control_TGFB_rep_3
+3-REAP_workflow.sh: line 312: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_PASS_bw_LAP24.bed: No such file or directory
+sort: cannot read: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_PASS_bw_LAP24.bed: No such file or directory
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+awk: fatal: cannot open file `/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_3.minus.bedgraph.normalized' for reading: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_3.plus.bedgraph.normalized to read: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_3.minus.bedgraph.normalized to read: No such file or directory
+needLargeMem: trying to allocate 0 bytes (limit: 100000000000)
+  [bw] PASS_bw_LAP24_positon / CFIm25_control_rep_4
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_control_rep_3.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_control_rep_5
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_control_rep_6
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24/control_TGFB_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_TGFB_rep_4
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_TGFB_rep_5
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / CFIm25_TGFB_rep_6
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_control_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_control_rep_1
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_control_rep_2
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_control_rep_3
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_TGFB_rep_1
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_TGFB_rep_2
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_positon / control_TGFB_rep_3
+3-REAP_workflow.sh: line 312: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_PASS_bw_LAP24_positon.bed: No such file or directory
+sort: cannot read: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_PASS_bw_LAP24_positon.bed: No such file or directory
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_control_rep_3.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_control_rep_4
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+awk: fatal: cannot open file `/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_3.minus.bedgraph.normalized' for reading: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_3.plus.bedgraph.normalized to read: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_3.minus.bedgraph.normalized to read: No such file or directory
+needLargeMem: trying to allocate 0 bytes (limit: 100000000000)
+  [bw] PASS_bw_LAP24_PAS / CFIm25_control_rep_5
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_control_rep_6
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_positon/control_TGFB_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_TGFB_rep_4
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 14939965; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_TGFB_rep_5
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 14336745; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / CFIm25_TGFB_rep_6
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 14988264; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_control_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_control_rep_1
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 15697579; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_control_rep_2
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 15599282; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_control_rep_3
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 15972966; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_TGFB_rep_1
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 14274622; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_1.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_TGFB_rep_2
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 14448569; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_2.minus.bedgraph.normalized
+  [bw] PASS_bw_LAP24_PAS / control_TGFB_rep_3
+3-REAP_workflow.sh: line 312: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_PASS_bw_LAP24_PAS.bed: No such file or directory
+sort: cannot read: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_PASS_bw_LAP24_PAS.bed: No such file or directory
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 14374614; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_control_rep_3.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_control_rep_4
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 13994240; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_1.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_control_rep_5
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+awk: fatal: cannot open file `/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_3.minus.bedgraph.normalized' for reading: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_3.plus.bedgraph.normalized to read: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_3.minus.bedgraph.normalized to read: No such file or directory
+needLargeMem: trying to allocate 0 bytes (limit: 100000000000)
+  [bw] mapped_read / CFIm25_control_rep_6
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 13565599; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/PASS_bw_LAP24_PAS/control_TGFB_rep_2.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_TGFB_rep_4
+#Total mapped reads number = 21401096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 21401096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_4.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_TGFB_rep_5
+#Total mapped reads number = 20853911; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 20853911; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_5.minus.bedgraph.normalized
+  [bw] mapped_read / CFIm25_TGFB_rep_6
+#Total mapped reads number = 21922257; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 21922257; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_control_rep_6.minus.bedgraph.normalized
+  [bw] mapped_read / control_control_rep_1
+#Total mapped reads number = 22217321; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_4.plus.bedgraph.normalized
+#Total mapped reads number = 22217321; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_4.minus.bedgraph.normalized
+  [bw] mapped_read / control_control_rep_2
+#Total mapped reads number = 21821518; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_5.plus.bedgraph.normalized
+#Total mapped reads number = 21821518; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_5.minus.bedgraph.normalized
+  [bw] mapped_read / control_control_rep_3
+#Total mapped reads number = 22037869; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_6.plus.bedgraph.normalized
+#Total mapped reads number = 22037869; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/CFIm25_TGFB_rep_6.minus.bedgraph.normalized
+  [bw] mapped_read / control_TGFB_rep_1
+#Total mapped reads number = 20513428; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 20513428; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_1.minus.bedgraph.normalized
+#Total mapped reads number = 21149312; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_2.plus.bedgraph.normalized
+  [bw] mapped_read / control_TGFB_rep_2
+#Total mapped reads number = 21149312; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_2.minus.bedgraph.normalized
+  [bw] mapped_read / control_TGFB_rep_3
+3-REAP_workflow.sh: line 312: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_mapped_read.bed: No such file or directory
+sort: cannot read: /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/05_LAP_PAS/control_TGFB_rep_3_mapped_read.bed: No such file or directory
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+error, read length (-l) or total read number (-t) not defined
+eg. norm_bedgraph.pl -t 9898819 -i "sham_a.m.bedgraph sham_a.p.bedgraph" -m "sham_a.m.bedgraph"
+awk: fatal: cannot open file `/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_3.minus.bedgraph.normalized' for reading: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_3.plus.bedgraph.normalized to read: No such file or directory
+mustOpen: Can't open /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_3.minus.bedgraph.normalized to read: No such file or directory
+needLargeMem: trying to allocate 0 bytes (limit: 100000000000)
+#Total mapped reads number = 20789594; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_3.plus.bedgraph.normalized
+#Total mapped reads number = 20789594; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_control_rep_3.minus.bedgraph.normalized
+#Total mapped reads number = 18744096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_2.plus.bedgraph.normalized
+#Total mapped reads number = 18744096; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_2.minus.bedgraph.normalized
+#Total mapped reads number = 19981768; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_1.plus.bedgraph.normalized
+#Total mapped reads number = 19981768; Normalized bedgraph coverage to read counts per million total read:
+#write /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/06_bigwig/mapped_read/control_TGFB_rep_1.minus.bedgraph.normalized
+
+=== 3-REAP pipeline complete! ===
