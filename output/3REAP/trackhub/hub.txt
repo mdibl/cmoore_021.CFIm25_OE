@@ -1,0 +1,5 @@
+hub cmoore_021
+shortLabel Moore CFIm25 OE
+longLabel 3-REAP APA results: CFIm25 OE x TGFB (Claire Moore Lab, Tufts)
+genomesFile genomes.txt
+email cnobrega@mdibl.org

@@ -1,0 +1,715 @@
+/compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/
+└── 3_REAP
+    ├── 01_trim
+    │   ├── CFIm25_control_rep_4
+    │   │   ├── CFIm25_control_rep_4_R1.fastq.gz
+    │   │   ├── CFIm25_control_rep_4_R1.fastq.gz.dvc
+    │   │   ├── CFIm25_control_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── CFIm25_control_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── CFIm25_control_rep_5
+    │   │   ├── CFIm25_control_rep_5_R1.fastq.gz
+    │   │   ├── CFIm25_control_rep_5_R1.fastq.gz.dvc
+    │   │   ├── CFIm25_control_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── CFIm25_control_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── CFIm25_control_rep_6
+    │   │   ├── CFIm25_control_rep_6_R1.fastq.gz
+    │   │   ├── CFIm25_control_rep_6_R1.fastq.gz.dvc
+    │   │   ├── CFIm25_control_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── CFIm25_control_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── CFIm25_TGFB_rep_4
+    │   │   ├── CFIm25_TGFB_rep_4_R1.fastq.gz
+    │   │   ├── CFIm25_TGFB_rep_4_R1.fastq.gz.dvc
+    │   │   ├── CFIm25_TGFB_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── CFIm25_TGFB_rep_4_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── CFIm25_TGFB_rep_5
+    │   │   ├── CFIm25_TGFB_rep_5_R1.fastq.gz
+    │   │   ├── CFIm25_TGFB_rep_5_R1.fastq.gz.dvc
+    │   │   ├── CFIm25_TGFB_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── CFIm25_TGFB_rep_5_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── CFIm25_TGFB_rep_6
+    │   │   ├── CFIm25_TGFB_rep_6_R1.fastq.gz
+    │   │   ├── CFIm25_TGFB_rep_6_R1.fastq.gz.dvc
+    │   │   ├── CFIm25_TGFB_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── CFIm25_TGFB_rep_6_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── control_control_rep_1
+    │   │   ├── control_control_rep_1_R1.fastq.gz
+    │   │   ├── control_control_rep_1_R1.fastq.gz.dvc
+    │   │   ├── control_control_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── control_control_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── control_control_rep_2
+    │   │   ├── control_control_rep_2_R1.fastq.gz
+    │   │   ├── control_control_rep_2_R1.fastq.gz.dvc
+    │   │   ├── control_control_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── control_control_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── control_control_rep_3
+    │   │   ├── control_control_rep_3_R1.fastq.gz
+    │   │   ├── control_control_rep_3_R1.fastq.gz.dvc
+    │   │   ├── control_control_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── control_control_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── control_TGFB_rep_1
+    │   │   ├── control_TGFB_rep_1_R1.fastq.gz
+    │   │   ├── control_TGFB_rep_1_R1.fastq.gz.dvc
+    │   │   ├── control_TGFB_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── control_TGFB_rep_1_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   ├── control_TGFB_rep_2
+    │   │   ├── control_TGFB_rep_2_R1.fastq.gz
+    │   │   ├── control_TGFB_rep_2_R1.fastq.gz.dvc
+    │   │   ├── control_TGFB_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │   │   └── control_TGFB_rep_2_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    │   └── control_TGFB_rep_3
+    │       ├── control_TGFB_rep_3_R1.fastq.gz
+    │       ├── control_TGFB_rep_3_R1.fastq.gz.dvc
+    │       ├── control_TGFB_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz
+    │       └── control_TGFB_rep_3_R2_trimAdapt.5Ttrimmed.fastq.gz.dvc
+    ├── 02_align
+    │   ├── CFIm25_control_rep_4
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── CFIm25_control_rep_5
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── CFIm25_control_rep_6
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── CFIm25_TGFB_rep_4
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── CFIm25_TGFB_rep_5
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── CFIm25_TGFB_rep_6
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── control_control_rep_1
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── control_control_rep_2
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── control_control_rep_3
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── control_TGFB_rep_1
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── control_TGFB_rep_2
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   ├── control_TGFB_rep_3
+    │   │   └── star
+    │   │       ├── Aligned.sortedByCoord.out.bam
+    │   │       ├── Aligned.sortedByCoord.out.bam.bai
+    │   │       ├── Aligned.sortedByCoord.out.bam.dvc
+    │   │       ├── Log.final.out
+    │   │       ├── Log.out
+    │   │       ├── Log.progress.out
+    │   │       ├── SJ.out.tab
+    │   │       └── _STARtmp
+    │   │           └── BAMsort
+    │   │               ├── 0
+    │   │               ├── 1
+    │   │               ├── 2
+    │   │               ├── 3
+    │   │               ├── 4
+    │   │               ├── 5
+    │   │               ├── 6
+    │   │               └── 7
+    │   └── stats_STAR_summary.csv
+    ├── 03_dedup
+    │   ├── CFIm25_control_rep_4
+    │   │   └── CFIm25_control_rep_4.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_4/star/Aligned.sortedByCoord.out.bam
+    │   ├── CFIm25_control_rep_5
+    │   │   └── CFIm25_control_rep_5.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_5/star/Aligned.sortedByCoord.out.bam
+    │   ├── CFIm25_control_rep_6
+    │   │   └── CFIm25_control_rep_6.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_control_rep_6/star/Aligned.sortedByCoord.out.bam
+    │   ├── CFIm25_TGFB_rep_4
+    │   │   └── CFIm25_TGFB_rep_4.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_4/star/Aligned.sortedByCoord.out.bam
+    │   ├── CFIm25_TGFB_rep_5
+    │   │   └── CFIm25_TGFB_rep_5.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_5/star/Aligned.sortedByCoord.out.bam
+    │   ├── CFIm25_TGFB_rep_6
+    │   │   └── CFIm25_TGFB_rep_6.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/CFIm25_TGFB_rep_6/star/Aligned.sortedByCoord.out.bam
+    │   ├── control_control_rep_1
+    │   │   └── control_control_rep_1.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_1/star/Aligned.sortedByCoord.out.bam
+    │   ├── control_control_rep_2
+    │   │   └── control_control_rep_2.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_2/star/Aligned.sortedByCoord.out.bam
+    │   ├── control_control_rep_3
+    │   │   └── control_control_rep_3.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_control_rep_3/star/Aligned.sortedByCoord.out.bam
+    │   ├── control_TGFB_rep_1
+    │   │   └── control_TGFB_rep_1.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_1/star/Aligned.sortedByCoord.out.bam
+    │   ├── control_TGFB_rep_2
+    │   │   └── control_TGFB_rep_2.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_2/star/Aligned.sortedByCoord.out.bam
+    │   └── control_TGFB_rep_3
+    │       └── control_TGFB_rep_3.dedup.bam -> /compbio/data/ClaireMoore/cmoore_021.CFIm25_OE/processed/3_REAP/02_align/control_TGFB_rep_3/star/Aligned.sortedByCoord.out.bam
+    ├── 04_bed
+    │   ├── CFIm25_control_rep_4.dedup_R2.sorted.bed
+    │   ├── CFIm25_control_rep_4.dedup_R2.sorted.bed.dvc
+    │   ├── CFIm25_control_rep_5.dedup_R2.sorted.bed
+    │   ├── CFIm25_control_rep_5.dedup_R2.sorted.bed.dvc
+    │   ├── CFIm25_control_rep_6.dedup_R2.sorted.bed
+    │   ├── CFIm25_control_rep_6.dedup_R2.sorted.bed.dvc
+    │   ├── CFIm25_TGFB_rep_4.dedup_R2.sorted.bed
+    │   ├── CFIm25_TGFB_rep_4.dedup_R2.sorted.bed.dvc
+    │   ├── CFIm25_TGFB_rep_5.dedup_R2.sorted.bed
+    │   ├── CFIm25_TGFB_rep_5.dedup_R2.sorted.bed.dvc
+    │   ├── CFIm25_TGFB_rep_6.dedup_R2.sorted.bed
+    │   ├── CFIm25_TGFB_rep_6.dedup_R2.sorted.bed.dvc
+    │   ├── control_control_rep_1.dedup_R2.sorted.bed
+    │   ├── control_control_rep_1.dedup_R2.sorted.bed.dvc
+    │   ├── control_control_rep_2.dedup_R2.sorted.bed
+    │   ├── control_control_rep_2.dedup_R2.sorted.bed.dvc
+    │   ├── control_control_rep_3.dedup_R2.sorted.bed
+    │   ├── control_control_rep_3.dedup_R2.sorted.bed.dvc
+    │   ├── control_TGFB_rep_1.dedup_R2.sorted.bed
+    │   ├── control_TGFB_rep_1.dedup_R2.sorted.bed.dvc
+    │   ├── control_TGFB_rep_2.dedup_R2.sorted.bed
+    │   ├── control_TGFB_rep_2.dedup_R2.sorted.bed.dvc
+    │   ├── control_TGFB_rep_3.dedup_R2.sorted.bed
+    │   ├── control_TGFB_rep_3.dedup_R2.sorted.bed.dvc
+    │   └── stats_deduped_reads.txt
+    ├── 05_LAP_PAS
+    │   ├── CFIm25_control_rep_4_CIGAR_distrib.pdf
+    │   ├── CFIm25_control_rep_4_LAP_bed.rds
+    │   ├── CFIm25_control_rep_4_LAP_bed.rds.dvc
+    │   ├── CFIm25_control_rep_4_LAP_polyAdb_distance.pdf
+    │   ├── CFIm25_control_rep_4_LAP_polyAdb.rds
+    │   ├── CFIm25_control_rep_4_LAP_polyAdb.rds.dvc
+    │   ├── CFIm25_control_rep_4_LAPs_24.PASS.rds
+    │   ├── CFIm25_control_rep_4_LAPs_24.PASS.rds.dvc
+    │   ├── CFIm25_control_rep_4_mapped_read.bed
+    │   ├── CFIm25_control_rep_4_mapped_read.bed.dvc
+    │   ├── CFIm25_control_rep_4_PASS_bw_LAP24.bed
+    │   ├── CFIm25_control_rep_4_PASS_bw_LAP24.bed.dvc
+    │   ├── CFIm25_control_rep_4_PASS_bw_LAP24_PAS.bed
+    │   ├── CFIm25_control_rep_4_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── CFIm25_control_rep_4_PASS_bw_LAP24_positon.bed
+    │   ├── CFIm25_control_rep_4_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── CFIm25_control_rep_4_stats.csv
+    │   ├── CFIm25_control_rep_5_CIGAR_distrib.pdf
+    │   ├── CFIm25_control_rep_5_LAP_bed.rds
+    │   ├── CFIm25_control_rep_5_LAP_bed.rds.dvc
+    │   ├── CFIm25_control_rep_5_LAP_polyAdb_distance.pdf
+    │   ├── CFIm25_control_rep_5_LAP_polyAdb.rds
+    │   ├── CFIm25_control_rep_5_LAP_polyAdb.rds.dvc
+    │   ├── CFIm25_control_rep_5_LAPs_24.PASS.rds
+    │   ├── CFIm25_control_rep_5_LAPs_24.PASS.rds.dvc
+    │   ├── CFIm25_control_rep_5_mapped_read.bed
+    │   ├── CFIm25_control_rep_5_mapped_read.bed.dvc
+    │   ├── CFIm25_control_rep_5_PASS_bw_LAP24.bed
+    │   ├── CFIm25_control_rep_5_PASS_bw_LAP24.bed.dvc
+    │   ├── CFIm25_control_rep_5_PASS_bw_LAP24_PAS.bed
+    │   ├── CFIm25_control_rep_5_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── CFIm25_control_rep_5_PASS_bw_LAP24_positon.bed
+    │   ├── CFIm25_control_rep_5_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── CFIm25_control_rep_5_stats.csv
+    │   ├── CFIm25_control_rep_6_CIGAR_distrib.pdf
+    │   ├── CFIm25_control_rep_6_LAP_bed.rds
+    │   ├── CFIm25_control_rep_6_LAP_bed.rds.dvc
+    │   ├── CFIm25_control_rep_6_LAP_polyAdb_distance.pdf
+    │   ├── CFIm25_control_rep_6_LAP_polyAdb.rds
+    │   ├── CFIm25_control_rep_6_LAP_polyAdb.rds.dvc
+    │   ├── CFIm25_control_rep_6_LAPs_24.PASS.rds
+    │   ├── CFIm25_control_rep_6_LAPs_24.PASS.rds.dvc
+    │   ├── CFIm25_control_rep_6_mapped_read.bed
+    │   ├── CFIm25_control_rep_6_mapped_read.bed.dvc
+    │   ├── CFIm25_control_rep_6_PASS_bw_LAP24.bed
+    │   ├── CFIm25_control_rep_6_PASS_bw_LAP24.bed.dvc
+    │   ├── CFIm25_control_rep_6_PASS_bw_LAP24_PAS.bed
+    │   ├── CFIm25_control_rep_6_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── CFIm25_control_rep_6_PASS_bw_LAP24_positon.bed
+    │   ├── CFIm25_control_rep_6_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── CFIm25_control_rep_6_stats.csv
+    │   ├── CFIm25_TGFB_rep_4_CIGAR_distrib.pdf
+    │   ├── CFIm25_TGFB_rep_4_LAP_bed.rds
+    │   ├── CFIm25_TGFB_rep_4_LAP_bed.rds.dvc
+    │   ├── CFIm25_TGFB_rep_4_LAP_polyAdb_distance.pdf
+    │   ├── CFIm25_TGFB_rep_4_LAP_polyAdb.rds
+    │   ├── CFIm25_TGFB_rep_4_LAP_polyAdb.rds.dvc
+    │   ├── CFIm25_TGFB_rep_4_LAPs_24.PASS.rds
+    │   ├── CFIm25_TGFB_rep_4_LAPs_24.PASS.rds.dvc
+    │   ├── CFIm25_TGFB_rep_4_mapped_read.bed
+    │   ├── CFIm25_TGFB_rep_4_mapped_read.bed.dvc
+    │   ├── CFIm25_TGFB_rep_4_PASS_bw_LAP24.bed
+    │   ├── CFIm25_TGFB_rep_4_PASS_bw_LAP24.bed.dvc
+    │   ├── CFIm25_TGFB_rep_4_PASS_bw_LAP24_PAS.bed
+    │   ├── CFIm25_TGFB_rep_4_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── CFIm25_TGFB_rep_4_PASS_bw_LAP24_positon.bed
+    │   ├── CFIm25_TGFB_rep_4_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── CFIm25_TGFB_rep_4_stats.csv
+    │   ├── CFIm25_TGFB_rep_5_CIGAR_distrib.pdf
+    │   ├── CFIm25_TGFB_rep_5_LAP_bed.rds
+    │   ├── CFIm25_TGFB_rep_5_LAP_bed.rds.dvc
+    │   ├── CFIm25_TGFB_rep_5_LAP_polyAdb_distance.pdf
+    │   ├── CFIm25_TGFB_rep_5_LAP_polyAdb.rds
+    │   ├── CFIm25_TGFB_rep_5_LAP_polyAdb.rds.dvc
+    │   ├── CFIm25_TGFB_rep_5_LAPs_24.PASS.rds
+    │   ├── CFIm25_TGFB_rep_5_LAPs_24.PASS.rds.dvc
+    │   ├── CFIm25_TGFB_rep_5_mapped_read.bed
+    │   ├── CFIm25_TGFB_rep_5_mapped_read.bed.dvc
+    │   ├── CFIm25_TGFB_rep_5_PASS_bw_LAP24.bed
+    │   ├── CFIm25_TGFB_rep_5_PASS_bw_LAP24.bed.dvc
+    │   ├── CFIm25_TGFB_rep_5_PASS_bw_LAP24_PAS.bed
+    │   ├── CFIm25_TGFB_rep_5_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── CFIm25_TGFB_rep_5_PASS_bw_LAP24_positon.bed
+    │   ├── CFIm25_TGFB_rep_5_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── CFIm25_TGFB_rep_5_stats.csv
+    │   ├── CFIm25_TGFB_rep_6_CIGAR_distrib.pdf
+    │   ├── CFIm25_TGFB_rep_6_LAP_bed.rds
+    │   ├── CFIm25_TGFB_rep_6_LAP_bed.rds.dvc
+    │   ├── CFIm25_TGFB_rep_6_LAP_polyAdb_distance.pdf
+    │   ├── CFIm25_TGFB_rep_6_LAP_polyAdb.rds
+    │   ├── CFIm25_TGFB_rep_6_LAP_polyAdb.rds.dvc
+    │   ├── CFIm25_TGFB_rep_6_LAPs_24.PASS.rds
+    │   ├── CFIm25_TGFB_rep_6_LAPs_24.PASS.rds.dvc
+    │   ├── CFIm25_TGFB_rep_6_mapped_read.bed
+    │   ├── CFIm25_TGFB_rep_6_mapped_read.bed.dvc
+    │   ├── CFIm25_TGFB_rep_6_PASS_bw_LAP24.bed
+    │   ├── CFIm25_TGFB_rep_6_PASS_bw_LAP24.bed.dvc
+    │   ├── CFIm25_TGFB_rep_6_PASS_bw_LAP24_PAS.bed
+    │   ├── CFIm25_TGFB_rep_6_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── CFIm25_TGFB_rep_6_PASS_bw_LAP24_positon.bed
+    │   ├── CFIm25_TGFB_rep_6_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── CFIm25_TGFB_rep_6_stats.csv
+    │   ├── control_control_rep_1_CIGAR_distrib.pdf
+    │   ├── control_control_rep_1_LAP_bed.rds
+    │   ├── control_control_rep_1_LAP_bed.rds.dvc
+    │   ├── control_control_rep_1_LAP_polyAdb_distance.pdf
+    │   ├── control_control_rep_1_LAP_polyAdb.rds
+    │   ├── control_control_rep_1_LAP_polyAdb.rds.dvc
+    │   ├── control_control_rep_1_LAPs_24.PASS.rds
+    │   ├── control_control_rep_1_LAPs_24.PASS.rds.dvc
+    │   ├── control_control_rep_1_mapped_read.bed
+    │   ├── control_control_rep_1_mapped_read.bed.dvc
+    │   ├── control_control_rep_1_PASS_bw_LAP24.bed
+    │   ├── control_control_rep_1_PASS_bw_LAP24.bed.dvc
+    │   ├── control_control_rep_1_PASS_bw_LAP24_PAS.bed
+    │   ├── control_control_rep_1_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── control_control_rep_1_PASS_bw_LAP24_positon.bed
+    │   ├── control_control_rep_1_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── control_control_rep_1_stats.csv
+    │   ├── control_control_rep_2_CIGAR_distrib.pdf
+    │   ├── control_control_rep_2_LAP_bed.rds
+    │   ├── control_control_rep_2_LAP_bed.rds.dvc
+    │   ├── control_control_rep_2_LAP_polyAdb_distance.pdf
+    │   ├── control_control_rep_2_LAP_polyAdb.rds
+    │   ├── control_control_rep_2_LAP_polyAdb.rds.dvc
+    │   ├── control_control_rep_2_LAPs_24.PASS.rds
+    │   ├── control_control_rep_2_LAPs_24.PASS.rds.dvc
+    │   ├── control_control_rep_2_mapped_read.bed
+    │   ├── control_control_rep_2_mapped_read.bed.dvc
+    │   ├── control_control_rep_2_PASS_bw_LAP24.bed
+    │   ├── control_control_rep_2_PASS_bw_LAP24.bed.dvc
+    │   ├── control_control_rep_2_PASS_bw_LAP24_PAS.bed
+    │   ├── control_control_rep_2_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── control_control_rep_2_PASS_bw_LAP24_positon.bed
+    │   ├── control_control_rep_2_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── control_control_rep_2_stats.csv
+    │   ├── control_control_rep_3_CIGAR_distrib.pdf
+    │   ├── control_control_rep_3_LAP_bed.rds
+    │   ├── control_control_rep_3_LAP_bed.rds.dvc
+    │   ├── control_control_rep_3_LAP_polyAdb_distance.pdf
+    │   ├── control_control_rep_3_LAP_polyAdb.rds
+    │   ├── control_control_rep_3_LAP_polyAdb.rds.dvc
+    │   ├── control_control_rep_3_LAPs_24.PASS.rds
+    │   ├── control_control_rep_3_LAPs_24.PASS.rds.dvc
+    │   ├── control_control_rep_3_mapped_read.bed
+    │   ├── control_control_rep_3_mapped_read.bed.dvc
+    │   ├── control_control_rep_3_PASS_bw_LAP24.bed
+    │   ├── control_control_rep_3_PASS_bw_LAP24.bed.dvc
+    │   ├── control_control_rep_3_PASS_bw_LAP24_PAS.bed
+    │   ├── control_control_rep_3_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── control_control_rep_3_PASS_bw_LAP24_positon.bed
+    │   ├── control_control_rep_3_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── control_control_rep_3_stats.csv
+    │   ├── control_TGFB_rep_1_CIGAR_distrib.pdf
+    │   ├── control_TGFB_rep_1_LAP_bed.rds
+    │   ├── control_TGFB_rep_1_LAP_bed.rds.dvc
+    │   ├── control_TGFB_rep_1_LAP_polyAdb_distance.pdf
+    │   ├── control_TGFB_rep_1_LAP_polyAdb.rds
+    │   ├── control_TGFB_rep_1_LAP_polyAdb.rds.dvc
+    │   ├── control_TGFB_rep_1_LAPs_24.PASS.rds
+    │   ├── control_TGFB_rep_1_LAPs_24.PASS.rds.dvc
+    │   ├── control_TGFB_rep_1_mapped_read.bed
+    │   ├── control_TGFB_rep_1_mapped_read.bed.dvc
+    │   ├── control_TGFB_rep_1_PASS_bw_LAP24.bed
+    │   ├── control_TGFB_rep_1_PASS_bw_LAP24.bed.dvc
+    │   ├── control_TGFB_rep_1_PASS_bw_LAP24_PAS.bed
+    │   ├── control_TGFB_rep_1_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── control_TGFB_rep_1_PASS_bw_LAP24_positon.bed
+    │   ├── control_TGFB_rep_1_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── control_TGFB_rep_1_stats.csv
+    │   ├── control_TGFB_rep_2_CIGAR_distrib.pdf
+    │   ├── control_TGFB_rep_2_LAP_bed.rds
+    │   ├── control_TGFB_rep_2_LAP_bed.rds.dvc
+    │   ├── control_TGFB_rep_2_LAP_polyAdb_distance.pdf
+    │   ├── control_TGFB_rep_2_LAP_polyAdb.rds
+    │   ├── control_TGFB_rep_2_LAP_polyAdb.rds.dvc
+    │   ├── control_TGFB_rep_2_LAPs_24.PASS.rds
+    │   ├── control_TGFB_rep_2_LAPs_24.PASS.rds.dvc
+    │   ├── control_TGFB_rep_2_mapped_read.bed
+    │   ├── control_TGFB_rep_2_mapped_read.bed.dvc
+    │   ├── control_TGFB_rep_2_PASS_bw_LAP24.bed
+    │   ├── control_TGFB_rep_2_PASS_bw_LAP24.bed.dvc
+    │   ├── control_TGFB_rep_2_PASS_bw_LAP24_PAS.bed
+    │   ├── control_TGFB_rep_2_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── control_TGFB_rep_2_PASS_bw_LAP24_positon.bed
+    │   ├── control_TGFB_rep_2_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── control_TGFB_rep_2_stats.csv
+    │   ├── control_TGFB_rep_3_CIGAR_distrib.pdf
+    │   ├── control_TGFB_rep_3_LAP_bed.rds
+    │   ├── control_TGFB_rep_3_LAP_bed.rds.dvc
+    │   ├── control_TGFB_rep_3_LAP_polyAdb_distance.pdf
+    │   ├── control_TGFB_rep_3_LAP_polyAdb.rds
+    │   ├── control_TGFB_rep_3_LAP_polyAdb.rds.dvc
+    │   ├── control_TGFB_rep_3_LAPs_24.PASS.rds
+    │   ├── control_TGFB_rep_3_LAPs_24.PASS.rds.dvc
+    │   ├── control_TGFB_rep_3_mapped_read.bed
+    │   ├── control_TGFB_rep_3_mapped_read.bed.dvc
+    │   ├── control_TGFB_rep_3_PASS_bw_LAP24.bed
+    │   ├── control_TGFB_rep_3_PASS_bw_LAP24.bed.dvc
+    │   ├── control_TGFB_rep_3_PASS_bw_LAP24_PAS.bed
+    │   ├── control_TGFB_rep_3_PASS_bw_LAP24_PAS.bed.dvc
+    │   ├── control_TGFB_rep_3_PASS_bw_LAP24_positon.bed
+    │   ├── control_TGFB_rep_3_PASS_bw_LAP24_positon.bed.dvc
+    │   ├── control_TGFB_rep_3_stats.csv
+    │   └── PAS_quant
+    │       ├── CFIm25_control_rep_4_cluster.all.reads.csv
+    │       ├── CFIm25_control_rep_5_cluster.all.reads.csv
+    │       ├── CFIm25_control_rep_6_cluster.all.reads.csv
+    │       ├── CFIm25_TGFB_rep_4_cluster.all.reads.csv
+    │       ├── CFIm25_TGFB_rep_5_cluster.all.reads.csv
+    │       ├── CFIm25_TGFB_rep_6_cluster.all.reads.csv
+    │       ├── cluster.all.reads.csv
+    │       ├── control_control_rep_1_cluster.all.reads.csv
+    │       ├── control_control_rep_2_cluster.all.reads.csv
+    │       ├── control_control_rep_3_cluster.all.reads.csv
+    │       ├── control_TGFB_rep_1_cluster.all.reads.csv
+    │       ├── control_TGFB_rep_2_cluster.all.reads.csv
+    │       ├── control_TGFB_rep_3_cluster.all.reads.csv
+    │       └── stats_PAS.csv
+    └── 06_bigwig
+        ├── mapped_read
+        │   ├── mi.CFIm25_control_rep_4.mapped_read.bw
+        │   ├── mi.CFIm25_control_rep_5.mapped_read.bw
+        │   ├── mi.CFIm25_control_rep_6.mapped_read.bw
+        │   ├── mi.CFIm25_TGFB_rep_4.mapped_read.bw
+        │   ├── mi.CFIm25_TGFB_rep_5.mapped_read.bw
+        │   ├── mi.CFIm25_TGFB_rep_6.mapped_read.bw
+        │   ├── mi.control_control_rep_1.mapped_read.bw
+        │   ├── mi.control_control_rep_2.mapped_read.bw
+        │   ├── mi.control_control_rep_3.mapped_read.bw
+        │   ├── mi.control_TGFB_rep_1.mapped_read.bw
+        │   ├── mi.control_TGFB_rep_2.mapped_read.bw
+        │   ├── mi.control_TGFB_rep_3.mapped_read.bw
+        │   ├── minus.CFIm25_control_rep_4.mapped_read.bw
+        │   ├── minus.CFIm25_control_rep_5.mapped_read.bw
+        │   ├── minus.CFIm25_control_rep_6.mapped_read.bw
+        │   ├── minus.CFIm25_TGFB_rep_4.mapped_read.bw
+        │   ├── minus.CFIm25_TGFB_rep_5.mapped_read.bw
+        │   ├── minus.CFIm25_TGFB_rep_6.mapped_read.bw
+        │   ├── minus.control_control_rep_1.mapped_read.bw
+        │   ├── minus.control_control_rep_2.mapped_read.bw
+        │   ├── minus.control_control_rep_3.mapped_read.bw
+        │   ├── minus.control_TGFB_rep_1.mapped_read.bw
+        │   ├── minus.control_TGFB_rep_2.mapped_read.bw
+        │   ├── minus.control_TGFB_rep_3.mapped_read.bw
+        │   ├── plus.CFIm25_control_rep_4.mapped_read.bw
+        │   ├── plus.CFIm25_control_rep_5.mapped_read.bw
+        │   ├── plus.CFIm25_control_rep_6.mapped_read.bw
+        │   ├── plus.CFIm25_TGFB_rep_4.mapped_read.bw
+        │   ├── plus.CFIm25_TGFB_rep_5.mapped_read.bw
+        │   ├── plus.CFIm25_TGFB_rep_6.mapped_read.bw
+        │   ├── plus.control_control_rep_1.mapped_read.bw
+        │   ├── plus.control_control_rep_2.mapped_read.bw
+        │   ├── plus.control_control_rep_3.mapped_read.bw
+        │   ├── plus.control_TGFB_rep_1.mapped_read.bw
+        │   ├── plus.control_TGFB_rep_2.mapped_read.bw
+        │   └── plus.control_TGFB_rep_3.mapped_read.bw
+        ├── PASS_bw_LAP24
+        │   ├── mi.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+        │   ├── mi.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+        │   ├── mi.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+        │   ├── mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+        │   ├── mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+        │   ├── mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+        │   ├── mi.control_control_rep_1.PASS_bw_LAP24.bw
+        │   ├── mi.control_control_rep_2.PASS_bw_LAP24.bw
+        │   ├── mi.control_control_rep_3.PASS_bw_LAP24.bw
+        │   ├── mi.control_TGFB_rep_1.PASS_bw_LAP24.bw
+        │   ├── mi.control_TGFB_rep_2.PASS_bw_LAP24.bw
+        │   ├── mi.control_TGFB_rep_3.PASS_bw_LAP24.bw
+        │   ├── minus.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+        │   ├── minus.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+        │   ├── minus.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+        │   ├── minus.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+        │   ├── minus.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+        │   ├── minus.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+        │   ├── minus.control_control_rep_1.PASS_bw_LAP24.bw
+        │   ├── minus.control_control_rep_2.PASS_bw_LAP24.bw
+        │   ├── minus.control_control_rep_3.PASS_bw_LAP24.bw
+        │   ├── minus.control_TGFB_rep_1.PASS_bw_LAP24.bw
+        │   ├── minus.control_TGFB_rep_2.PASS_bw_LAP24.bw
+        │   ├── minus.control_TGFB_rep_3.PASS_bw_LAP24.bw
+        │   ├── plus.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+        │   ├── plus.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+        │   ├── plus.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+        │   ├── plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+        │   ├── plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+        │   ├── plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+        │   ├── plus.control_control_rep_1.PASS_bw_LAP24.bw
+        │   ├── plus.control_control_rep_2.PASS_bw_LAP24.bw
+        │   ├── plus.control_control_rep_3.PASS_bw_LAP24.bw
+        │   ├── plus.control_TGFB_rep_1.PASS_bw_LAP24.bw
+        │   ├── plus.control_TGFB_rep_2.PASS_bw_LAP24.bw
+        │   └── plus.control_TGFB_rep_3.PASS_bw_LAP24.bw
+        ├── PASS_bw_LAP24_PAS
+        │   ├── mi.CFIm25_control_rep_4.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.CFIm25_control_rep_5.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.CFIm25_control_rep_6.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.control_control_rep_1.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.control_control_rep_2.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.control_control_rep_3.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.control_TGFB_rep_1.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.control_TGFB_rep_2.PASS_bw_LAP24_PAS.bw
+        │   ├── mi.control_TGFB_rep_3.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.CFIm25_control_rep_4.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.CFIm25_control_rep_5.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.CFIm25_control_rep_6.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.CFIm25_TGFB_rep_4.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.CFIm25_TGFB_rep_5.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.CFIm25_TGFB_rep_6.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.control_control_rep_1.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.control_control_rep_2.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.control_control_rep_3.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.control_TGFB_rep_1.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.control_TGFB_rep_2.PASS_bw_LAP24_PAS.bw
+        │   ├── minus.control_TGFB_rep_3.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.CFIm25_control_rep_4.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.CFIm25_control_rep_5.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.CFIm25_control_rep_6.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.control_control_rep_1.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.control_control_rep_2.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.control_control_rep_3.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.control_TGFB_rep_1.PASS_bw_LAP24_PAS.bw
+        │   ├── plus.control_TGFB_rep_2.PASS_bw_LAP24_PAS.bw
+        │   └── plus.control_TGFB_rep_3.PASS_bw_LAP24_PAS.bw
+        └── PASS_bw_LAP24_positon
+            ├── mi.CFIm25_control_rep_4.PASS_bw_LAP24_positon.bw
+            ├── mi.CFIm25_control_rep_5.PASS_bw_LAP24_positon.bw
+            ├── mi.CFIm25_control_rep_6.PASS_bw_LAP24_positon.bw
+            ├── mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24_positon.bw
+            ├── mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24_positon.bw
+            ├── mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24_positon.bw
+            ├── mi.control_control_rep_1.PASS_bw_LAP24_positon.bw
+            ├── mi.control_control_rep_2.PASS_bw_LAP24_positon.bw
+            ├── mi.control_control_rep_3.PASS_bw_LAP24_positon.bw
+            ├── mi.control_TGFB_rep_1.PASS_bw_LAP24_positon.bw
+            ├── mi.control_TGFB_rep_2.PASS_bw_LAP24_positon.bw
+            ├── mi.control_TGFB_rep_3.PASS_bw_LAP24_positon.bw
+            ├── minus.CFIm25_control_rep_4.PASS_bw_LAP24_positon.bw
+            ├── minus.CFIm25_control_rep_5.PASS_bw_LAP24_positon.bw
+            ├── minus.CFIm25_control_rep_6.PASS_bw_LAP24_positon.bw
+            ├── minus.CFIm25_TGFB_rep_4.PASS_bw_LAP24_positon.bw
+            ├── minus.CFIm25_TGFB_rep_5.PASS_bw_LAP24_positon.bw
+            ├── minus.CFIm25_TGFB_rep_6.PASS_bw_LAP24_positon.bw
+            ├── minus.control_control_rep_1.PASS_bw_LAP24_positon.bw
+            ├── minus.control_control_rep_2.PASS_bw_LAP24_positon.bw
+            ├── minus.control_control_rep_3.PASS_bw_LAP24_positon.bw
+            ├── minus.control_TGFB_rep_1.PASS_bw_LAP24_positon.bw
+            ├── minus.control_TGFB_rep_2.PASS_bw_LAP24_positon.bw
+            ├── minus.control_TGFB_rep_3.PASS_bw_LAP24_positon.bw
+            ├── plus.CFIm25_control_rep_4.PASS_bw_LAP24_positon.bw
+            ├── plus.CFIm25_control_rep_5.PASS_bw_LAP24_positon.bw
+            ├── plus.CFIm25_control_rep_6.PASS_bw_LAP24_positon.bw
+            ├── plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24_positon.bw
+            ├── plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24_positon.bw
+            ├── plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24_positon.bw
+            ├── plus.control_control_rep_1.PASS_bw_LAP24_positon.bw
+            ├── plus.control_control_rep_2.PASS_bw_LAP24_positon.bw
+            ├── plus.control_control_rep_3.PASS_bw_LAP24_positon.bw
+            ├── plus.control_TGFB_rep_1.PASS_bw_LAP24_positon.bw
+            ├── plus.control_TGFB_rep_2.PASS_bw_LAP24_positon.bw
+            └── plus.control_TGFB_rep_3.PASS_bw_LAP24_positon.bw
+
+181 directories, 532 files

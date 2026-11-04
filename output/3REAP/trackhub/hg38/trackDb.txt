@@ -1,0 +1,1758 @@
+##############################################
+# Reference: PolyA_DB v4.1 PAS annotations
+##############################################
+track polyaDB_v41
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/hg38.PAS.v4.1.bb
+shortLabel PolyA_DB v4.1
+longLabel PolyA_DB v4.1 — hg38 polyadenylation sites (PAS_ID|Gene)
+type bigBed 6
+visibility pack
+priority 0.5
+color 160,32,240
+itemRgb off
+
+##############################################
+# PAS composites  [8 tracks: condition x strand]
+##############################################
+track PAS_control_control_plus
+compositeTrack on
+priority 1.00
+shortLabel Ctl PAS +
+longLabel Detected PASs — Control / untreated, plus strand
+type bigWig
+visibility full
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_control_control_rep_1_plus
+parent PAS_control_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.control_control_rep_1.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ Ctl r1
+longLabel Detected PASs — Control / untreated rep 1, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 60,60,60
+
+track PAS_control_control_rep_2_plus
+parent PAS_control_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.control_control_rep_2.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ Ctl r2
+longLabel Detected PASs — Control / untreated rep 2, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 120,120,120
+
+track PAS_control_control_rep_3_plus
+parent PAS_control_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.control_control_rep_3.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ Ctl r3
+longLabel Detected PASs — Control / untreated rep 3, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 180,180,180
+
+track PAS_control_TGFB_plus
+compositeTrack on
+priority 1.05
+shortLabel CtlTGFB PAS +
+longLabel Detected PASs — Control / TGFB, plus strand
+type bigWig
+visibility full
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_control_TGFB_rep_1_plus
+parent PAS_control_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.control_TGFB_rep_1.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CtlTGFB r1
+longLabel Detected PASs — Control / TGFB rep 1, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 200,90,0
+
+track PAS_control_TGFB_rep_2_plus
+parent PAS_control_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.control_TGFB_rep_2.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CtlTGFB r2
+longLabel Detected PASs — Control / TGFB rep 2, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 235,130,30
+
+track PAS_control_TGFB_rep_3_plus
+parent PAS_control_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.control_TGFB_rep_3.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CtlTGFB r3
+longLabel Detected PASs — Control / TGFB rep 3, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 250,175,90
+
+track PAS_CFIm25_control_plus
+compositeTrack on
+priority 1.10
+shortLabel CF25 PAS +
+longLabel Detected PASs — CFIm25 OE / untreated, plus strand
+type bigWig
+visibility full
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_CFIm25_control_rep_4_plus
+parent PAS_CFIm25_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.CFIm25_control_rep_4.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CF25 r4
+longLabel Detected PASs — CFIm25 OE / untreated rep 4, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 30,50,170
+
+track PAS_CFIm25_control_rep_5_plus
+parent PAS_CFIm25_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.CFIm25_control_rep_5.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CF25 r5
+longLabel Detected PASs — CFIm25 OE / untreated rep 5, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 60,100,220
+
+track PAS_CFIm25_control_rep_6_plus
+parent PAS_CFIm25_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.CFIm25_control_rep_6.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CF25 r6
+longLabel Detected PASs — CFIm25 OE / untreated rep 6, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 110,150,250
+
+track PAS_CFIm25_TGFB_plus
+compositeTrack on
+priority 1.15
+shortLabel CF25TGFB PAS +
+longLabel Detected PASs — CFIm25 OE / TGFB, plus strand
+type bigWig
+visibility full
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_CFIm25_TGFB_rep_4_plus
+parent PAS_CFIm25_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CF25TGFB r4
+longLabel Detected PASs — CFIm25 OE / TGFB rep 4, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 170,0,60
+
+track PAS_CFIm25_TGFB_rep_5_plus
+parent PAS_CFIm25_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CF25TGFB r5
+longLabel Detected PASs — CFIm25 OE / TGFB rep 5, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 215,40,100
+
+track PAS_CFIm25_TGFB_rep_6_plus
+parent PAS_CFIm25_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24_PAS.bw
+shortLabel PAS+ CF25TGFB r6
+longLabel Detected PASs — CFIm25 OE / TGFB rep 6, plus strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 245,100,150
+
+track PAS_control_control_mi
+compositeTrack on
+priority 1.20
+shortLabel Ctl PAS mi
+longLabel Detected PASs — Control / untreated, mirror strand
+type bigWig
+visibility hide
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_control_control_rep_1_mi
+parent PAS_control_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.control_control_rep_1.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi Ctl r1
+longLabel Detected PASs — Control / untreated rep 1, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 60,60,60
+
+track PAS_control_control_rep_2_mi
+parent PAS_control_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.control_control_rep_2.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi Ctl r2
+longLabel Detected PASs — Control / untreated rep 2, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 120,120,120
+
+track PAS_control_control_rep_3_mi
+parent PAS_control_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.control_control_rep_3.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi Ctl r3
+longLabel Detected PASs — Control / untreated rep 3, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 180,180,180
+
+track PAS_control_TGFB_mi
+compositeTrack on
+priority 1.25
+shortLabel CtlTGFB PAS mi
+longLabel Detected PASs — Control / TGFB, mirror strand
+type bigWig
+visibility hide
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_control_TGFB_rep_1_mi
+parent PAS_control_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.control_TGFB_rep_1.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CtlTGFB r1
+longLabel Detected PASs — Control / TGFB rep 1, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 200,90,0
+
+track PAS_control_TGFB_rep_2_mi
+parent PAS_control_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.control_TGFB_rep_2.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CtlTGFB r2
+longLabel Detected PASs — Control / TGFB rep 2, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 235,130,30
+
+track PAS_control_TGFB_rep_3_mi
+parent PAS_control_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.control_TGFB_rep_3.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CtlTGFB r3
+longLabel Detected PASs — Control / TGFB rep 3, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 250,175,90
+
+track PAS_CFIm25_control_mi
+compositeTrack on
+priority 1.30
+shortLabel CF25 PAS mi
+longLabel Detected PASs — CFIm25 OE / untreated, mirror strand
+type bigWig
+visibility hide
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_CFIm25_control_rep_4_mi
+parent PAS_CFIm25_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.CFIm25_control_rep_4.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CF25 r4
+longLabel Detected PASs — CFIm25 OE / untreated rep 4, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 30,50,170
+
+track PAS_CFIm25_control_rep_5_mi
+parent PAS_CFIm25_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.CFIm25_control_rep_5.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CF25 r5
+longLabel Detected PASs — CFIm25 OE / untreated rep 5, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 60,100,220
+
+track PAS_CFIm25_control_rep_6_mi
+parent PAS_CFIm25_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.CFIm25_control_rep_6.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CF25 r6
+longLabel Detected PASs — CFIm25 OE / untreated rep 6, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 110,150,250
+
+track PAS_CFIm25_TGFB_mi
+compositeTrack on
+priority 1.35
+shortLabel CF25TGFB PAS mi
+longLabel Detected PASs — CFIm25 OE / TGFB, mirror strand
+type bigWig
+visibility hide
+autoScale group
+alwaysZero on
+smoothingWindow off
+windowingFunction maximum
+maxHeightPixels 120:80:40
+
+track PAS_CFIm25_TGFB_rep_4_mi
+parent PAS_CFIm25_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CF25TGFB r4
+longLabel Detected PASs — CFIm25 OE / TGFB rep 4, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 170,0,60
+
+track PAS_CFIm25_TGFB_rep_5_mi
+parent PAS_CFIm25_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CF25TGFB r5
+longLabel Detected PASs — CFIm25 OE / TGFB rep 5, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 215,40,100
+
+track PAS_CFIm25_TGFB_rep_6_mi
+parent PAS_CFIm25_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_PAS/mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24_PAS.bw
+shortLabel PASmi CF25TGFB r6
+longLabel Detected PASs — CFIm25 OE / TGFB rep 6, mirror strand
+type bigWig
+visibility full
+graphTypeDefault bar
+color 245,100,150
+
+##############################################
+# PASSreads overlays  [8 tracks: condition x strand, points]
+##############################################
+track PASSreads_control_control_plus
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel Ctl PASS +
+longLabel PASS reads — Control / untreated, plus strand (reps overlay)
+visibility full
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.00
+
+track PASSreads_ov_control_control_rep_1_plus
+parent PASSreads_control_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_control_rep_1.PASS_bw_LAP24.bw
+shortLabel rep 1
+longLabel Control / untreated rep 1, plus strand
+type bigWig
+smoothingWindow 2
+color 60,60,60
+
+track PASSreads_ov_control_control_rep_2_plus
+parent PASSreads_control_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_control_rep_2.PASS_bw_LAP24.bw
+shortLabel rep 2
+longLabel Control / untreated rep 2, plus strand
+type bigWig
+smoothingWindow 2
+color 120,120,120
+
+track PASSreads_ov_control_control_rep_3_plus
+parent PASSreads_control_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_control_rep_3.PASS_bw_LAP24.bw
+shortLabel rep 3
+longLabel Control / untreated rep 3, plus strand
+type bigWig
+smoothingWindow 2
+color 180,180,180
+
+track PASSreads_control_TGFB_plus
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel CtlTGFB PASS +
+longLabel PASS reads — Control / TGFB, plus strand (reps overlay)
+visibility full
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.05
+
+track PASSreads_ov_control_TGFB_rep_1_plus
+parent PASSreads_control_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_TGFB_rep_1.PASS_bw_LAP24.bw
+shortLabel rep 1
+longLabel Control / TGFB rep 1, plus strand
+type bigWig
+smoothingWindow 2
+color 200,90,0
+
+track PASSreads_ov_control_TGFB_rep_2_plus
+parent PASSreads_control_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_TGFB_rep_2.PASS_bw_LAP24.bw
+shortLabel rep 2
+longLabel Control / TGFB rep 2, plus strand
+type bigWig
+smoothingWindow 2
+color 235,130,30
+
+track PASSreads_ov_control_TGFB_rep_3_plus
+parent PASSreads_control_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_TGFB_rep_3.PASS_bw_LAP24.bw
+shortLabel rep 3
+longLabel Control / TGFB rep 3, plus strand
+type bigWig
+smoothingWindow 2
+color 250,175,90
+
+track PASSreads_CFIm25_control_plus
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel CF25 PASS +
+longLabel PASS reads — CFIm25 OE / untreated, plus strand (reps overlay)
+visibility full
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.10
+
+track PASSreads_ov_CFIm25_control_rep_4_plus
+parent PASSreads_CFIm25_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+shortLabel rep 4
+longLabel CFIm25 OE / untreated rep 4, plus strand
+type bigWig
+smoothingWindow 2
+color 30,50,170
+
+track PASSreads_ov_CFIm25_control_rep_5_plus
+parent PASSreads_CFIm25_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+shortLabel rep 5
+longLabel CFIm25 OE / untreated rep 5, plus strand
+type bigWig
+smoothingWindow 2
+color 60,100,220
+
+track PASSreads_ov_CFIm25_control_rep_6_plus
+parent PASSreads_CFIm25_control_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+shortLabel rep 6
+longLabel CFIm25 OE / untreated rep 6, plus strand
+type bigWig
+smoothingWindow 2
+color 110,150,250
+
+track PASSreads_CFIm25_TGFB_plus
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel CF25TGFB PASS +
+longLabel PASS reads — CFIm25 OE / TGFB, plus strand (reps overlay)
+visibility full
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.15
+
+track PASSreads_ov_CFIm25_TGFB_rep_4_plus
+parent PASSreads_CFIm25_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+shortLabel rep 4
+longLabel CFIm25 OE / TGFB rep 4, plus strand
+type bigWig
+smoothingWindow 2
+color 170,0,60
+
+track PASSreads_ov_CFIm25_TGFB_rep_5_plus
+parent PASSreads_CFIm25_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+shortLabel rep 5
+longLabel CFIm25 OE / TGFB rep 5, plus strand
+type bigWig
+smoothingWindow 2
+color 215,40,100
+
+track PASSreads_ov_CFIm25_TGFB_rep_6_plus
+parent PASSreads_CFIm25_TGFB_plus
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+shortLabel rep 6
+longLabel CFIm25 OE / TGFB rep 6, plus strand
+type bigWig
+smoothingWindow 2
+color 245,100,150
+
+track PASSreads_control_control_mi
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel Ctl PASS mi
+longLabel PASS reads — Control / untreated, mirror strand (reps overlay)
+visibility hide
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.20
+
+track PASSreads_ov_control_control_rep_1_mi
+parent PASSreads_control_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_control_rep_1.PASS_bw_LAP24.bw
+shortLabel rep 1
+longLabel Control / untreated rep 1, mirror strand
+type bigWig
+smoothingWindow 2
+color 60,60,60
+
+track PASSreads_ov_control_control_rep_2_mi
+parent PASSreads_control_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_control_rep_2.PASS_bw_LAP24.bw
+shortLabel rep 2
+longLabel Control / untreated rep 2, mirror strand
+type bigWig
+smoothingWindow 2
+color 120,120,120
+
+track PASSreads_ov_control_control_rep_3_mi
+parent PASSreads_control_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_control_rep_3.PASS_bw_LAP24.bw
+shortLabel rep 3
+longLabel Control / untreated rep 3, mirror strand
+type bigWig
+smoothingWindow 2
+color 180,180,180
+
+track PASSreads_control_TGFB_mi
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel CtlTGFB PASS mi
+longLabel PASS reads — Control / TGFB, mirror strand (reps overlay)
+visibility hide
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.25
+
+track PASSreads_ov_control_TGFB_rep_1_mi
+parent PASSreads_control_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_TGFB_rep_1.PASS_bw_LAP24.bw
+shortLabel rep 1
+longLabel Control / TGFB rep 1, mirror strand
+type bigWig
+smoothingWindow 2
+color 200,90,0
+
+track PASSreads_ov_control_TGFB_rep_2_mi
+parent PASSreads_control_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_TGFB_rep_2.PASS_bw_LAP24.bw
+shortLabel rep 2
+longLabel Control / TGFB rep 2, mirror strand
+type bigWig
+smoothingWindow 2
+color 235,130,30
+
+track PASSreads_ov_control_TGFB_rep_3_mi
+parent PASSreads_control_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_TGFB_rep_3.PASS_bw_LAP24.bw
+shortLabel rep 3
+longLabel Control / TGFB rep 3, mirror strand
+type bigWig
+smoothingWindow 2
+color 250,175,90
+
+track PASSreads_CFIm25_control_mi
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel CF25 PASS mi
+longLabel PASS reads — CFIm25 OE / untreated, mirror strand (reps overlay)
+visibility hide
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.30
+
+track PASSreads_ov_CFIm25_control_rep_4_mi
+parent PASSreads_CFIm25_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+shortLabel rep 4
+longLabel CFIm25 OE / untreated rep 4, mirror strand
+type bigWig
+smoothingWindow 2
+color 30,50,170
+
+track PASSreads_ov_CFIm25_control_rep_5_mi
+parent PASSreads_CFIm25_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+shortLabel rep 5
+longLabel CFIm25 OE / untreated rep 5, mirror strand
+type bigWig
+smoothingWindow 2
+color 60,100,220
+
+track PASSreads_ov_CFIm25_control_rep_6_mi
+parent PASSreads_CFIm25_control_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+shortLabel rep 6
+longLabel CFIm25 OE / untreated rep 6, mirror strand
+type bigWig
+smoothingWindow 2
+color 110,150,250
+
+track PASSreads_CFIm25_TGFB_mi
+type bigWig
+container multiWig
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+shortLabel CF25TGFB PASS mi
+longLabel PASS reads — CFIm25 OE / TGFB, mirror strand (reps overlay)
+visibility hide
+autoScale on
+alwaysZero on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+priority 2.35
+
+track PASSreads_ov_CFIm25_TGFB_rep_4_mi
+parent PASSreads_CFIm25_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+shortLabel rep 4
+longLabel CFIm25 OE / TGFB rep 4, mirror strand
+type bigWig
+smoothingWindow 2
+color 170,0,60
+
+track PASSreads_ov_CFIm25_TGFB_rep_5_mi
+parent PASSreads_CFIm25_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+shortLabel rep 5
+longLabel CFIm25 OE / TGFB rep 5, mirror strand
+type bigWig
+smoothingWindow 2
+color 215,40,100
+
+track PASSreads_ov_CFIm25_TGFB_rep_6_mi
+parent PASSreads_CFIm25_TGFB_mi
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+shortLabel rep 6
+longLabel CFIm25 OE / TGFB rep 6, mirror strand
+type bigWig
+smoothingWindow 2
+color 245,100,150
+
+##############################################
+# Composite: PASS reads  [hide — per-rep detail view]
+##############################################
+track PASSreads
+compositeTrack on
+priority 2.5
+shortLabel PASS (per-rep)
+longLabel PASS reads — per-replicate detail
+type bigWig
+visibility hide
+subGroup1 genotype genotype control=Control CFIm25=CFIm25_OE
+subGroup2 treatment treatment control=Untreated TGFB=TGFB
+subGroup3 rep rep rep1=rep1 rep2=rep2 rep3=rep3 rep4=rep4 rep5=rep5 rep6=rep6
+subGroup4 strand strand mi=Mirror plus=Plus
+sortOrder strand=+ genotype=+ treatment=+ rep=+
+dimensions dimX=genotype dimY=treatment dimA=rep
+dragAndDrop subtracks
+filterComposite dimA
+autoScale group
+
+track PASSreads_control_control_rep_1_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_control_rep_1.PASS_bw_LAP24.bw
+shortLabel Ctl r1 +
+longLabel Control / untreated rep 1, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep1 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 60,60,60
+
+track PASSreads_control_control_rep_2_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_control_rep_2.PASS_bw_LAP24.bw
+shortLabel Ctl r2 +
+longLabel Control / untreated rep 2, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep2 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 120,120,120
+
+track PASSreads_control_control_rep_3_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_control_rep_3.PASS_bw_LAP24.bw
+shortLabel Ctl r3 +
+longLabel Control / untreated rep 3, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep3 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 180,180,180
+
+track PASSreads_control_TGFB_rep_1_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_TGFB_rep_1.PASS_bw_LAP24.bw
+shortLabel CtlTGFB r1 +
+longLabel Control / TGFB rep 1, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep1 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 200,90,0
+
+track PASSreads_control_TGFB_rep_2_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_TGFB_rep_2.PASS_bw_LAP24.bw
+shortLabel CtlTGFB r2 +
+longLabel Control / TGFB rep 2, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep2 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 235,130,30
+
+track PASSreads_control_TGFB_rep_3_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.control_TGFB_rep_3.PASS_bw_LAP24.bw
+shortLabel CtlTGFB r3 +
+longLabel Control / TGFB rep 3, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep3 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 250,175,90
+
+track PASSreads_CFIm25_control_rep_4_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+shortLabel CF25 r4 +
+longLabel CFIm25 OE / untreated rep 4, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep4 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 30,50,170
+
+track PASSreads_CFIm25_control_rep_5_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+shortLabel CF25 r5 +
+longLabel CFIm25 OE / untreated rep 5, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep5 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 60,100,220
+
+track PASSreads_CFIm25_control_rep_6_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+shortLabel CF25 r6 +
+longLabel CFIm25 OE / untreated rep 6, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep6 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 110,150,250
+
+track PASSreads_CFIm25_TGFB_rep_4_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+shortLabel CF25TGFB r4 +
+longLabel CFIm25 OE / TGFB rep 4, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep4 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 170,0,60
+
+track PASSreads_CFIm25_TGFB_rep_5_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+shortLabel CF25TGFB r5 +
+longLabel CFIm25 OE / TGFB rep 5, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep5 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 215,40,100
+
+track PASSreads_CFIm25_TGFB_rep_6_plus
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+shortLabel CF25TGFB r6 +
+longLabel CFIm25 OE / TGFB rep 6, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep6 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 245,100,150
+
+track PASSreads_control_control_rep_1_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_control_rep_1.PASS_bw_LAP24.bw
+shortLabel Ctl r1 mi
+longLabel Control / untreated rep 1, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep1 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 60,60,60
+
+track PASSreads_control_control_rep_2_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_control_rep_2.PASS_bw_LAP24.bw
+shortLabel Ctl r2 mi
+longLabel Control / untreated rep 2, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep2 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 120,120,120
+
+track PASSreads_control_control_rep_3_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_control_rep_3.PASS_bw_LAP24.bw
+shortLabel Ctl r3 mi
+longLabel Control / untreated rep 3, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep3 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 180,180,180
+
+track PASSreads_control_TGFB_rep_1_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_TGFB_rep_1.PASS_bw_LAP24.bw
+shortLabel CtlTGFB r1 mi
+longLabel Control / TGFB rep 1, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep1 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 200,90,0
+
+track PASSreads_control_TGFB_rep_2_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_TGFB_rep_2.PASS_bw_LAP24.bw
+shortLabel CtlTGFB r2 mi
+longLabel Control / TGFB rep 2, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep2 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 235,130,30
+
+track PASSreads_control_TGFB_rep_3_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.control_TGFB_rep_3.PASS_bw_LAP24.bw
+shortLabel CtlTGFB r3 mi
+longLabel Control / TGFB rep 3, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep3 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 250,175,90
+
+track PASSreads_CFIm25_control_rep_4_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_control_rep_4.PASS_bw_LAP24.bw
+shortLabel CF25 r4 mi
+longLabel CFIm25 OE / untreated rep 4, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep4 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 30,50,170
+
+track PASSreads_CFIm25_control_rep_5_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_control_rep_5.PASS_bw_LAP24.bw
+shortLabel CF25 r5 mi
+longLabel CFIm25 OE / untreated rep 5, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep5 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 60,100,220
+
+track PASSreads_CFIm25_control_rep_6_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_control_rep_6.PASS_bw_LAP24.bw
+shortLabel CF25 r6 mi
+longLabel CFIm25 OE / untreated rep 6, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep6 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 110,150,250
+
+track PASSreads_CFIm25_TGFB_rep_4_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24.bw
+shortLabel CF25TGFB r4 mi
+longLabel CFIm25 OE / TGFB rep 4, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep4 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 170,0,60
+
+track PASSreads_CFIm25_TGFB_rep_5_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24.bw
+shortLabel CF25TGFB r5 mi
+longLabel CFIm25 OE / TGFB rep 5, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep5 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 215,40,100
+
+track PASSreads_CFIm25_TGFB_rep_6_mi
+parent PASSreads
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24/mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24.bw
+shortLabel CF25TGFB r6 mi
+longLabel CFIm25 OE / TGFB rep 6, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep6 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault points
+maxHeightPixels 120:80:40
+color 245,100,150
+
+##############################################
+# Composite: All aligned reads  [dense — QC overview]
+##############################################
+track mapped
+compositeTrack on
+priority 3.0
+shortLabel mapped
+longLabel All aligned reads
+type bigWig
+visibility dense
+subGroup1 genotype genotype control=Control CFIm25=CFIm25_OE
+subGroup2 treatment treatment control=Untreated TGFB=TGFB
+subGroup3 rep rep rep1=rep1 rep2=rep2 rep3=rep3 rep4=rep4 rep5=rep5 rep6=rep6
+subGroup4 strand strand mi=Mirror plus=Plus
+sortOrder strand=+ genotype=+ treatment=+ rep=+
+dimensions dimX=genotype dimY=treatment dimA=rep
+dragAndDrop subtracks
+filterComposite dimA
+autoScale group
+
+track mapped_control_control_rep_1_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.control_control_rep_1.mapped_read.bw
+shortLabel Ctl r1 +
+longLabel Control / untreated rep 1, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep1 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,60,60
+
+track mapped_control_control_rep_2_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.control_control_rep_2.mapped_read.bw
+shortLabel Ctl r2 +
+longLabel Control / untreated rep 2, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep2 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 120,120,120
+
+track mapped_control_control_rep_3_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.control_control_rep_3.mapped_read.bw
+shortLabel Ctl r3 +
+longLabel Control / untreated rep 3, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep3 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 180,180,180
+
+track mapped_control_TGFB_rep_1_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.control_TGFB_rep_1.mapped_read.bw
+shortLabel CtlTGFB r1 +
+longLabel Control / TGFB rep 1, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep1 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 200,90,0
+
+track mapped_control_TGFB_rep_2_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.control_TGFB_rep_2.mapped_read.bw
+shortLabel CtlTGFB r2 +
+longLabel Control / TGFB rep 2, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep2 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 235,130,30
+
+track mapped_control_TGFB_rep_3_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.control_TGFB_rep_3.mapped_read.bw
+shortLabel CtlTGFB r3 +
+longLabel Control / TGFB rep 3, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep3 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 250,175,90
+
+track mapped_CFIm25_control_rep_4_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.CFIm25_control_rep_4.mapped_read.bw
+shortLabel CF25 r4 +
+longLabel CFIm25 OE / untreated rep 4, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep4 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 30,50,170
+
+track mapped_CFIm25_control_rep_5_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.CFIm25_control_rep_5.mapped_read.bw
+shortLabel CF25 r5 +
+longLabel CFIm25 OE / untreated rep 5, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep5 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,100,220
+
+track mapped_CFIm25_control_rep_6_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.CFIm25_control_rep_6.mapped_read.bw
+shortLabel CF25 r6 +
+longLabel CFIm25 OE / untreated rep 6, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep6 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 110,150,250
+
+track mapped_CFIm25_TGFB_rep_4_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.CFIm25_TGFB_rep_4.mapped_read.bw
+shortLabel CF25TGFB r4 +
+longLabel CFIm25 OE / TGFB rep 4, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep4 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 170,0,60
+
+track mapped_CFIm25_TGFB_rep_5_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.CFIm25_TGFB_rep_5.mapped_read.bw
+shortLabel CF25TGFB r5 +
+longLabel CFIm25 OE / TGFB rep 5, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep5 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 215,40,100
+
+track mapped_CFIm25_TGFB_rep_6_plus
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/plus.CFIm25_TGFB_rep_6.mapped_read.bw
+shortLabel CF25TGFB r6 +
+longLabel CFIm25 OE / TGFB rep 6, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep6 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 245,100,150
+
+track mapped_control_control_rep_1_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.control_control_rep_1.mapped_read.bw
+shortLabel Ctl r1 mi
+longLabel Control / untreated rep 1, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep1 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,60,60
+
+track mapped_control_control_rep_2_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.control_control_rep_2.mapped_read.bw
+shortLabel Ctl r2 mi
+longLabel Control / untreated rep 2, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep2 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 120,120,120
+
+track mapped_control_control_rep_3_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.control_control_rep_3.mapped_read.bw
+shortLabel Ctl r3 mi
+longLabel Control / untreated rep 3, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep3 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 180,180,180
+
+track mapped_control_TGFB_rep_1_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.control_TGFB_rep_1.mapped_read.bw
+shortLabel CtlTGFB r1 mi
+longLabel Control / TGFB rep 1, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep1 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 200,90,0
+
+track mapped_control_TGFB_rep_2_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.control_TGFB_rep_2.mapped_read.bw
+shortLabel CtlTGFB r2 mi
+longLabel Control / TGFB rep 2, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep2 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 235,130,30
+
+track mapped_control_TGFB_rep_3_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.control_TGFB_rep_3.mapped_read.bw
+shortLabel CtlTGFB r3 mi
+longLabel Control / TGFB rep 3, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep3 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 250,175,90
+
+track mapped_CFIm25_control_rep_4_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.CFIm25_control_rep_4.mapped_read.bw
+shortLabel CF25 r4 mi
+longLabel CFIm25 OE / untreated rep 4, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep4 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 30,50,170
+
+track mapped_CFIm25_control_rep_5_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.CFIm25_control_rep_5.mapped_read.bw
+shortLabel CF25 r5 mi
+longLabel CFIm25 OE / untreated rep 5, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep5 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,100,220
+
+track mapped_CFIm25_control_rep_6_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.CFIm25_control_rep_6.mapped_read.bw
+shortLabel CF25 r6 mi
+longLabel CFIm25 OE / untreated rep 6, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep6 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 110,150,250
+
+track mapped_CFIm25_TGFB_rep_4_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.CFIm25_TGFB_rep_4.mapped_read.bw
+shortLabel CF25TGFB r4 mi
+longLabel CFIm25 OE / TGFB rep 4, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep4 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 170,0,60
+
+track mapped_CFIm25_TGFB_rep_5_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.CFIm25_TGFB_rep_5.mapped_read.bw
+shortLabel CF25TGFB r5 mi
+longLabel CFIm25 OE / TGFB rep 5, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep5 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 215,40,100
+
+track mapped_CFIm25_TGFB_rep_6_mi
+parent mapped
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/mapped_read/mi.CFIm25_TGFB_rep_6.mapped_read.bw
+shortLabel CF25TGFB r6 mi
+longLabel CFIm25 OE / TGFB rep 6, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep6 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 245,100,150
+
+##############################################
+# Composite: PASS LAPs  [hide — enable when needed]
+##############################################
+track LAPs
+compositeTrack on
+priority 4.0
+shortLabel LAPs
+longLabel PASS LAPs (last aligned positions)
+type bigWig
+visibility hide
+subGroup1 genotype genotype control=Control CFIm25=CFIm25_OE
+subGroup2 treatment treatment control=Untreated TGFB=TGFB
+subGroup3 rep rep rep1=rep1 rep2=rep2 rep3=rep3 rep4=rep4 rep5=rep5 rep6=rep6
+subGroup4 strand strand mi=Mirror plus=Plus
+sortOrder strand=+ genotype=+ treatment=+ rep=+
+dimensions dimX=genotype dimY=treatment dimA=rep
+dragAndDrop subtracks
+filterComposite dimA
+autoScale group
+
+track LAPs_control_control_rep_1_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.control_control_rep_1.PASS_bw_LAP24_positon.bw
+shortLabel Ctl r1 +
+longLabel Control / untreated rep 1, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep1 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,60,60
+
+track LAPs_control_control_rep_2_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.control_control_rep_2.PASS_bw_LAP24_positon.bw
+shortLabel Ctl r2 +
+longLabel Control / untreated rep 2, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep2 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 120,120,120
+
+track LAPs_control_control_rep_3_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.control_control_rep_3.PASS_bw_LAP24_positon.bw
+shortLabel Ctl r3 +
+longLabel Control / untreated rep 3, plus strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep3 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 180,180,180
+
+track LAPs_control_TGFB_rep_1_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.control_TGFB_rep_1.PASS_bw_LAP24_positon.bw
+shortLabel CtlTGFB r1 +
+longLabel Control / TGFB rep 1, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep1 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 200,90,0
+
+track LAPs_control_TGFB_rep_2_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.control_TGFB_rep_2.PASS_bw_LAP24_positon.bw
+shortLabel CtlTGFB r2 +
+longLabel Control / TGFB rep 2, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep2 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 235,130,30
+
+track LAPs_control_TGFB_rep_3_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.control_TGFB_rep_3.PASS_bw_LAP24_positon.bw
+shortLabel CtlTGFB r3 +
+longLabel Control / TGFB rep 3, plus strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep3 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 250,175,90
+
+track LAPs_CFIm25_control_rep_4_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.CFIm25_control_rep_4.PASS_bw_LAP24_positon.bw
+shortLabel CF25 r4 +
+longLabel CFIm25 OE / untreated rep 4, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep4 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 30,50,170
+
+track LAPs_CFIm25_control_rep_5_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.CFIm25_control_rep_5.PASS_bw_LAP24_positon.bw
+shortLabel CF25 r5 +
+longLabel CFIm25 OE / untreated rep 5, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep5 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,100,220
+
+track LAPs_CFIm25_control_rep_6_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.CFIm25_control_rep_6.PASS_bw_LAP24_positon.bw
+shortLabel CF25 r6 +
+longLabel CFIm25 OE / untreated rep 6, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep6 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 110,150,250
+
+track LAPs_CFIm25_TGFB_rep_4_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.CFIm25_TGFB_rep_4.PASS_bw_LAP24_positon.bw
+shortLabel CF25TGFB r4 +
+longLabel CFIm25 OE / TGFB rep 4, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep4 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 170,0,60
+
+track LAPs_CFIm25_TGFB_rep_5_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.CFIm25_TGFB_rep_5.PASS_bw_LAP24_positon.bw
+shortLabel CF25TGFB r5 +
+longLabel CFIm25 OE / TGFB rep 5, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep5 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 215,40,100
+
+track LAPs_CFIm25_TGFB_rep_6_plus
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/plus.CFIm25_TGFB_rep_6.PASS_bw_LAP24_positon.bw
+shortLabel CF25TGFB r6 +
+longLabel CFIm25 OE / TGFB rep 6, plus strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep6 strand=plus
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 245,100,150
+
+track LAPs_control_control_rep_1_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.control_control_rep_1.PASS_bw_LAP24_positon.bw
+shortLabel Ctl r1 mi
+longLabel Control / untreated rep 1, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep1 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,60,60
+
+track LAPs_control_control_rep_2_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.control_control_rep_2.PASS_bw_LAP24_positon.bw
+shortLabel Ctl r2 mi
+longLabel Control / untreated rep 2, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep2 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 120,120,120
+
+track LAPs_control_control_rep_3_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.control_control_rep_3.PASS_bw_LAP24_positon.bw
+shortLabel Ctl r3 mi
+longLabel Control / untreated rep 3, mirror strand
+type bigWig
+subGroups genotype=control treatment=control rep=rep3 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 180,180,180
+
+track LAPs_control_TGFB_rep_1_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.control_TGFB_rep_1.PASS_bw_LAP24_positon.bw
+shortLabel CtlTGFB r1 mi
+longLabel Control / TGFB rep 1, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep1 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 200,90,0
+
+track LAPs_control_TGFB_rep_2_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.control_TGFB_rep_2.PASS_bw_LAP24_positon.bw
+shortLabel CtlTGFB r2 mi
+longLabel Control / TGFB rep 2, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep2 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 235,130,30
+
+track LAPs_control_TGFB_rep_3_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.control_TGFB_rep_3.PASS_bw_LAP24_positon.bw
+shortLabel CtlTGFB r3 mi
+longLabel Control / TGFB rep 3, mirror strand
+type bigWig
+subGroups genotype=control treatment=TGFB rep=rep3 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 250,175,90
+
+track LAPs_CFIm25_control_rep_4_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.CFIm25_control_rep_4.PASS_bw_LAP24_positon.bw
+shortLabel CF25 r4 mi
+longLabel CFIm25 OE / untreated rep 4, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep4 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 30,50,170
+
+track LAPs_CFIm25_control_rep_5_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.CFIm25_control_rep_5.PASS_bw_LAP24_positon.bw
+shortLabel CF25 r5 mi
+longLabel CFIm25 OE / untreated rep 5, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep5 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 60,100,220
+
+track LAPs_CFIm25_control_rep_6_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.CFIm25_control_rep_6.PASS_bw_LAP24_positon.bw
+shortLabel CF25 r6 mi
+longLabel CFIm25 OE / untreated rep 6, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=control rep=rep6 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 110,150,250
+
+track LAPs_CFIm25_TGFB_rep_4_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.CFIm25_TGFB_rep_4.PASS_bw_LAP24_positon.bw
+shortLabel CF25TGFB r4 mi
+longLabel CFIm25 OE / TGFB rep 4, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep4 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 170,0,60
+
+track LAPs_CFIm25_TGFB_rep_5_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.CFIm25_TGFB_rep_5.PASS_bw_LAP24_positon.bw
+shortLabel CF25TGFB r5 mi
+longLabel CFIm25 OE / TGFB rep 5, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep5 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 215,40,100
+
+track LAPs_CFIm25_TGFB_rep_6_mi
+parent LAPs
+bigDataUrl http://3.83.106.170/cmoore_021/hg38/PASS_bw_LAP24_positon/mi.CFIm25_TGFB_rep_6.PASS_bw_LAP24_positon.bw
+shortLabel CF25TGFB r6 mi
+longLabel CFIm25 OE / TGFB rep 6, mirror strand
+type bigWig
+subGroups genotype=CFIm25 treatment=TGFB rep=rep6 strand=mi
+visibility full
+alwaysZero on
+autoScale on
+graphTypeDefault bar
+maxHeightPixels 120:80:40
+color 245,100,150
