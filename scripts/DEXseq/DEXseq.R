@@ -125,9 +125,23 @@ RED_MAG_CUT      <- 1     # min |delta_RED| (log2 scale) for the top-moving PAS
 NTOP_PCA      <- 2000        # top-N variable PAS for PCA (by row variance)
 PCA_LABEL_COL <- "replicate" # colData column to use as point labels (NULL = none)
 
-# Genes to plot APA genome-map figures for; set to character(0) to skip
-# Cherry picked genes (by me):
-GENES_OF_INTEREST <- c("PCF11", "TAB2", "ICAM1", "MCAM", "RCOR3", "OTUD7B", "PCNX4", "LATS2", "CENPA")
+# Genes to plot APA genome-map / terminal-exon zoom figures for.
+#   all                    -> plotted in every contrast
+#   "<axis>/<level>" keys  -> extra genes for that contrast only (union with 'all');
+#                             keys are AXES names + stratify levels, e.g. "by_plasmid/TGFB"
+#   A contrast left with NO genes (both 'all' and its own entry blank/missing) gets
+#   its top GOI_TOP_N candidate genes (candidate_genes.csv, ranked by padj) instead.
+#   A plain character vector is still accepted and treated as list(all = <vector>).
+#   Each contrast's <prefix>_genes_plotted.csv records what was plotted and why.
+GOI_TOP_N <- 10
+GENES_OF_INTEREST <- list(
+  # Cherry picked genes (by me):
+  all                    = character(0), # or c("gene1","gene2","gene3")
+  "by_condition/control" = character(0),
+  "by_condition/CFIm25"  = character(0),
+  "by_plasmid/control"   = character(0),
+  "by_plasmid/TGFB"      = character(0)
+)
 
 # RUVseq batch correction
 #   USE_RUV <- TRUE  when replicates cluster by batch in PCA rather than condition.
@@ -1911,6 +1925,64 @@ group_cache_manifest <- function(axis_name, axis_cfg, grp, group_list) {
 }
 
 # ============================================================
+#  FUNCTIONS: per-contrast output prefix + genes-of-interest resolution
+# ============================================================
+#
+# Every contrast (one AXES entry x one stratify level) writes the same set of
+# files into its own folder; contrast_prefix() makes those filenames unique and
+# self-describing (e.g. "TGFBvcontrol_in_plasmid-CFIm25_candidate_genes.csv") so
+# two of them can be open side by side in Excel and still be told apart.
+
+contrast_prefix <- function(axis_cfg, level) {
+  p <- paste0(axis_cfg$alt_label, "v", axis_cfg$ref_label, "_in_",
+              axis_cfg$stratify_var, "-", level)
+  gsub("[^A-Za-z0-9_.-]", "_", p)
+}
+
+# GENES_OF_INTEREST -> named list of clean character vectors. A bare vector is
+# list(all = vector); blank entries ("", NA, whitespace) are dropped; keys that
+# are neither 'all' nor a real "<axis>/<level>" contrast are warned about (typos
+# would otherwise be silently ignored).
+normalize_goi <- function(goi, contrast_keys) {
+  if (is.null(goi)) goi <- list()
+  if (is.atomic(goi)) goi <- list(all = goi)
+  goi <- lapply(goi, function(x) {
+    x <- stringr::str_squish(as.character(x))
+    unique(x[!is.na(x) & nzchar(x)])
+  })
+  bad <- setdiff(names(goi), c("all", contrast_keys))
+  if (length(bad) > 0) {
+    warning("GENES_OF_INTEREST has unrecognized key(s): ", paste(bad, collapse = ", "),
+            ". Valid keys: all, ", paste(contrast_keys, collapse = ", "))
+  }
+  goi
+}
+
+# Genes to plot for one contrast: 'all' + that contrast's own list; if that is
+# empty, fall back to the top top_n rows of its candidate_genes table (already
+# sorted by padj in build_candidate_genes()). Returns a data.frame(gene, source).
+resolve_goi <- function(goi_norm, contrast_key, candidate_genes, top_n = GOI_TOP_N) {
+  g_all <- goi_norm[["all"]]
+  g_own <- setdiff(goi_norm[[contrast_key]], g_all)
+  if (length(g_all) + length(g_own) > 0) {
+    return(data.frame(gene   = c(g_all, g_own),
+                      source = c(rep("all", length(g_all)), rep("contrast", length(g_own))),
+                      stringsAsFactors = FALSE))
+  }
+  # plot_gene_apa_*() match on the 'gene' symbol column; fall back to groupID
+  cand <- as.character(dplyr::coalesce(as.character(candidate_genes$gene),
+                                       as.character(candidate_genes$groupID)))
+  top  <- head(unique(cand[!is.na(cand) & nzchar(cand)]), top_n)
+  if (length(top) == 0) {
+    message(sprintf("[%s] GOI list blank and no candidate genes -- no APA figures.", contrast_key))
+  } else {
+    message(sprintf("[%s] GOI list blank -> plotting top %d candidate(s): %s",
+                    contrast_key, length(top), paste(top, collapse = ", ")))
+  }
+  data.frame(gene = top, source = rep("top_candidate", length(top)), stringsAsFactors = FALSE)
+}
+
+# ============================================================
 #  FUNCTION: run one comparison axis end-to-end -- grouping, cached DEXSeq
 #  fits, gene-level DGE, QC plots, results export, and APA figures -- all
 #  written into a nested <axis_name>/<stratify level>/ output tree.
@@ -1952,6 +2024,10 @@ run_axis <- function(axis_name, axis_cfg) {
     d <- axis_cfg$stratify_dir[lv]
     if (is.null(axis_cfg$stratify_dir) || is.na(d)) lv else unname(d)
   }, character(1)), stratify_levels)
+  # Per-contrast filename prefix, e.g. "TGFBvcontrol_in_plasmid-CFIm25"
+  prefix <- setNames(vapply(stratify_levels, function(lv) contrast_prefix(axis_cfg, lv),
+                            character(1)), stratify_levels)
+  pfx_file <- function(grp, name) paste0(prefix[[grp]], "_", name)
 
   for (lv in stratify_levels) {
     for (base in c(dir_results, dir_qc, dir_apa_genome, dir_apa_zoom)) {
@@ -2003,7 +2079,7 @@ run_axis <- function(axis_name, axis_cfg) {
 
   for (grp in names(gene_dge_results)) {
     write.csv(gene_dge_results[[grp]],
-              file.path(dir_results, axis_name, level_dir[[grp]], "gene_dge.csv"),
+              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "gene_dge.csv")),
               row.names = FALSE, quote = FALSE)
   }
 
@@ -2017,28 +2093,28 @@ run_axis <- function(axis_name, axis_cfg) {
 
     make_pca_dxd(
       dxd, grp_label = grp_label, color_col = axis_cfg$comparison_var,
-      outfile        = file.path(qdir, "PCA_normalized.png"),
-      matrix_outfile = file.path(qdir, "vst_normalized.csv")
+      outfile        = file.path(qdir, pfx_file(grp, "PCA_normalized.png")),
+      matrix_outfile = file.path(qdir, pfx_file(grp, "vst_normalized.csv"))
     )
     make_size_factors(
       dxd, grp_label = grp_label, comparison_var = axis_cfg$comparison_var,
-      outfile = file.path(qdir, "size_factors.png")
+      outfile = file.path(qdir, pfx_file(grp, "size_factors.png"))
     )
     make_dispersion_plot(
       dxd, grp_label = grp_label,
-      outfile = file.path(qdir, "dispersion.png")
+      outfile = file.path(qdir, pfx_file(grp, "dispersion.png"))
     )
     make_pvalue_hist(
       res, grp_label = grp_label,
-      outfile = file.path(qdir, "pvalue_hist.png")
+      outfile = file.path(qdir, pfx_file(grp, "pvalue_hist.png"))
     )
     make_ma_plot(
       res, grp_label = grp_label, fc_col = fc_col,
-      outfile = file.path(qdir, "MA.png")
+      outfile = file.path(qdir, pfx_file(grp, "MA.png"))
     )
     make_volcano_plot(
       res, grp_label = grp_label, fc_col = fc_col,
-      outfile = file.path(qdir, "volcano.png")
+      outfile = file.path(qdir, pfx_file(grp, "volcano.png"))
     )
   }
 
@@ -2061,7 +2137,7 @@ run_axis <- function(axis_name, axis_cfg) {
     out <- usage_results[[grp]]
     names(out) <- sub(fc_col, fc_export, names(out), fixed = TRUE)
     write.csv(out,
-              file.path(dir_results, axis_name, level_dir[[grp]], "pas_usage.csv"),
+              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "pas_usage.csv")),
               row.names = FALSE, quote = FALSE)
   }
 
@@ -2070,6 +2146,7 @@ run_axis <- function(axis_name, axis_cfg) {
   #      chi-squared cross-check from build_gene_apa_summary()) + candidate genes ----
   message(sprintf("[%s] Building gene-level summary and candidate-gene list...", axis_name))
 
+  candidate_results <- list()
   for (grp in names(runs)) {
     gene_q <- perGeneQValue(runs[[grp]]$dxr)
     group_of_sample <- setNames(as.character(colData[group_list[[grp]], axis_cfg$comparison_var]),
@@ -2086,7 +2163,7 @@ run_axis <- function(axis_name, axis_cfg) {
 
     gene_summary <- merge(sig_summary, apa_summary, by = "groupID", all = TRUE, sort = FALSE)
     write.csv(gene_summary,
-              file.path(dir_results, axis_name, level_dir[[grp]], "gene_summary.csv"),
+              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "gene_summary.csv")),
               row.names = FALSE, quote = FALSE)
 
     candidate_genes <- build_candidate_genes(usage_results[[grp]], gene_summary,
@@ -2094,23 +2171,31 @@ run_axis <- function(axis_name, axis_cfg) {
                           usage_change_cut = USAGE_CHANGE_CUT, padj_cut = PADJ_CUT,
                           wutr_change_cut = WUTR_CHANGE_CUT, red_mag_cut = RED_MAG_CUT)
     write.csv(candidate_genes,
-              file.path(dir_results, axis_name, level_dir[[grp]], "candidate_genes.csv"),
+              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "candidate_genes.csv")),
               row.names = FALSE, quote = FALSE)
+    candidate_results[[grp]] <- candidate_genes
   }
 
-  # ---- APA genome-map + terminal-exon zoom figures for GENES_OF_INTEREST ----
-  if (length(GENES_OF_INTEREST) > 0) {
-    message(sprintf("[%s] Plotting APA genome-map figures...", axis_name))
+  # ---- APA genome-map + terminal-exon zoom figures, per contrast ----
+  # Genes = GENES_OF_INTEREST$all + this contrast's own list; if both are blank,
+  # this contrast's top GOI_TOP_N candidate genes (see resolve_goi()).
+  message(sprintf("[%s] Plotting APA genome-map figures...", axis_name))
 
-    for (g in GENES_OF_INTEREST) {
-      for (grp in names(usage_results)) {
-        ttl_sfx <- paste0(comparison_title, ", ", grp)
+  for (grp in names(usage_results)) {
+    contrast_key <- paste(axis_name, grp, sep = "/")
+    goi_df <- resolve_goi(GOI_NORM, contrast_key, candidate_results[[grp]])
+    write.csv(goi_df,
+              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "genes_plotted.csv")),
+              row.names = FALSE, quote = FALSE)
+    ttl_sfx <- paste0(comparison_title, ", ", grp)
 
+    for (g in goi_df$gene) {
         if (!is.null(gtf_exons) && requireNamespace("ggtranscript", quietly = TRUE)) {
           n_tx <- length(unique(gtf_exons$transcript_id[gtf_exons$gene_name == g]))
 
           if (requireNamespace("ggforce", quietly = TRUE)) {
-            genome_outfile <- file.path(dir_apa_genome, axis_name, level_dir[[grp]], sprintf("%s.png", g))
+            genome_outfile <- file.path(dir_apa_genome, axis_name, level_dir[[grp]],
+                                        pfx_file(grp, sprintf("%s_genome.png", g)))
             tryCatch({
               p <- plot_gene_apa_genome(usage_results[[grp]], g, gtf_exons, title_suffix = ttl_sfx)
               ggplot2::ggsave(genome_outfile, p, width = 10, height = 3 + 1.1 * n_tx, dpi = 300)
@@ -2122,7 +2207,8 @@ run_axis <- function(axis_name, axis_cfg) {
           }
 
           if (requireNamespace("patchwork", quietly = TRUE)) {
-            zoom_outfile <- file.path(dir_apa_zoom, axis_name, level_dir[[grp]], sprintf("%s.png", g))
+            zoom_outfile <- file.path(dir_apa_zoom, axis_name, level_dir[[grp]],
+                                      pfx_file(grp, sprintf("%s_zoom.png", g)))
             tryCatch({
               cd_sub <- colData[group_list[[grp]], , drop = FALSE]
               p <- plot_gene_apa_zoom(usage_results[[grp]], g, gtf_exons, cd_sub, gene_dge_results[[grp]],
@@ -2140,16 +2226,21 @@ run_axis <- function(axis_name, axis_cfg) {
             warning("patchwork not installed — APA terminal-exon zoom figure skipped for '", g, "'.")
           }
         }
-      }
     }
   }
 
-  invisible(list(runs = runs, gene_dge_results = gene_dge_results, usage_results = usage_results))
+  invisible(list(runs = runs, gene_dge_results = gene_dge_results, usage_results = usage_results,
+                 candidate_results = candidate_results))
 }
 
 # ============================================================
 #  MAIN LOOP -- run every configured axis
 # ============================================================
+
+# Validate/normalize GENES_OF_INTEREST against the real contrast keys
+# ("<axis>/<stratify level>") now that AXES stratify_levels are finalized.
+CONTRAST_KEYS <- unlist(lapply(names(AXES), function(a) paste(a, AXES[[a]]$stratify_levels, sep = "/")))
+GOI_NORM      <- normalize_goi(GENES_OF_INTEREST, CONTRAST_KEYS)
 
 for (axis_name in names(AXES)) run_axis(axis_name, AXES[[axis_name]])
 
