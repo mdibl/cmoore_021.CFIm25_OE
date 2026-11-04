@@ -49,8 +49,10 @@ DESIGN_FILE <- "data/design.txt"
 # Set to NULL to skip those figures entirely (e.g. if no GTF is available).
 ANNO_GTF <- "data/ref/hg38.refGene.gtf"
 
-# Output base directory
-OUT_BASE <- file.path(BASE_DIR, "output/DEXseq/")
+# Output parent directory. The run's output folder inside it is picked from
+# USE_RUV (below): "DEXseq_RUVs/" when RUVs-corrected, "DEXseq_base/" when not,
+# so the two analyses never overwrite each other (see OUT_BASE under DERIVED PATHS).
+OUT_PARENT <- file.path(BASE_DIR, "output")
 
 # Comparison axes -- each axis runs one DEXSeq comparison (comparison_var: ref_label
 # vs alt_label) independently within every level of stratify_var (or once overall if
@@ -173,6 +175,10 @@ path_anno    <- file.path(BASE_DIR, ANNO_FILE)
 path_design  <- file.path(BASE_DIR, DESIGN_FILE)
 path_samples <- if (!is.null(SAMPLES_TXT)) file.path(BASE_DIR, SAMPLES_TXT) else NULL
 path_gtf     <- if (!is.null(ANNO_GTF)) file.path(BASE_DIR, ANNO_GTF) else NULL
+
+# Output directory depends on whether RUVs batch correction is applied
+OUT_BASE <- file.path(OUT_PARENT, if (isTRUE(USE_RUV)) "DEXseq_RUVs" else "DEXseq_base")
+message("Output directory: ", OUT_BASE, if (isTRUE(USE_RUV)) "  (RUVs-corrected)" else "  (no RUV correction)")
 
 # Sequential color ramp for usage magnitude (validated blue single-hue ramp;
 # see dataviz skill references/palette.md steps 100/700)

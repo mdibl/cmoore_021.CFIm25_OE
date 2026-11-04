@@ -149,7 +149,7 @@ A ΔPSI of +0.20 at the distal PAS means the distal site gained 20 percentage po
 
 ## Output files
 
-All outputs are written under `OUT_BASE` (set in configuration). Every **contrast** (one `AXES`
+All outputs are written under `OUT_BASE` = `{OUT_PARENT}/DEXseq_RUVs/` when `USE_RUV <- TRUE`, or `{OUT_PARENT}/DEXseq_base/` when `USE_RUV <- FALSE` (so corrected and uncorrected runs never overwrite each other). Every **contrast** (one `AXES`
 entry × one stratify level) gets its own `{axis}/{level}/` folder, and every per-contrast file
 is prefixed with `{prefix}_` = `{alt}v{ref}_in_{stratify_var}-{level}` so filenames are unique
 across contrasts (two candidate lists can be open in Excel side by side and still be told apart).
