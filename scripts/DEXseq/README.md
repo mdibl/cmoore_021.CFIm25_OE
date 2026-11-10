@@ -49,11 +49,19 @@ DESIGN_FILE <- "path/to/design.txt"                     # experimental design ta
 ANNO_GTF <- "data/ref/hg38.refGene.gtf"   # RefSeq GTF for the APA genome-map figures;
                                           # set to NULL to skip those figures entirely
 
-CTRL_LABEL  <- "Control"     # must match values in design file's 'condition' column
-TRTMT_LABEL <- "Treatment"   # must match values in design file's 'condition' column
-
-GROUPING_VAR <- NULL   # NULL = run one analysis on all samples
-                       # set to "timepoint" (or any colData column) to run per level
+# Comparisons to run -- one entry per "axis" (see "Running for different experimental designs")
+AXES <- list(
+  by_condition = list(
+    comparison_var   = "condition",   # design-file column being compared
+    ref_label        = "control",     # reference level (fold-change denominator)
+    alt_label        = "TGFB",        # level compared against it
+    comparison_label = "condition",   # label used in plot legends
+    stratify_var     = "plasmid",     # split column: run once per level of it;
+                                      #   NULL = no split, one comparison on all samples
+    stratify_levels  = c("control", "CFIm25"),  # NULL = every level, alphabetical
+    stratify_dir     = NULL           # NULL = folder named after the level
+  )
+)
 
 GOI_TOP_N <- 10                           # fallback when a contrast has no genes listed
 GENES_OF_INTEREST <- list(                # genes to plot APA figures for (see "Genes of interest")
@@ -62,8 +70,9 @@ GENES_OF_INTEREST <- list(                # genes to plot APA figures for (see "
   "by_plasmid/TGFB"      = character(0)          # blank everywhere -> top GOI_TOP_N candidates
 )
 
-USE_RUV <- FALSE   # set to TRUE to enable RUVseq batch correction (see below)
-RUV_K   <- 1       # number of unwanted variation factors to estimate (1 is usually enough)
+USE_RUV       <- FALSE        # set to TRUE to enable RUVseq batch correction (see below)
+RUV_K         <- 1            # number of unwanted variation factors to estimate (1 is usually enough)
+RUV_BATCH_VAR <- "replicate"  # design column used as a batch proxy in the RUV covariate report
 
 USE_CACHE <- TRUE  # reuse cached DEXSeq/DESeq2 fits when inputs/config are unchanged (see below)
 ```
@@ -86,7 +95,7 @@ Treatment_rep1 Treatment
 Treatment_rep2 Treatment
 ```
 
-If you have a timepoint or batch column, include it here. Set `GROUPING_VAR <- "timepoint"` to run a separate DEXSeq analysis per timepoint level.
+Every column named in `AXES` (`comparison_var`, and `stratify_var` when it is set) must exist in this file, and `ref_label`/`alt_label` must be values in the `comparison_var` column. A simple two-condition design needs only `condition` (plus `replicate` if you use `RUV_BATCH_VAR` / `PCA_LABEL_COL`); add columns such as `timepoint` or `plasmid` only if you want to split by them.
 
 **Sample name file** (`sample_name.txt`, optional): a plain text file listing sample names, one per line. If set to NULL, all non-`hit_PAS_ID` columns in the count matrix are used.
 
@@ -153,6 +162,13 @@ All outputs are written under `OUT_BASE` = `{OUT_PARENT}/DEXseq_RUVs/` when `USE
 entry × one stratify level) gets its own `{axis}/{level}/` folder, and every per-contrast file
 is prefixed with `{prefix}_` = `{alt}v{ref}_in_{stratify_var}-{level}` so filenames are unique
 across contrasts (two candidate lists can be open in Excel side by side and still be told apart).
+
+An axis with **no split** (`stratify_var = NULL`) is a single contrast: its files go straight into
+`{axis}/` (no `{level}/` folder) and its prefix is just `{alt}v{ref}` -- e.g.
+`by_condition/ExperimentalvControl_pas_usage.csv`, `plots/qc/by_condition/ExperimentalvControl_MA.png`,
+`plots/apa_zoom/by_condition/ExperimentalvControl_LIFR_zoom.png`. In the tree below, read
+`{axis}/{level}/` as `{axis}/` for such an axis.
+
 For this project the four prefixes are:
 
 | Contrast folder | `{prefix}` |
@@ -199,6 +215,7 @@ For this project the four prefixes are:
 
 - **`all`** — genes plotted in **every** contrast.
 - **`"<axis>/<level>"`** (e.g. `"by_plasmid/TGFB"`) — extra genes for **that contrast only**; combined with `all`.
+  For an axis with no split (`stratify_var = NULL`) the key is just `"<axis>"` (e.g. `"by_condition"`).
 - If a contrast ends up with **no genes** (both `all` and its own entry blank or missing), its
   **top `GOI_TOP_N` (default 10) candidate genes** — the first rows of its `candidate_genes.csv`,
   ranked by `padj` — are plotted instead. If it has fewer candidates, all of them are plotted.
@@ -340,13 +357,13 @@ Every threshold is a top-level constant (see "Key thresholds" below) — none ar
 
 ## Quality control plots
 
-All QC plots (and the VST matrices behind the PCA plots) are saved to `plots/qc/`.
+All QC plots (and the VST matrices behind the PCA plots) are saved to `plots/qc/`. Plots made from all samples (library sizes, global PCA, RUV factors) sit directly in `plots/qc/`; per-contrast plots (`{prefix}_...`) are in `plots/qc/{axis}/{level}/` (or `plots/qc/{axis}/` for an axis with no split).
 
 ### `library_sizes.png`
 Bar chart of total PAS read counts per sample (before any filtering). Bars should be roughly similar height across samples. Large differences (>3×) may indicate a failed sample or a sample that needs closer attention during normalization. This is assessed before the analysis runs.
 
-### `vst_global.csv` / `vst_normalized[.group].csv`
-The full variance-stabilized (VST) count matrix — one row per PAS, one column per sample — exported alongside the PCA plots that are already computed from it (`vst_global.csv` is pre-DEXSeq, all samples; `vst_normalized[.group].csv` is post-DEXSeq-normalization, per analysis group). Useful for spot-checking a specific gene's overall expression change against its PAS-level usage change directly, or for any downstream analysis (clustering, custom plots) that wants normalized values rather than raw counts.
+### `vst_global.csv` / `{prefix}_vst_normalized.csv`
+The full variance-stabilized (VST) count matrix — one row per PAS, one column per sample — exported alongside the PCA plots that are already computed from it (`vst_global.csv` is pre-DEXSeq, all samples; `{prefix}_vst_normalized.csv` is post-DEXSeq-normalization, per contrast). Useful for spot-checking a specific gene's overall expression change against its PAS-level usage change directly, or for any downstream analysis (clustering, custom plots) that wants normalized values rather than raw counts.
 
 ### `PCA_global.png` / `PCA_global_uncorrected.png`
 Principal component analysis on all samples simultaneously, using variance-stabilized 3' UTR PAS counts. Points that cluster by condition (e.g., all Controls together) indicate that the experimental effect is larger than technical variation — a good sign. Points that cluster by batch or unexpected metadata suggest confounding. When `USE_RUV=FALSE` this file is named `PCA_global.png`; when `USE_RUV=TRUE` it is named `PCA_global_uncorrected.png` so the pre-correction structure is preserved for comparison.
@@ -357,28 +374,28 @@ The same PCA after regressing the estimated W factors out of the VST matrix usin
 ### `RUV_W_factors.png` *(USE_RUV=TRUE only)*
 Bar chart of the estimated RUV W factor(s) per sample, colored by condition. Samples that drove the batch factor will have large positive or negative bars. Ideally this factor should not be correlated with condition — if it is, the correction may over-remove true signal.
 
-### `PCA_normalized[.group].png`
-PCA on the post-normalization counts within each analysis group. Similar interpretation as above, but after DEXSeq's size factor normalization.
+### `{prefix}_PCA_normalized.png`
+PCA on the post-normalization counts within each contrast's samples. Similar interpretation as above, but after DEXSeq's size factor normalization.
 
-### `size_factors[.group].png`
+### `{prefix}_size_factors.png`
 Bar chart of the normalization factors assigned by DEXSeq to each sample. All bars should be close to 1.0 (the dashed reference line). A sample with a very high or low size factor (>2× away from 1) may be an outlier.
 
-### `dispersion[.group].png`
+### `{prefix}_dispersion.png`
 This plot shows the estimated variance of each PAS's counts across samples. DEXSeq fits a curve (shown in red) through the cloud of per-PAS dispersion estimates (black dots) and uses that curve to smooth individual estimates toward the genome-wide trend — a technique called shrinkage. Well-behaved data has a tight cloud around the fitted curve with a mean that decreases at higher mean counts.
 
-### `pvalue_hist[.group].png`
+### `{prefix}_pvalue_hist.png`
 Histogram of raw (unadjusted) p-values. The dashed red line shows what a uniform distribution would look like. A well-powered experiment with true effects shows a spike of small p-values near 0 (real signal) and a roughly flat distribution from 0.1–1.0 (null PAS). A completely flat or anti-conservative (U-shaped) histogram suggests model misspecification.
 
 ---
 
 ## Diagnostic plots
 
-Saved to `plots/qc/`.
+Saved per contrast to `plots/qc/{axis}/{level}/` (or `plots/qc/{axis}/` for an axis with no split).
 
-### `MA[.group].png`
+### `{prefix}_MA.png`
 Plots log2 fold change (Y) versus mean count (X) for every tested PAS. Significant hits (padj < threshold) are shown in red. A symmetric cloud centered at 0 with random scatter indicates no systematic bias. Up/down counts are annotated in the corners.
 
-### `volcano[.group].png`
+### `{prefix}_volcano.png`
 Plots log2 fold change (X) versus −log10(padj) (Y). Points in the upper corners are the most significant and most changed PAS. The top hits by significance are labeled with gene names. Color categories:
 - **Red** — significant AND large fold change (`padj < threshold` AND `|log2FC| >= LFC_CUT`)
 - **Gold** — significant but small fold change
@@ -432,11 +449,22 @@ The per-gene q-value (Lancaster method) combines the evidence from all PAS sites
 
 ## Running for different experimental designs
 
-### Simple two-condition (no grouping)
-Leave `GROUPING_VAR <- NULL`. All samples in the design file are analyzed together.
+Each entry in `AXES` is one comparison (`comparison_var`: `alt_label` vs `ref_label`). Add entries to run more comparisons in the same run; each writes into its own `{axis}/` folder.
 
-### Multiple timepoints (or batches as separate analyses)
-Set `GROUPING_VAR <- "timepoint"` (or whatever the column is called in your design file). The script automatically detects all levels in that column and runs a separate DEXSeq analysis for each — for example, one for day 3 samples only, and one for day 5 samples only. Output files are suffixed accordingly (`.3d`, `.5d`).
+### Simple two-condition (no split)
+Set `stratify_var = NULL` (or leave it out). All samples in the design file are analyzed together in one contrast, written to `{axis}/` with prefix `{alt}v{ref}`:
+
+```r
+AXES <- list(
+  by_condition = list(comparison_var = "condition", ref_label = "Control",
+                      alt_label = "Experimental", comparison_label = "condition",
+                      stratify_var = NULL)
+)
+GENES_OF_INTEREST <- list(all = c("GENE1", "GENE2"))   # per-contrast key: "by_condition"
+```
+
+### Split by a second factor (e.g. timepoint, plasmid)
+Set `stratify_var` to a design-file column. The comparison runs separately within each level of that column -- e.g. `stratify_var = "plasmid"` compares condition within control-plasmid samples and, separately, within CFIm25 samples. `stratify_levels` picks/orders the levels (NULL = all, alphabetical); `stratify_dir` renames their output folders. To compare across a factor in both directions (as in this project), add a second axis with the roles swapped (`by_plasmid`: compare plasmid, split by condition).
 
 ### Adding a batch covariate (blocking factor)
 DEXSeq's `~ sample + exon + condition:exon` model absorbs all per-sample gene-level variation through the `sample` term, which handles differences in overall expression between samples. However, it does **not** correct for batch effects on *relative* PAS usage (PSI). If replicates cluster by batch rather than condition in the PCA, use RUVseq.
@@ -460,7 +488,7 @@ The `W_1:exon` term tests whether the batch factor changes relative PAS usage fr
 
 The DEXSeq and DESeq2 model fits (`run_dexseq_group()`, `build_gene_dge()`) are by far the slowest part of this script — full GLM fits across every tested PAS. Most re-runs are really about iterating on a plot or `GENES_OF_INTEREST`, not changing the underlying data or modeling settings, so refitting from scratch every time is wasted time.
 
-With `USE_CACHE <- TRUE` (the default), each group's fit is saved to `{OUT_BASE}/cache/` alongside a small manifest (mtimes of the count/annotation/design files, the exact sample list for that group, and the modeling settings that affect the fit: `CTRL_LABEL`, `TRTMT_LABEL`, `PAS_TYPE_REGEX`, `MIN_TOTAL_READS`, `MIN_PER_CONDITION`, `USE_RUV`, `RUV_K`). On the next run, if that manifest is unchanged, the cached fit is loaded instead of recomputed — the console prints `[cache] Reusing cached result for '...'` when this happens, or `[cache] No valid cache for '...' -- computing.` when it doesn't. Editing anything downstream of the fit (plot code, `GENES_OF_INTEREST`, color palettes, thresholds like `PADJ_CUT`/`LFC_CUT` that only affect summarization/plotting) leaves the cache valid. Changing the count matrix, annotation, design file, or any of the modeling settings above automatically invalidates it — no manual cleanup needed.
+With `USE_CACHE <- TRUE` (the default), each contrast's fit is saved to `{OUT_BASE}/cache/` alongside a small manifest (mtimes of the count/annotation/design/sample files, the axis name, the exact sample list for that contrast, and the modeling settings that affect the fit: the axis's `comparison_var`/`ref_label`/`alt_label`, `PAS_TYPE_REGEX`, `MIN_TOTAL_READS`, `MIN_PER_CONDITION`, `USE_RUV`, `RUV_K`). On the next run, if that manifest is unchanged, the cached fit is loaded instead of recomputed — the console prints `[cache] Reusing cached result for '...'` when this happens, or `[cache] No valid cache for '...' -- computing.` when it doesn't. Editing anything downstream of the fit (plot code, `GENES_OF_INTEREST`, color palettes, thresholds like `PADJ_CUT`/`LFC_CUT` that only affect summarization/plotting) leaves the cache valid. Changing the count matrix, annotation, design file, or any of the modeling settings above automatically invalidates it — no manual cleanup needed.
 
 Set `USE_CACHE <- FALSE` to always refit from scratch (e.g. while actively debugging `run_dexseq_group()`/`build_gene_dge()` themselves, where you don't want a stale-but-manifest-matching cache masking a code change). The `cache/` directory is otherwise safe to delete any time — it will simply be rebuilt on the next run.
 

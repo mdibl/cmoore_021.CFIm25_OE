@@ -55,16 +55,24 @@ ANNO_GTF <- "data/ref/hg38.refGene.gtf"
 OUT_PARENT <- file.path(BASE_DIR, "output")
 
 # Comparison axes -- each axis runs one DEXSeq comparison (comparison_var: ref_label
-# vs alt_label) independently within every level of stratify_var (or once overall if
-# stratify_var's level is left unspecified). Add/remove axes here to add more
-# cross-sections without touching any code below.
-#   comparison_var/stratify_var — colData column names
+# vs alt_label) independently within every level of stratify_var, or ONCE across all
+# samples when stratify_var is NULL. Add/remove axes here to add more cross-sections
+# without touching any code below.
+#   comparison_var/stratify_var — colData column names; stratify_var = NULL (or
+#                                  omitted) = no split: one comparison on all samples,
+#                                  written to <axis>/ with no level subfolder
 #   ref_label/alt_label         — the two comparison_var levels to test (ref = fold-
 #                                  change denominator)
 #   comparison_label            — display label for plot legends/titles
 #   stratify_levels              — NULL = auto-detect from colData (alphabetical order)
 #   stratify_dir                 — output subdirectory name per stratify level;
 #                                  NULL = use the level name as-is
+#   (stratify_levels/stratify_dir are ignored when stratify_var is NULL)
+# Unsplit example (simple two-condition design):
+#   AXES <- list(by_condition = list(comparison_var = "condition", ref_label = "Control",
+#                alt_label = "Experimental", comparison_label = "condition",
+#                stratify_var = NULL))
+#   -> output/DEXseq_RUVs/by_condition/ExperimentalvControl_pas_usage.csv, etc.
 AXES <- list(
   by_condition = list(                     
     comparison_var   = "condition",
@@ -130,7 +138,8 @@ PCA_LABEL_COL <- "replicate" # colData column to use as point labels (NULL = non
 # Genes to plot APA genome-map / terminal-exon zoom figures for.
 #   all                    -> plotted in every contrast
 #   "<axis>/<level>" keys  -> extra genes for that contrast only (union with 'all');
-#                             keys are AXES names + stratify levels, e.g. "by_plasmid/TGFB"
+#                             keys are AXES names + stratify levels, e.g. "by_plasmid/TGFB";
+#                             for an axis with stratify_var = NULL the key is just "<axis>"
 #   A contrast left with NO genes (both 'all' and its own entry blank/missing) gets
 #   its top GOI_TOP_N candidate genes (candidate_genes.csv, ranked by padj) instead.
 #   A plain character vector is still accepted and treated as list(all = <vector>).
@@ -352,15 +361,27 @@ stopifnot(all(colnames(count_mat) == rownames(colData)))
 # is by_condition's comparison_var AND by_plasmid's stratify_var) gets leveled once
 # per axis that references it -- harmless as long as every axis agrees on that
 # column's level order, which AXES above does.
+# TRUE when an axis splits its samples by a colData column (stratify_var set);
+# FALSE = one comparison across all samples, no level subfolder.
+axis_is_stratified <- function(ax) {
+  v <- ax$stratify_var
+  !is.null(v) && length(v) == 1 && !is.na(v) && nzchar(v)
+}
+
 prepare_colData_axes <- function(colData, axes) {
   for (nm in names(axes)) {
     ax <- axes[[nm]]
-    for (v in c(ax$comparison_var, ax$stratify_var)) {
+    for (v in c(ax$comparison_var, if (axis_is_stratified(ax)) ax$stratify_var)) {
       if (!v %in% names(colData))
         stop(sprintf("AXES$%s references colData column '%s', which is not in the design file.", nm, v))
     }
     colData[[ax$comparison_var]] <- factor(colData[[ax$comparison_var]],
                                             levels = c(ax$ref_label, ax$alt_label))
+    if (!axis_is_stratified(ax)) {
+      axes[nm] <- list(modifyList(ax, list(stratify_var = NULL, stratify_levels = NULL,
+                                           stratify_dir = NULL)))
+      next
+    }
     strat_levels <- ax$stratify_levels
     if (is.null(strat_levels)) strat_levels <- sort(unique(as.character(colData[[ax$stratify_var]])))
     axes[[nm]]$stratify_levels <- strat_levels
@@ -379,7 +400,7 @@ rm(prepared)
 # "condition" as its comparison_var, so a project whose second factor isn't
 # called "timepoint" (e.g. "plasmid") still gets that contrast shown, instead
 # of the shape aesthetic silently matching nothing.
-condition_axis <- Find(function(ax) ax$comparison_var == "condition", AXES)
+condition_axis <- Find(function(ax) ax$comparison_var == "condition" && axis_is_stratified(ax), AXES)
 PCA_SHAPE_VAR  <- if (!is.null(condition_axis)) condition_axis$stratify_var else NULL
 
 # ============================================================
@@ -1938,10 +1959,14 @@ group_cache_manifest <- function(axis_name, axis_cfg, grp, group_list) {
 # files into its own folder; contrast_prefix() makes those filenames unique and
 # self-describing (e.g. "TGFBvcontrol_in_plasmid-CFIm25_candidate_genes.csv") so
 # two of them can be open side by side in Excel and still be told apart.
+# An unsplit axis (stratify_var = NULL) gets just "<alt>v<ref>", e.g.
+# "ExperimentalvControl_candidate_genes.csv".
 
 contrast_prefix <- function(axis_cfg, level) {
-  p <- paste0(axis_cfg$alt_label, "v", axis_cfg$ref_label, "_in_",
-              axis_cfg$stratify_var, "-", level)
+  p <- if (axis_is_stratified(axis_cfg))
+    paste0(axis_cfg$alt_label, "v", axis_cfg$ref_label, "_in_", axis_cfg$stratify_var, "-", level)
+  else
+    paste0(axis_cfg$alt_label, "v", axis_cfg$ref_label)
   gsub("[^A-Za-z0-9_.-]", "_", p)
 }
 
@@ -1991,13 +2016,15 @@ resolve_goi <- function(goi_norm, contrast_key, candidate_genes, top_n = GOI_TOP
 # ============================================================
 #  FUNCTION: run one comparison axis end-to-end -- grouping, cached DEXSeq
 #  fits, gene-level DGE, QC plots, results export, and APA figures -- all
-#  written into a nested <axis_name>/<stratify level>/ output tree.
+#  written into a nested <axis_name>/<stratify level>/ output tree (or just
+#  <axis_name>/ when the axis has no stratify_var).
 # ============================================================
 
 run_axis <- function(axis_name, axis_cfg) {
-  message(sprintf("=== Axis '%s' (%s: %s vs %s, stratified by %s) ===",
-                  axis_name, axis_cfg$comparison_var, axis_cfg$alt_label,
-                  axis_cfg$ref_label, axis_cfg$stratify_var))
+  stratified <- axis_is_stratified(axis_cfg)
+  message(sprintf("=== Axis '%s' (%s: %s vs %s, %s) ===",
+                  axis_name, axis_cfg$comparison_var, axis_cfg$alt_label, axis_cfg$ref_label,
+                  if (stratified) paste("stratified by", axis_cfg$stratify_var) else "all samples, no split"))
 
   fc_col    <- paste0("log2fold_", axis_cfg$alt_label, "_", axis_cfg$ref_label)
   fc_export <- paste0("log2fold_", axis_cfg$alt_label, "_v_", axis_cfg$ref_label)
@@ -2019,17 +2046,31 @@ run_axis <- function(axis_name, axis_cfg) {
   dom_usage_trtmt_col<- paste0("dominant_meanUsage_", axis_cfg$alt_label)
 
   # --- grouping setup (stratify samples by axis_cfg$stratify_var) ---
-  stratify_levels <- axis_cfg$stratify_levels
-  group_list <- setNames(
-    lapply(stratify_levels, function(lv) {
-      rownames(colData)[as.character(colData[[axis_cfg$stratify_var]]) == lv]
-    }),
-    stratify_levels
-  )
+  # Unsplit axis: a single internal group "all" holding every sample. Its files
+  # go straight into <base>/<axis_name>/ (no level folder), its contrast key is
+  # just "<axis_name>", and plot titles carry no ", <level>" suffix.
+  if (stratified) {
+    stratify_levels <- axis_cfg$stratify_levels
+    group_list <- setNames(
+      lapply(stratify_levels, function(lv) {
+        rownames(colData)[as.character(colData[[axis_cfg$stratify_var]]) == lv]
+      }),
+      stratify_levels
+    )
+  } else {
+    stratify_levels <- "all"
+    group_list <- list(all = rownames(colData))
+  }
   level_dir <- setNames(vapply(stratify_levels, function(lv) {
+    if (!stratified) return("")
     d <- axis_cfg$stratify_dir[lv]
     if (is.null(axis_cfg$stratify_dir) || is.na(d)) lv else unname(d)
   }, character(1)), stratify_levels)
+  # Output folder, contrast key ("<axis>/<level>" or "<axis>") and plot-title
+  # suffix for one group
+  grp_dir   <- function(base, grp) if (stratified) file.path(base, axis_name, level_dir[[grp]]) else file.path(base, axis_name)
+  grp_key   <- function(grp) if (stratified) paste(axis_name, grp, sep = "/") else axis_name
+  grp_title <- function(grp) if (stratified) paste0(comparison_title, ", ", grp) else comparison_title
   # Per-contrast filename prefix, e.g. "TGFBvcontrol_in_plasmid-CFIm25"
   prefix <- setNames(vapply(stratify_levels, function(lv) contrast_prefix(axis_cfg, lv),
                             character(1)), stratify_levels)
@@ -2037,7 +2078,7 @@ run_axis <- function(axis_name, axis_cfg) {
 
   for (lv in stratify_levels) {
     for (base in c(dir_results, dir_qc, dir_apa_genome, dir_apa_zoom)) {
-      dir.create(file.path(base, axis_name, level_dir[[lv]]), recursive = TRUE, showWarnings = FALSE)
+      dir.create(grp_dir(base, lv), recursive = TRUE, showWarnings = FALSE)
     }
   }
 
@@ -2049,7 +2090,7 @@ run_axis <- function(axis_name, axis_cfg) {
       manifest  = group_cache_manifest(axis_name, axis_cfg, grp, group_list),
       compute_fn = function() {
         run_dexseq_group(
-          grp_label         = paste(axis_name, grp, sep = "/"),
+          grp_label         = grp_key(grp),
           sub_samples       = group_list[[grp]],
           count_mat         = count_mat,
           colData           = colData,
@@ -2085,17 +2126,17 @@ run_axis <- function(axis_name, axis_cfg) {
 
   for (grp in names(gene_dge_results)) {
     write.csv(gene_dge_results[[grp]],
-              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "gene_dge.csv")),
+              file.path(grp_dir(dir_results, grp), pfx_file(grp, "gene_dge.csv")),
               row.names = FALSE, quote = FALSE)
   }
 
   # ---- post-analysis QC plots (per stratify level) ----
   message(sprintf("[%s] Post-analysis QC plots...", axis_name))
   for (grp in names(runs)) {
-    qdir <- file.path(dir_qc, axis_name, level_dir[[grp]])
+    qdir <- grp_dir(dir_qc, grp)
     dxd  <- runs[[grp]]$dxd
     res  <- runs[[grp]]$results
-    grp_label <- paste0(comparison_title, ", ", grp)
+    grp_label <- grp_title(grp)
 
     make_pca_dxd(
       dxd, grp_label = grp_label, color_col = axis_cfg$comparison_var,
@@ -2143,7 +2184,7 @@ run_axis <- function(axis_name, axis_cfg) {
     out <- usage_results[[grp]]
     names(out) <- sub(fc_col, fc_export, names(out), fixed = TRUE)
     write.csv(out,
-              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "pas_usage.csv")),
+              file.path(grp_dir(dir_results, grp), pfx_file(grp, "pas_usage.csv")),
               row.names = FALSE, quote = FALSE)
   }
 
@@ -2169,7 +2210,7 @@ run_axis <- function(axis_name, axis_cfg) {
 
     gene_summary <- merge(sig_summary, apa_summary, by = "groupID", all = TRUE, sort = FALSE)
     write.csv(gene_summary,
-              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "gene_summary.csv")),
+              file.path(grp_dir(dir_results, grp), pfx_file(grp, "gene_summary.csv")),
               row.names = FALSE, quote = FALSE)
 
     candidate_genes <- build_candidate_genes(usage_results[[grp]], gene_summary,
@@ -2177,7 +2218,7 @@ run_axis <- function(axis_name, axis_cfg) {
                           usage_change_cut = USAGE_CHANGE_CUT, padj_cut = PADJ_CUT,
                           wutr_change_cut = WUTR_CHANGE_CUT, red_mag_cut = RED_MAG_CUT)
     write.csv(candidate_genes,
-              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "candidate_genes.csv")),
+              file.path(grp_dir(dir_results, grp), pfx_file(grp, "candidate_genes.csv")),
               row.names = FALSE, quote = FALSE)
     candidate_results[[grp]] <- candidate_genes
   }
@@ -2188,19 +2229,19 @@ run_axis <- function(axis_name, axis_cfg) {
   message(sprintf("[%s] Plotting APA genome-map figures...", axis_name))
 
   for (grp in names(usage_results)) {
-    contrast_key <- paste(axis_name, grp, sep = "/")
+    contrast_key <- grp_key(grp)
     goi_df <- resolve_goi(GOI_NORM, contrast_key, candidate_results[[grp]])
     write.csv(goi_df,
-              file.path(dir_results, axis_name, level_dir[[grp]], pfx_file(grp, "genes_plotted.csv")),
+              file.path(grp_dir(dir_results, grp), pfx_file(grp, "genes_plotted.csv")),
               row.names = FALSE, quote = FALSE)
-    ttl_sfx <- paste0(comparison_title, ", ", grp)
+    ttl_sfx <- grp_title(grp)
 
     for (g in goi_df$gene) {
         if (!is.null(gtf_exons) && requireNamespace("ggtranscript", quietly = TRUE)) {
           n_tx <- length(unique(gtf_exons$transcript_id[gtf_exons$gene_name == g]))
 
           if (requireNamespace("ggforce", quietly = TRUE)) {
-            genome_outfile <- file.path(dir_apa_genome, axis_name, level_dir[[grp]],
+            genome_outfile <- file.path(grp_dir(dir_apa_genome, grp),
                                         pfx_file(grp, sprintf("%s_genome.png", g)))
             tryCatch({
               p <- plot_gene_apa_genome(usage_results[[grp]], g, gtf_exons, title_suffix = ttl_sfx)
@@ -2213,7 +2254,7 @@ run_axis <- function(axis_name, axis_cfg) {
           }
 
           if (requireNamespace("patchwork", quietly = TRUE)) {
-            zoom_outfile <- file.path(dir_apa_zoom, axis_name, level_dir[[grp]],
+            zoom_outfile <- file.path(grp_dir(dir_apa_zoom, grp),
                                       pfx_file(grp, sprintf("%s_zoom.png", g)))
             tryCatch({
               cd_sub <- colData[group_list[[grp]], , drop = FALSE]
@@ -2244,8 +2285,10 @@ run_axis <- function(axis_name, axis_cfg) {
 # ============================================================
 
 # Validate/normalize GENES_OF_INTEREST against the real contrast keys
-# ("<axis>/<stratify level>") now that AXES stratify_levels are finalized.
-CONTRAST_KEYS <- unlist(lapply(names(AXES), function(a) paste(a, AXES[[a]]$stratify_levels, sep = "/")))
+# ("<axis>/<stratify level>", or "<axis>" for an unsplit axis) now that AXES
+# stratify_levels are finalized.
+CONTRAST_KEYS <- unlist(lapply(names(AXES), function(a)
+  if (axis_is_stratified(AXES[[a]])) paste(a, AXES[[a]]$stratify_levels, sep = "/") else a))
 GOI_NORM      <- normalize_goi(GENES_OF_INTEREST, CONTRAST_KEYS)
 
 for (axis_name in names(AXES)) run_axis(axis_name, AXES[[axis_name]])
